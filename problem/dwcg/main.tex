@@ -1,0 +1,264 @@
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,tabularx,hyperref}
+\allowdisplaybreaks
+\hypersetup{colorlinks=true,linkcolor=blue}
+\newcommand{\cg}[1]{\tag{CG-#1}}
+\title{考虑拆卸优先关系、人机协作与累计疲劳约束的\\多线拆卸平衡问题：列生成数学模型}
+\author{CG-ML-HRC-DLBP-CF：第一版标准列生成}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+以第一版紧凑 MILP $P_0$ 为基础，按工作站局部整数可行配置进行 Dantzig--Wolfe 分解。本文给出完整主问题、受限主问题、对偶与检验数、MILP 精确定价、两阶段初始化、收敛界及整数恢复方法。优先关系保留在主问题中；节拍、模式、配置逻辑及疲劳作为列内局部条件。标准列生成精确求解的是完整列 LP 松弛，受限列上的整数恢复不构成一般的全局整数最优性证明。本阶段不包括分支定价和强化学习。
+\end{abstract}
+
+\section{原问题与分解思路}
+原始问题及全部基础假设见上一级目录的 \texttt{main.tex}。其目标为
+\begin{equation}
+\max Z=\sum_{l,i}v_{li}y_{li}-\sum_{l,i,s,m}c_{li}^mx_{lism}
+-\sum_{l,s}(f_{ls}u_{ls}+f_{ls}^Hh_{ls}+f_{ls}^Rr_{ls}).\cg{1}
+\end{equation}
+原 MILP 决定任务选择、站点分配、H/R/J 模式及人机配置。对各站局部可行整数集合取凸包，将一个站点的完整任务--模式组合视为一列。节拍、疲劳、模式和配置逻辑由列保证；任务唯一性、AND 型累积优先、必拆、最低回收和共享资源限制保留在主问题。任意 $L\geq1$ 均适用，$L=1$ 自然退化为单线。
+
+\section{集合、参数与列特征}
+\begin{longtable}{p{0.31\textwidth}p{0.62\textwidth}}
+\toprule 符号 & 含义\\\midrule
+$\mathcal L=\{1,\ldots,L\}$ & 拆卸线集合，索引 $l$。\\
+$\mathcal I_l$ & 线 $l$ 的任务集合，$n_l=|\mathcal I_l|$，索引 $i,j$。\\
+$\mathcal S_l=\{1,\ldots,K_l\}$ & 有序候选站点，$s$ 为站点，$k$ 为前缀终点。\\
+$\mathcal E_l$ & DAG 的 AND 型直接优先边，$(i,j)$ 表示前驱 $i$ 先于后继 $j$。\\
+$\mathcal M_{li}\subseteq\{H,R,J\}$ & 任务的允许模式。\\
+$\mathcal I_l^{\rm req},\mathcal I_l^{\rm opt}$ & 必拆任务与其补集，必拆集合允许为空。\\
+$\mathcal P_{ls}$ & 站点 $(l,s)$ 的全部局部整数可行配置，包含空列。\\
+$\overline{\mathcal P}_{ls}^{(t)}$ & 第 $t$ 轮已有的受限列集合。\\\bottomrule
+\end{longtable}
+沿用 $P_0$ 的参数：回收价值 $v_{li}$、时间 $t_{li}^m>0$、执行成本 $c_{li}^m\geq0$、疲劳量 $d_{li}^m=\beta_{li}^mt_{li}^m\geq0$、回收权重 $w_{li}\geq0$、节拍 $T_l>0$、固定启用成本 $f_{ls}$、人机配置成本 $f_{ls}^H,f_{ls}^R$、全局数量 $H^{\max},R^{\max}$、最低回收量 $Q_l\geq0$。成本非负且采用统一核算口径。$v_{li}$ 不重复扣除本模型单独计入的费用。
+
+模式需求为 $a_m^H=1$ 当且仅当 $m\in\{H,J\}$，$a_m^R=1$ 当且仅当 $m\in\{R,J\}$。机器人独立操作的 $d_{li}^R=\beta_{li}^R=0$。疲劳预算为
+\begin{equation}
+B_l=-\ln(1-F_l^{\max}),\qquad 0\leq F_l^{\max}<1.\cg{2}
+\end{equation}
+疲劳从零初始值无恢复地累积，$F=1-e^{-D}$，只表示代表性单周期；不包含整班次或疲劳对时间的反馈。所有任务顺序执行，J 模式持续时间只计算一次。
+
+对列 $p\in\mathcal P_{ls}$，$z_{lim}^{sp}\in\{0,1\}$ 表示是否以模式 $m$ 执行任务 $i$，$U_{lsp},H_{lsp},R_{lsp}$ 表示站点启用与资源需求。在主问题中这些都是常数，而非待优化的局部变量。定义
+\begin{equation}a_{li}^{sp}=\sum_{m\in\mathcal M_{li}}z_{lim}^{sp}\in\{0,1\},\cg{3}\end{equation}
+\begin{equation}\tau_{lsp}=\sum_{i,m}t_{li}^mz_{lim}^{sp},\cg{4}\end{equation}
+\begin{equation}D_{lsp}=\sum_{i,m}d_{li}^mz_{lim}^{sp},\cg{5}\end{equation}
+\begin{equation}
+b_{lsp}=\sum_{i,m}(v_{li}-c_{li}^m)z_{lim}^{sp}
+-f_{ls}U_{lsp}-f_{ls}^HH_{lsp}-f_{ls}^RR_{lsp}.\cg{6}
+\end{equation}
+后文 $\sum_{i,m}$ 均只遍历 $i\in\mathcal I_l,m\in\mathcal M_{li}$。
+
+\section{工作站局部可行列}
+对于固定 $(l,s)$，列集合由以下全部整数配置构成：
+\begin{align}
+\sum_m z_{lim}^{sp}&\leq1 &&\forall i,\cg{7}\\
+\sum_{i,m}t_{li}^mz_{lim}^{sp}&\leq T_lU_{lsp},\cg{8}\\
+U_{lsp}\leq\sum_{i,m}z_{lim}^{sp}&\leq n_lU_{lsp},\cg{9}\\
+H_{lsp}\leq\sum_{i,m}a_m^Hz_{lim}^{sp}&\leq n_lH_{lsp},\cg{10}\\
+R_{lsp}\leq\sum_{i,m}a_m^Rz_{lim}^{sp}&\leq n_lR_{lsp},\cg{11}\\
+\sum_{i,m}d_{li}^mz_{lim}^{sp}&\leq B_lH_{lsp},\cg{12}\\
+z_{lim}^{sp},U_{lsp},H_{lsp},R_{lsp}&\in\{0,1\}.\cg{13}
+\end{align}
+空列 $p^0$ 满足 $z=U=H=R=0$，故
+\begin{equation}b_{lsp^0}=0.\cg{14}\end{equation}
+空列使每站恰选一列仍允许关闭工作站。局部列无需包含任务的全部前驱，例如 $1\to2\to3$ 中的列可以只含任务 2，任务 1 可在早站执行。强制列内前驱闭包会排除原问题的合法跨站配置。同站诱导 DAG 始终可拓扑排序，跨站先后由主问题控制。
+
+\section{完整主问题 FMP}
+定义列选择变量
+\begin{equation}
+\lambda_{lsp}=\begin{cases}1,&\text{站点 $(l,s)$ 采用配置 $p$},\\0,&\text{否则。}\end{cases}\cg{15}
+\end{equation}
+完整主问题的目标为
+\begin{equation}\max Z_{\rm FMP}=\sum_{l,s}\sum_{p\in\mathcal P_{ls}}b_{lsp}\lambda_{lsp}.\cg{16}\end{equation}
+列利润已包含全部收益和成本，不能再重复计费。为简洁，以下 $p$ 默认遍历对应的 $\mathcal P_{ls}$：
+\begin{align}
+\sum_p\lambda_{lsp}&=1 &&\forall l,s,\cg{17}\\
+\sum_{s,p}a_{li}^{sp}\lambda_{lsp}&\leq1 &&\forall l,i\in\mathcal I_l^{\rm opt},\cg{18}\\
+\sum_{s,p}a_{li}^{sp}\lambda_{lsp}&=1 &&\forall l,i\in\mathcal I_l^{\rm req}.\cg{19}
+\end{align}
+任务选择变量通过
+\begin{equation}y_{li}=\sum_{s,p}a_{li}^{sp}\lambda_{lsp}\cg{20}\end{equation}
+恢复，无需在主问题中额外保留。其余全局约束为
+\begin{align}
+\sum_{s=1}^{k}\sum_p(a_{lj}^{sp}-a_{li}^{sp})\lambda_{lsp}&\leq0
+&&\forall l,(i,j)\in\mathcal E_l,k\in\mathcal S_l,\cg{21}\\
+\sum_{l,s,p}H_{lsp}\lambda_{lsp}&\leq H^{\max},\cg{22}\\
+\sum_{l,s,p}R_{lsp}\lambda_{lsp}&\leq R^{\max},\cg{23}\\
+-\sum_{i,s,p}w_{li}a_{li}^{sp}\lambda_{lsp}&\leq-Q_l &&\forall l.\cg{24}
+\end{align}
+式 (CG-21) 同时控制前驱选择和站点顺序；取 $k=K_l$ 隐含后继被选则前驱被选。最低回收要求写成 $\leq$ 形式以统一对偶符号。
+
+完整整数主问题采用
+\begin{equation}\lambda_{lsp}\in\{0,1\};\cg{25}\end{equation}
+完整列 LP 采用
+\begin{equation}\lambda_{lsp}\geq0.\cg{26}\end{equation}
+凸组合等式自然保证 $\lambda\leq1$，LP 实现不另设上界，以避免上界对偶干扰检验数核对。FMP 为式 (CG-16)--(CG-24) 加相应变量域。
+
+\section{受限主问题 RMP}
+只保留已经生成的列，将 FMP 中的 $\mathcal P_{ls}$ 全部替换为 $\overline{\mathcal P}_{ls}^{(t)}$，得到
+\begin{equation}
+\begin{aligned}
+(\mathrm{RMP}^{(t)})\quad\max\;&\sum_{l,s}\sum_{p\in\overline{\mathcal P}_{ls}^{(t)}}b_{lsp}\lambda_{lsp}\\
+\mathrm{s.t.}\;&\text{(CG-17)--(CG-24) 在受限列集合上成立},\\
+&\lambda_{lsp}\geq0.
+\end{aligned}\cg{27}
+\end{equation}
+RMP 是 LP；每轮最优解给出目标值及约束对偶价格，用于搜索遗漏的正检验数列。完整列通常指数增长，正式 CG 不预枚举全部列。
+
+\section{主问题对偶}
+最大化原问题的 $\leq$ 行对应非负对偶，等式对应自由对偶：
+\begin{center}\begin{tabular}{lll}
+\toprule 对偶变量 & 主问题行 & 符号\\\midrule
+$\alpha_{ls}$ & 站点凸组合 (CG-17) & 自由\\
+$\pi_{li}$ & 可选任务 (CG-18) & 非负\\
+$\pi_{li}$ & 必拆任务 (CG-19) & 自由\\
+$\mu_{lijk}$ & 优先前缀 (CG-21) & 非负\\
+$\eta_H,\eta_R$ & 共享资源 (CG-22)--(CG-23) & 非负\\
+$\theta_l$ & 负号回收行 (CG-24) & 非负\\\bottomrule
+\end{tabular}\end{center}
+对偶问题为
+\begin{equation}
+\min Z_D=\sum_{l,s}\alpha_{ls}+\sum_{l,i}\pi_{li}
++H^{\max}\eta_H+R^{\max}\eta_R-\sum_l Q_l\theta_l,\cg{28}
+\end{equation}
+满足每条完整列对应的约束
+\begin{equation}
+\begin{aligned}
+\alpha_{ls}+\sum_i\pi_{li}a_{li}^{sp}
+&+\sum_{(i,j)\in\mathcal E_l}\sum_{k=s}^{K_l}\mu_{lijk}(a_{lj}^{sp}-a_{li}^{sp})\\
+&+\eta_HH_{lsp}+\eta_RR_{lsp}-\theta_l\sum_iw_{li}a_{li}^{sp}\geq b_{lsp}.
+\end{aligned}\cg{29}
+\end{equation}
+站点 $s$ 的列只出现在 $k\geq s$ 的前缀约束中，因此优先对偶求和下限是 $s$，不是 1。必拆任务的 $\pi$ 不能限制为非负。最低回收行对对偶目标的贡献是 $-Q_l\theta_l$。
+
+\section{检验数与调整收益}
+由目标系数减去对偶加权列系数，得到
+\begin{equation}
+\begin{aligned}
+\bar c_{lsp}={}&b_{lsp}-\alpha_{ls}-\sum_i\pi_{li}a_{li}^{sp}
+-\sum_{(i,j)\in\mathcal E_l}\sum_{k=s}^{K_l}\mu_{lijk}(a_{lj}^{sp}-a_{li}^{sp})\\
+&-\eta_HH_{lsp}-\eta_RR_{lsp}+\theta_l\sum_iw_{li}a_{li}^{sp}.
+\end{aligned}\cg{30}
+\end{equation}
+定义任务优先对偶调整
+\begin{equation}
+\sigma_{li}^{s}=\sum_{j:(i,j)\in\mathcal E_l}\sum_{k=s}^{K_l}\mu_{lijk}
+-\sum_{j:(j,i)\in\mathcal E_l}\sum_{k=s}^{K_l}\mu_{ljik}.\cg{31}
+\end{equation}
+前驱获得正调整，后继获得负调整。于是
+\begin{equation}
+\begin{aligned}
+\bar c_{lsp}={}&\sum_{i,m}(v_{li}-c_{li}^m-\pi_{li}+\theta_lw_{li}+\sigma_{li}^{s})z_{lim}^{sp}\\
+&-f_{ls}U_{lsp}-(f_{ls}^H+\eta_H)H_{lsp}-(f_{ls}^R+\eta_R)R_{lsp}-\alpha_{ls}.
+\end{aligned}\cg{32}
+\end{equation}
+记
+\begin{equation}\widetilde v_{lim}^{s}=v_{li}-c_{li}^m-\pi_{li}+\theta_lw_{li}+\sigma_{li}^{s},\cg{33}\end{equation}
+则
+\begin{equation}
+\bar c_{lsp}=\sum_{i,m}\widetilde v_{lim}^{s}z_{lim}^{sp}-\alpha_{ls}
+-f_{ls}U_{lsp}-(f_{ls}^H+\eta_H)H_{lsp}-(f_{ls}^R+\eta_R)R_{lsp}.\cg{34}
+\end{equation}
+正检验数表示当前对偶解违反遗漏列约束；加入后因退化不一定立即严格提高目标。疲劳通过局部列可行域起作用，不额外引入疲劳的主问题对偶。
+
+\section{MILP 精确定价子问题}
+对固定站点，定义
+\begin{equation}(\mathrm{PP}_{ls})\quad\max\bar c_{ls}.\cg{35}\end{equation}
+使用临时二进制变量 $z_{im},u,h,r$，求解
+\begin{equation}
+\max\;\sum_{i,m}\widetilde v_{lim}^{s}z_{im}-f_{ls}u
+-(f_{ls}^H+\eta_H)h-(f_{ls}^R+\eta_R)r-\alpha_{ls},\cg{36}
+\end{equation}
+满足
+\begin{align}
+\sum_mz_{im}&\leq1 &&\forall i,\cg{37}\\
+\sum_{i,m}t_{li}^mz_{im}&\leq T_lu,\cg{38}\\
+u\leq\sum_{i,m}z_{im}&\leq n_lu,\cg{39}\\
+h\leq\sum_{i,m}a_m^Hz_{im}&\leq n_lh,\cg{40}\\
+r\leq\sum_{i,m}a_m^Rz_{im}&\leq n_lr,\cg{41}\\
+\sum_{i,m}d_{li}^mz_{im}&\leq B_lh,\cg{42}\\
+z_{im},u,h,r&\in\{0,1\}.\cg{43}
+\end{align}
+即
+\begin{equation}
+(\mathrm{PP}_{ls})\quad\max\{\text{(CG-36)}:\text{(CG-37)--(CG-43)}\}.\cg{44}
+\end{equation}
+该问题为带模式选择、固定费用、时间及疲劳限制的多资源背包型 MILP。$-\alpha_{ls}$ 不影响最优配置，但判断检验数正负时必须计入。精确定价不设置跨站优先、必拆、最低回收及系统资源总量限制；这些行通过对偶价格传递信息。新列的 $z,u,h,r$ 求解完成后才成为 RMP 的常数系数。
+
+\section{两阶段初始化与 Phase I 定价}
+只有空列时，必拆任务与正最低回收要求可能使 RMP 不可行。引入非负人工变量：
+\begin{align}
+\sum_{s,p}a_{li}^{sp}\lambda_{lsp}+q_{li}^{\rm req}&=1
+&&\forall l,i\in\mathcal I_l^{\rm req},\cg{45}\\
+-\sum_{i,s,p}w_{li}a_{li}^{sp}\lambda_{lsp}-q_l^{\rm rec}&\leq-Q_l
+&&\forall l.\cg{46}
+\end{align}
+其余全局行不变。Phase I 为
+\begin{equation}\min Z_I=\sum_{l,i\in\mathcal I_l^{\rm req}}q_{li}^{\rm req}+\sum_lq_l^{\rm rec}.\cg{47}\end{equation}
+\textbf{实现采用等价最大化形式 $\max(-Z_I)$，使两个阶段均按正检验数加列。}真实列在 Phase I 中的目标系数为零，人工变量的目标系数为 $-1$。仍使用最大化 LP 的行对偶符号，但这些是 Phase I 新求得的价格。对应定价目标为
+\[
+\bar c^I_{ls}=\sum_{i,m}(-\pi^I_{li}+\theta_l^Iw_{li}+\sigma_{li}^{s,I})z_{im}
+-\eta_H^Ih-\eta_R^Ir-\alpha_{ls}^I,
+\]
+局部约束仍为 (CG-37)--(CG-43)。特别地，原回收收益、执行成本、固定站费和配置成本在此阶段全部置零，不能沿用 Phase II 的利润项。
+
+从每站一条空列开始。若人工变量总和降至零，已有真实列就支持原 LP 的可行解，可立即移除人工变量进入 Phase II，而不必继续优化已达到零下界的 Phase I。若全部 PP 精确最优且无改善列，而 $Z_I^*>0$，则完整列 LP 不可行，原 MILP 也不可行。数值实现还利用 Phase I 对偶修复上界：只有完整最大值的上界仍严格小于负可行容差，才报告不可行；否则报告数值结论不足。
+
+\section{迭代、终止及 LP 界}
+每轮求解 RMP 的 LP 最优解，提取对偶；对每个站点独立精确求解 PP；每站每轮至多加入一条最优正检验数列。定义
+\begin{equation}\rho_{ls}=\max_{p\in\mathcal P_{ls}}\bar c_{lsp}.\cg{48}\end{equation}
+精确终止要求
+\begin{equation}\rho_{ls}\leq0,\quad\forall l,s.\cg{49}\end{equation}
+数值实现以 $\rho_{ls}\leq\varepsilon$ 判断，默认 $\varepsilon=10^{-7}$。只有求解器证明每个 PP 最优，最大检验数才能用于终止证书；启发式定价未发现正列不足以证明最优。本实现不设 PP 时间截断和正 MIP gap，遇未证最优状态即报错；达到迭代上限单独报告未收敛。
+
+最大化问题有 $Z_{\rm RMP}^{LP}\leq Z_{\rm FMP}^{LP}$，并且
+\begin{equation}
+Z_{\rm FMP}^{LP}\leq Z_{\rm RMP}^{LP}+\sum_{l,s}\max\{0,\rho_{ls}\}.\cg{50}
+\end{equation}
+其证明是将每站对偶 $\alpha_{ls}$ 增加 $\max\{0,\rho_{ls}\}$，即可修复全部遗漏列的对偶约束。每轮记录 $LB_t=Z_{\rm RMP}^{LP}$ 与上述 $UB_t$，二者都是针对完整列 LP；$LB_t$ 不能当作原整数问题的可行利润下界。精确终止时
+\begin{equation}Z_{\rm RMP}^{LP}=Z_{\rm FMP}^{LP}.\cg{51}\end{equation}
+数值容差终止时仍保留实际对偶修复上界，不将其强制改成当前目标值。正检验数列若与已有列重复，应检查对偶及数值精度，不能因此跳过定价并宣称收敛。
+
+\section{整数等价性、LP 松弛与解码}
+整数列选择可恢复原变量：
+\begin{align}
+x_{lism}&=\sum_pz_{lim}^{sp}\lambda_{lsp},\cg{52}\\
+u_{ls}&=\sum_pU_{lsp}\lambda_{lsp},\cg{53}\\
+h_{ls}&=\sum_pH_{lsp}\lambda_{lsp},\cg{54}\\
+r_{ls}&=\sum_pR_{lsp}\lambda_{lsp}.\cg{55}
+\end{align}
+$y$ 用式 (CG-20) 恢复。每站恰选一条局部整数列满足全部局部约束，主问题保证全部全局行；反之，任意 $P_0$ 整数可行解的每个站点均对应一条完整列。因此
+\begin{equation}Z_{P_0}^{IP}=Z_{\rm FMP}^{IP}.\cg{56}\end{equation}
+局部凸包通常比紧凑线性松弛更紧，对最大化有
+\begin{equation}Z_{P_0}^{IP}=Z_{\rm FMP}^{IP}\leq Z_{\rm FMP}^{LP}\leq Z_{P_0}^{LP}.\cg{57}\end{equation}
+故正确的列生成检验对象为
+\begin{equation}Z_{\rm CG}^{LP}=Z_{\rm FMP}^{LP},\cg{58}\end{equation}
+而非要求 CG 等于紧凑 LP。
+
+根节点结束后，可将已有列的 $\lambda$ 设为二进制求解受限整数主问题，得到原问题可行解并作为整数利润下界。它可能不可行，也可能错过未生成列所支持的更优整数解；二者均不能用于一般性证明原整数问题不可行或全局最优。完整列 LP 可行亦不保证整数可行。全局整数求解需要后续分支定价，分支条件必须同步进入各节点的定价。可考虑对恢复的 $x_{lism}$ 分数值分支，本阶段不实现。
+
+\section{算例与自动化正确性验证}
+已有单线算例中 $T_1=6$，$F_1^{\max}=0.5$，$B_1\approx0.693147$，优先边为 $1\to2,1\to3$。站点 1 的配置 $\{1(H),3(H)\}$ 有时间 6、负荷 $0.36+0.30=0.66$、工人需求 1、机器人数 0、利润 $18-2-2-1=13$。站点 2 的 $\{2(H)\}$ 有时间 4、负荷 0.56、利润 $14-2-3-1=8$。两列合计利润 21，满足必拆任务 2、最低回收及资源限制。所有数值均为合成演示数据，不是经过实验校准的疲劳安全标准。
+
+实现使用 \texttt{code/dwcg/solve.py}，复用 \texttt{code/milp/examples} 下的 JSON。小规模验证采用以下独立对照：
+\begin{enumerate}
+\item 完整枚举局部模式，与 PP 最大检验数比较；分别测试两阶段、站点前缀和带符号等式对偶。
+\item 直接计算目标系数减对偶加权列向量，与 PP 调整收益及求解器返回的 reduced cost 比较。
+\item CG 与完整枚举列 LP 的目标值比较，并检查每轮 LP 上界。
+\item 完整列整数模型与原 MILP 比较，验证式 (CG-57) 的界关系。
+\item 解码整数列，代回未经修改的原 MILP，检查全部约束和利润；站内按拓扑顺序输出。
+\item 检查必拆、单独最低回收、零疲劳、零资源、J 时间、异质站点空缺、不可行、LP 可行但整数不可行及迭代截断。
+\end{enumerate}
+完整列枚举仅用于小规模测试，带组合数上限，不进入正式 CG 循环。代码把 Phase I 人工变量、Phase II 利润、LP 界和受限整数恢复分开报告。
+
+在本次所附算例运行中，结果如下（CBC，默认容差）：
+\begin{center}\begin{tabular}{lrrrr}
+\toprule 算例 & CG/完整列 LP & 受限整数恢复 & 完整列/紧凑 IP & 紧凑 LP\\\midrule
+单线 & 21 & 21 & 21 & 22.239912\\
+双线 & 27 & 24 & 24 & 36.701635\\\bottomrule
+\end{tabular}\end{center}
+双线结果展示了列 LP 与整数最优值的差距。具体列、对偶、每轮定价检验数及上下界保存在 \texttt{code/dwcg/results} 的 JSON 中。模型为根据所给材料组织的研究基准，未引入未经提供或核验的参考文献，也未将未来分支定价或强化学习描述为本次已实现内容。
+\end{document}

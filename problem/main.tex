@@ -1,0 +1,235 @@
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,tabularx,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue}
+\allowdisplaybreaks
+\title{考虑拆卸优先关系、人机协作与累计疲劳约束的\\多线选择性拆卸平衡问题}
+\author{第一版基准模型（ML-HRC-DLBP-CF）}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+本文建立考虑 AND 型拆卸优先关系、人机协作和累计疲劳阈值的多线选择性拆卸平衡模型。模型联合确定任务选择、工作站分配、执行模式及人机资源配置，在满足节拍、疲劳和共享资源限制的条件下最大化系统净利润。无恢复指数疲劳约束通过单调变换精确转化为线性约束。模型统一覆盖多线和单线情形，并为后续 Dantzig--Wolfe 分解提供基准。
+\end{abstract}
+
+\section{研究问题与基本假设}
+\subsection{问题描述}
+问题英文名称暂定为 \emph{Multi-Line Selective Disassembly Line Balancing Problem with Human--Robot Collaboration and Cumulative Fatigue Constraints}，简称 ML-HRC-DLBP-CF。系统包含 $L$ 条拆卸线，每条线处理给定产品。选择执行的拆卸任务必须满足前驱闭包，并分配到有序候选工作站；每项任务采用人工独立（H）、机器人独立（R）或人机联合（J）模式之一。工人和机器人来自系统共享资源池，在规划期内固定配置到工作站。目标是在资源和人因限制下最大化总净利润。令 $L=1$ 即得到单线模型，无须改变公式。
+
+\subsection{基本假设}
+\begin{enumerate}
+\item 各条线具有独立的任务集合与优先图，线间不存在直接任务优先关系。
+\item 优先图为有向无环图（DAG），仅考虑 AND 型优先关系；允许选择性拆卸，不考虑 OR 替代路径。
+\item 每条线具有给定数量的有序候选工作站，允许不启用工作站。
+\item 每项任务最多执行一次，执行时仅分配到一个工作站并选择一种可用模式。
+\item 每个工作站最多配置一名工人和一台机器人；J 模式由二者共同完成同一任务。
+\item 同站不同任务顺序执行，不允许任务间并行；J 模式的持续时间只计算一次。
+\item 资源在本次规划内固定配置，不允许工人或机器人在工作站或拆卸线之间实时转移。
+\item 疲劳由任务负荷累积产生，不考虑休息恢复及疲劳对任务时间的反馈；执行时间和成本为已知常数。
+\item 回收价值、执行成本、工作站启用成本及资源配置成本均已知，并采用统一核算口径。
+\item 仅考虑有序工作站结构，不建立环形布局、空间、转移距离或物料运输约束。
+\end{enumerate}
+本模型是按所给研究设定组织的第一版研究基准，不声称复现某篇论文的原始模型。尚未提供可核验的文献条目，故此处不将原材料中的网页图标或占位链接作为参考文献。
+
+\section{集合与索引}
+\begin{longtable}{p{0.31\textwidth}p{0.62\textwidth}}
+\toprule 符号 & 定义\\\midrule
+$\mathcal L=\{1,\ldots,L\}$ & 拆卸线集合，索引为 $l$。\\
+$\mathcal I_l=\{1,\ldots,n_l\}$ & 第 $l$ 条线的任务集合，索引为 $i,j$。\\
+$\mathcal S_l=\{1,\ldots,K_l\}$ & 有序候选工作站集合，$s$ 为站点，$k$ 为前缀终点。\\
+$\mathcal E_l\subseteq\mathcal I_l\times\mathcal I_l$ & 直接优先边集合；$(i,j)$ 表示 $i$ 必须先于 $j$ 完成。\\
+$\mathcal M=\{H,R,J\}$ & 人工、机器人及人机联合模式集合。\\
+$\mathcal M_{li}\subseteq\mathcal M$ & 任务 $i$ 的可用模式集合。\\
+$\mathcal I_l^{\mathrm{req}}\subseteq\mathcal I_l$ & 必拆任务集合，允许为空。\\\bottomrule
+\end{longtable}
+若选择后继任务 $j$，则必须选择其全部直接前驱，并通过递归保证全部必要祖先被选择；前驱所在站不能晚于后继所在站。同站任务通过拓扑排序实现严格的任务执行先后。
+
+\section{参数}
+\subsection{任务与模式参数}
+\begin{longtable}{p{0.23\textwidth}p{0.70\textwidth}}
+\toprule 参数 & 含义与范围\\\midrule
+$v_{li}$ & 任务的回收价值，尚未扣除下述单独计入的执行和资源配置成本。\\
+$t_{li}^{m}>0$ & 任务采用模式 $m$ 的实际持续时间。\\
+$c_{li}^{m}\geq0$ & 任务采用模式 $m$ 的直接执行成本。\\
+$\beta_{li}^{m}\geq0$ & 人工疲劳增长系数。\\
+$d_{li}^{m}\geq0$ & 人工疲劳累积量。\\
+$w_{li}\geq0$ & 回收数量、质量或其他回收指标权重。\\\bottomrule
+\end{longtable}
+定义
+\begin{equation}
+d_{li}^{m}=\beta_{li}^{m}t_{li}^{m}.\tag{1}
+\end{equation}
+机器人独立操作时 $\beta_{li}^{R}=d_{li}^{R}=0$。J 模式的 $t_{li}^{J}$ 为共同作业持续时间，$d_{li}^{J}$ 为工人在此期间产生的负荷。并不预设 $d_{li}^{J}<d_{li}^{H}$，二者关系须由数据确定。
+
+\subsection{工作站与共享资源参数}
+\begin{longtable}{p{0.23\textwidth}p{0.70\textwidth}}
+\toprule 参数 & 含义与范围\\\midrule
+$T_l>0$ & 第 $l$ 条线的工作站节拍。\\
+$K_l$ & 候选工作站数量，为正整数。\\
+$f_{ls}\geq0$ & 工作站固定启用成本。\\
+$f_{ls}^{H},f_{ls}^{R}\geq0$ & 工作站配置一名工人、一台机器人的成本。\\
+$H^{\max},R^{\max}$ & 系统可用工人、机器人数量，为非负整数。\\
+$F_l^{\max}\in[0,1)$ & 工人的最大允许疲劳水平。\\
+$Q_l\geq0$ & 每条线的最低回收指标，取零时不施加实质要求。\\\bottomrule
+\end{longtable}
+疲劳、时间和成本参数必须使用相容单位；所有经济项必须折算到同一规划核算口径。$v_{li}$ 可扣除材料处置等模型外成本，但不能重复扣除目标中单独列示的费用。
+
+\subsection{模式资源需求}
+\begin{equation}
+a_m^H=\begin{cases}1,&m\in\{H,J\},\\0,&m=R,\end{cases}\tag{2}
+\end{equation}
+\begin{equation}
+a_m^R=\begin{cases}1,&m\in\{R,J\},\\0,&m=H.\end{cases}\tag{3}
+\end{equation}
+因此 H、R、J 对应的资源需求 $(a_m^H,a_m^R)$ 分别为 $(1,0)$、$(0,1)$、$(1,1)$。
+
+\section{决策变量}
+\begin{center}
+\begin{tabularx}{\textwidth}{lX}
+\toprule 变量 & 含义\\\midrule
+$y_{li}$ & 任务 $i$ 是否被选择执行。\\
+$x_{lism}$ & 任务 $i$ 是否在站 $s$ 以模式 $m$ 执行，仅对 $m\in\mathcal M_{li}$ 定义。\\
+$u_{ls}$ & 工作站是否启用。\\
+$h_{ls}$ & 工作站是否配置一名工人。\\
+$r_{ls}$ & 工作站是否配置一台机器人。\\\bottomrule
+\end{tabularx}
+\end{center}
+上述变量均为二进制：
+\begin{equation}
+y_{li},x_{lism},u_{ls},h_{ls},r_{ls}\in\{0,1\}.\tag{4}
+\end{equation}
+例如，设置 $\mathcal M_{li}=\{R\}$ 即可表达任务仅允许机器人操作，无须为禁止模式创建变量。
+
+\section{目标函数}
+\begin{equation}
+\begin{aligned}
+\max Z={}&\sum_{l\in\mathcal L}\sum_{i\in\mathcal I_l}v_{li}y_{li}
+-\sum_{l\in\mathcal L}\sum_{i\in\mathcal I_l}\sum_{s\in\mathcal S_l}\sum_{m\in\mathcal M_{li}}c_{li}^{m}x_{lism}\\
+&-\sum_{l\in\mathcal L}\sum_{s\in\mathcal S_l}
+\left(f_{ls}u_{ls}+f_{ls}^{H}h_{ls}+f_{ls}^{R}r_{ls}\right).
+\end{aligned}\tag{5}
+\end{equation}
+目标依次计入回收收益、任务执行成本、工作站成本及人机资源配置成本。疲劳作为硬约束处理，保持单目标利润最大化结构。
+
+\section{完整约束与物理含义}
+\subsection{任务选择与唯一分配}
+\begin{equation}
+\sum_{s\in\mathcal S_l}\sum_{m\in\mathcal M_{li}}x_{lism}=y_{li},
+\quad\forall l\in\mathcal L,\ i\in\mathcal I_l.\tag{6}
+\end{equation}
+任务不被选择时不分配；被选择时恰好分配一个站点和一种模式。
+
+\subsection{累积式拆卸优先关系}
+\begin{equation}
+\sum_{s=1}^{k}\sum_{m\in\mathcal M_{lj}}x_{ljsm}
+\leq\sum_{s=1}^{k}\sum_{m\in\mathcal M_{li}}x_{lism},
+\quad\forall l,\ (i,j)\in\mathcal E_l,\ k\in\mathcal S_l.\tag{7}
+\end{equation}
+任一工作站前缀内后继的分配数量不能超过前驱。取 $k=K_l$ 即隐含 $y_{lj}\leq y_{li}$，无需另加前驱选择约束。前驱可位于较早工作站或与后继同站；后继不能在前驱之前的站点执行。若后继不执行，前驱可单独执行。
+
+由于原优先图为 DAG，每个站点的诱导子图也为 DAG，因而可拓扑排序。结合跨站优先约束，可得到全线合法执行顺序，无须额外任务对排序变量。
+
+\subsection{工作站节拍}
+\begin{equation}
+\sum_{i\in\mathcal I_l}\sum_{m\in\mathcal M_{li}}t_{li}^{m}x_{lism}
+\leq T_lu_{ls},\quad\forall l,\ s\in\mathcal S_l.\tag{8}
+\end{equation}
+同站任务顺序执行，故不同模式的持续时间直接相加。例如 H、R、J 任务用时分别为 $3,4,2$，站点总用时为 $9$；J 模式不重复计算人和机器人的时间。
+
+\subsection{工作站启用逻辑}
+记 $N_{ls}=\sum_{i\in\mathcal I_l}\sum_{m\in\mathcal M_{li}}x_{lism}$，则
+\begin{equation}
+u_{ls}\leq N_{ls}\leq n_lu_{ls},\quad\forall l,s.\tag{9}
+\end{equation}
+有任务的站必须启用，空站必须关闭。基础模型不加入 $u_{l,s+1}\leq u_{ls}$；站点异质时该对称性约束可能排除合法解。
+
+\subsection{人工配置}
+记 $N_{ls}^{H}=\sum_{i\in\mathcal I_l}\sum_{m\in\mathcal M_{li}}a_m^Hx_{lism}$，则
+\begin{equation}
+h_{ls}\leq N_{ls}^{H}\leq n_lh_{ls},\quad\forall l,s.\tag{10}
+\end{equation}
+站内存在 H 或 J 模式任务当且仅当配置一名工人。
+
+\subsection{机器人配置}
+记 $N_{ls}^{R}=\sum_{i\in\mathcal I_l}\sum_{m\in\mathcal M_{li}}a_m^Rx_{lism}$，则
+\begin{equation}
+r_{ls}\leq N_{ls}^{R}\leq n_lr_{ls},\quad\forall l,s.\tag{11}
+\end{equation}
+站内存在 R 或 J 模式任务当且仅当配置一台机器人。仅 H、仅 R、含 J、同时含 H 与 R、空站的配置分别为 $(h,r)=(1,0),(0,1),(1,1),(1,1),(0,0)$。
+
+\subsection{累计疲劳阈值及精确线性化}
+采用从零初始疲劳开始的无恢复模型：
+\begin{equation}
+F_{ls}=1-\exp(-D_{ls}),\tag{12}
+\end{equation}
+\begin{equation}
+D_{ls}=\sum_{i\in\mathcal I_l}\sum_{m\in\mathcal M_{li}}d_{li}^{m}x_{lism}.\tag{13}
+\end{equation}
+对 $F_{ls}\leq F_l^{\max}$，由单调性得到 $D_{ls}\leq -\ln(1-F_l^{\max})$。预先计算常数 $B_l=-\ln(1-F_l^{\max})$，加入求解器的约束为
+\begin{equation}
+\sum_{i\in\mathcal I_l}\sum_{m\in\mathcal M_{li}}d_{li}^{m}x_{lism}
+\leq B_lh_{ls},\quad\forall l,s.\tag{14}
+\end{equation}
+当 $h_{ls}=0$ 时，由资源逻辑只可能存在 R 任务，其疲劳量为零；当 $h_{ls}=1$ 时，式 (14) 就是原指数约束的精确等价形式。指数函数不进入 MILP，无须分段线性近似。
+
+例如 $F_l^{\max}=0.8$ 时 $B_l=-\ln(0.2)\approx1.6094$；若 $D_{ls}=1.20$，则 $F_{ls}\approx0.6988$，满足阈值。这些仅为假想演示参数，不是经生理实验校准的安全标准。
+
+\textbf{边界：}该疲劳指代表性单周期内的累积，不能直接解释为整班次疲劳；连续生产需另行考虑产品数量、工人周期及恢复机制。当前疲劳不增加任务时间。时间单位应与 $\beta$ 的单位相容，使 $D$ 为无量纲量。
+
+\subsection{跨线共享人工资源}
+\begin{equation}
+\sum_{l\in\mathcal L}\sum_{s\in\mathcal S_l}h_{ls}\leq H^{\max}.\tag{15}
+\end{equation}
+该约束计数固定配置到站点的工人，适用于规划期内不跨站移动的资源假设。
+
+\subsection{跨线共享机器人资源}
+\begin{equation}
+\sum_{l\in\mathcal L}\sum_{s\in\mathcal S_l}r_{ls}\leq R^{\max}.\tag{16}
+\end{equation}
+式 (15)--(16) 是不同拆卸线之间的全局资源耦合约束，资源需要按照系统利润统一配置。
+
+\subsection{必拆任务}
+\begin{equation}
+y_{li}=1,\quad\forall l,\ i\in\mathcal I_l^{\mathrm{req}}.\tag{17}
+\end{equation}
+必拆集合允许为空。其前驱由式 (7) 自动选择。
+
+\subsection{最低回收要求}
+\begin{equation}
+\sum_{i\in\mathcal I_l}w_{li}y_{li}\geq Q_l,\quad\forall l.\tag{18}
+\end{equation}
+权重和下限应对应同一回收指标。$Q_l=0$ 时此约束无实质限制；若所有任务可选且均无最低回收要求，全不拆卸可以成为合法最优解。
+
+\subsection{变量取值}
+\begin{equation}
+\begin{aligned}
+y_{li}&\in\{0,1\},&&\forall l,i,\\
+x_{lism}&\in\{0,1\},&&\forall l,i,s,\ m\in\mathcal M_{li},\\
+u_{ls},h_{ls},r_{ls}&\in\{0,1\},&&\forall l,s.
+\end{aligned}\tag{19}
+\end{equation}
+
+\section{完整模型汇总与实现对应}
+第一版模型记为 $(P_0)$：最大化式 (5)，满足式 (6)--(11)、(14)--(19)。式 (1)--(3) 为已知系数定义，式 (12)--(13) 用于说明疲劳机制，不作为非线性求解器约束；式 (4) 与式 (19) 重申同一变量域。该模型是确定性、单目标、跨线资源耦合的 MILP。
+
+Python 实现位于 \texttt{code/milp/model.py}，约束名包含原公式编号，采用 PuLP 建模并由 CBC 求解。输入仅为允许模式建立 $x$ 变量；疲劳量按式 (1) 由时间与增长系数计算，$B_l$ 用数值稳定的对数公式预计算。输出给出站内拓扑顺序、时间、疲劳及利润分项。随附数据均为用于程序验证的合成数据。
+
+\section{后续 Dantzig--Wolfe 分解思路}
+可将每个工作站的完整任务--模式--资源配置作为一列。对于线 $l$ 的候选列 $p$，记录
+\[
+p=(A_{lp},M_{lp},H_{lp},R_{lp},D_{lp},C_{lsp}),
+\]
+其中 $A_{lp}$ 为任务集合，$M_{lp}$ 给出各任务模式，$H_{lp},R_{lp}$ 为人工和机器人需求，$D_{lp}$ 为疲劳量，$C_{lsp}$ 为任务及站点资源总成本。站点成本异质时，成本及可行列应保留站点索引；必要时将所有列属性写成 $A_{lsp}$ 等。
+
+非空列满足局部条件
+\[
+\sum_{i\in A_{lp}}t_{li}^{m_i}\leq T_l,\qquad
+\sum_{i\in A_{lp}}d_{li}^{m_i}\leq B_lH_{lp},
+\]
+以及人工、机器人与所选模式的精确配置逻辑。列内任务按诱导 DAG 拓扑排序；无需要求一列包含其所有外部前驱，跨站前驱关系由主问题约束。
+
+主问题保留任务唯一性、累积优先关系、共享人机资源、必拆任务与最低回收要求，并为每个候选工作站选择一个模式（包括零成本空模式）。非空列成本包括式 (5) 的任务执行成本、站点启用成本和人机配置成本；任务回收收益可保留在主问题的 $y$ 变量上。式 (9) 的非空启用逻辑在列定义中实现。
+
+因此局部定价子问题可按工作站构造，全局资源竞争由主问题的对偶价格协调。这里仅给出分解结构，尚未正式推导受限主问题（RMP）及定价问题（PP）。标准列生成通常求解完整列模型的 LP 松弛；若要证明原 MILP 的整数最优性，后续还需要分支定价等精确整数求解步骤，不能仅凭 LP 列生成终止即宣称得到整数最优解。
+
+\end{document}
