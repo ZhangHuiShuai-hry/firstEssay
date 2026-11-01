@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "driver_session": null,
+  "formal_runs": 62,
+  "replay": "pricing_replay_02",
+  "replay_pairs": 8684,
+  "max_rc_delta": 4.870281955504652e-11,
+  "excluded_preliminary": [
+    "pricing_replay_01",
+    "persistent_pp_120_01"
+  ],
+  "worker_python_hash_seed": 11,
+  "core_files_do_not_edit": [
+    "code/dwcg/persistent_pricing.py",
+    "experiments/pricing_profile.py",
+    "experiments/compare_pricing.py"
+  ],
+  "pending": [],
+  "phase": "All requested experiments, regressions, reports and audits completed.",
+  "analysis_output": "experiments\\runs\\persistent_pp_analysis_02",
+  "optional_escalation": "After driver completes, run select_pricing_hard.py on persistent_pp_300_02; if selected, run compare_pricing.py with generated 600 config into persistent_pp_600_02.",
+  "tests_pending": "V2 8 tests (7 previously passed; zero-fatigue/overlong test added), V1 incremental 5, original CPLEX 45, original CBC 45; expected total103 if all pass.",
+  "postprocess": "report_pricing.py --runs <120_02> <300_02> [600_02] --replay pricing_replay_02 --out persistent_pp_analysis_02; then plot_pricing.py and audit_figures.py --source plot_pricing.py; audit_pricing.py --check-frozen-data.",
+  "implementation_frozen": true,
+  "do_not_run_other_solver_jobs_while_benchmarks_active": true,
+  "optional_run": "persistent_pp_600_02",
+  "optional_session": null,
+  "finished_utc": "2026-10-30T10:52:56.789509+00:00",
+  "total_tests": 103,
+  "LP_converged_runs": 48
+}

@@ -1,0 +1,12 @@
+{
+  "design":"stage_a", "seeds":[11,21,31,41,51], "include_infeasible":true,
+  "verify":true, "enumeration_limit":100000, "max_iterations":300,
+  "cg_root_limit":30, "case_wall_limit":120, "solver_seed":11,
+  "role_limits":{"compact_ip":15,"compact_lp":10,"rmp":10,"pricing":10,"recovery":10,"verification":15},
+  "combinations":[
+    {"label":"cplex","name":"cplex_py"},
+    {"label":"cbc","name":"cbc"},
+    {"label":"cplexRMP_cbcPP","name":"cplex_py","rmp":"cplex_py","pricing":"cbc"},
+    {"label":"cbcRMP_cplexPP","name":"cplex_py","rmp":"cbc","pricing":"cplex_py"}
+  ]
+}
