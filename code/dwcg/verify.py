@@ -147,6 +147,11 @@ def _termination_certificate(data, pool, cg_result, master, phase, tolerance):
     record = history[-1]
     if record.get("phase") != phase:
         raise _MissingCertificate(f"Last history record is not Phase {phase}")
+    if cg_result.get("certificate_version", 1) >= 2:
+        if _required(record, "complete_pricing", "last record") is not True:
+            raise RuntimeError("Termination requires complete pricing")
+        if _required(record, "rmp_status", "last record") != "optimal":
+            raise RuntimeError("Termination requires an optimal RMP")
     epsilon = _finite(_required(cg_result, "epsilon", "CG"), "CG epsilon")
     if epsilon <= 0:
         raise RuntimeError("CG epsilon must be positive")
@@ -172,6 +177,10 @@ def _termination_certificate(data, pool, cg_result, master, phase, tolerance):
     for entry in pricing:
         if not isinstance(entry, dict):
             raise RuntimeError("Invalid pricing certificate entry")
+        if cg_result.get("certificate_version", 1) >= 2:
+            if (_required(entry, "optimal", "pricing") is not True
+                    or _required(entry, "status", "pricing") != "optimal"):
+                raise RuntimeError("Unproven pricing cannot support termination")
         line = _required(entry, "line", "pricing")
         station = _required(entry, "station", "pricing")
         if not isinstance(line, str) or isinstance(station, bool) or not isinstance(station, int):

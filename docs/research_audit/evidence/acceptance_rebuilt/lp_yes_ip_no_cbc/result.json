@@ -1,0 +1,1719 @@
+{
+  "backend": "cbc",
+  "native": false,
+  "checks": {
+    "complete_enumeration_and_vectors": "PASS",
+    "full_lp_to_compact_mapping": "PASS",
+    "four_models": "PASS",
+    "cg_and_independent_certificate": "PASS",
+    "pricing_both_phases": "PASS",
+    "general_best_bound_theorem": "PASS"
+  },
+  "status": "PASS",
+  "columns": {
+    "A:1": 3,
+    "B:1": 2
+  },
+  "enumerated_patterns": [
+    {
+      "line": "A",
+      "station": 1,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 3
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "R"
+            ]
+          ],
+          "active": 1,
+          "human": 0,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0,
+          "recovery": 1,
+          "profit": 3
+        }
+      ]
+    },
+    {
+      "line": "B",
+      "station": 1,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 2,
+          "profit": 2
+        }
+      ]
+    }
+  ],
+  "models": {
+    "full_ip": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "infeasible",
+      "native_status": -1,
+      "native_status_text": "Infeasible",
+      "optimal": false,
+      "has_incumbent": false,
+      "objective": null,
+      "best_bound": null,
+      "relative_gap": null,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0463679999957094,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000000_verification_cbc.log"
+    },
+    "full_lp": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 4.0,
+      "best_bound": 4.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04901090000930708,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000001_verification_cbc.log"
+    },
+    "compact_ip": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "infeasible",
+      "native_status": -1,
+      "native_status_text": "Infeasible",
+      "optimal": false,
+      "has_incumbent": false,
+      "objective": null,
+      "best_bound": null,
+      "relative_gap": null,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04802140001265798,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000002_verification_cbc.log"
+    },
+    "compact_lp": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 4.0,
+      "best_bound": 4.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04094530000293162,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000003_verification_cbc.log"
+    }
+  },
+  "cg": {
+    "algorithm": "two_phase_exact_pricing_CG",
+    "status": "LP_optimal_within_tolerance",
+    "certificate_version": 2,
+    "certificate_status": "lp_optimal_proven",
+    "full_lp_feasible_established": true,
+    "proof_scope": "full_column_LP_with_floating_point_tolerances",
+    "termination_reason": "complete_exact_pricing",
+    "lp_converged": true,
+    "lp_objective": 4.0,
+    "lp_upper_bound": 4.0,
+    "epsilon": 1e-07,
+    "feasibility_tolerance": 1e-07,
+    "history": [
+      {
+        "phase": 1,
+        "iteration": 1,
+        "objective": -2.0,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 1.0,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 1.0,
+            "best_bound": 1.0,
+            "solve_seconds": 0.041024299993296154,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 1.0,
+              "best_bound": 1.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.039474500008509494,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000005_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "reduced_cost": 2.0,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 2.0,
+            "best_bound": 2.0,
+            "solve_seconds": 0.039523100000224076,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 2.0,
+              "best_bound": 2.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.03808019999996759,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000006_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "station",
+              "B",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "B",
+              "0"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "weight": 1.0,
+            "assignments": []
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 0,
+            "weight": 1.0,
+            "assignments": []
+          }
+        ],
+        "columns_before": 2,
+        "columns_added": 2,
+        "artificial_rows": [
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": 1.0
+          }
+        ],
+        "lp_upper_bound": 1.0,
+        "maximum_reduced_cost": 2.0,
+        "lp_lower_bound": -2.0,
+        "lp_gap": 3.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima",
+        "artificial_sum": 2.0,
+        "artificials": [
+          {
+            "name": "artificial_2",
+            "value": 1.0
+          },
+          {
+            "name": "artificial_3",
+            "value": 0.0
+          },
+          {
+            "name": "artificial_5",
+            "value": 1.0
+          }
+        ]
+      },
+      {
+        "phase": 1,
+        "iteration": 2,
+        "objective": -0.5,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 1.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 1.0,
+            "best_bound": 1.0,
+            "solve_seconds": 0.039267000000108965,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 1.0,
+              "best_bound": 1.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.037711500001023524,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000008_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "reduced_cost": 0.0,
+            "assignments": [],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 0.0,
+            "best_bound": 0.0,
+            "solve_seconds": 0.04118459999153856,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 0.0,
+              "best_bound": 0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.039308499995968305,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000009_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "station",
+              "B",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "B",
+              "0"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": 0.5
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": 1.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "weight": 0.5,
+            "assignments": []
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 1,
+            "weight": 0.5,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ]
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 0,
+            "weight": 0.5,
+            "assignments": []
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 1,
+            "weight": 0.5,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ]
+          }
+        ],
+        "columns_before": 4,
+        "columns_added": 1,
+        "artificial_rows": [
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": 0.5
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": 0.0
+          }
+        ],
+        "lp_upper_bound": 0.5,
+        "maximum_reduced_cost": 1.0,
+        "lp_lower_bound": -0.5,
+        "lp_gap": 1.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima",
+        "artificial_sum": 0.5,
+        "artificials": [
+          {
+            "name": "artificial_2",
+            "value": 0.5
+          },
+          {
+            "name": "artificial_3",
+            "value": 0.0
+          },
+          {
+            "name": "artificial_5",
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "phase": 1,
+        "iteration": 3,
+        "artificial_sum": -0.0,
+        "objective": 0.0,
+        "event": "feasible_RMP_found"
+      },
+      {
+        "phase": 2,
+        "iteration": 1,
+        "objective": 4.0,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 0.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 0.0,
+            "best_bound": 0.0,
+            "solve_seconds": 0.042919700004858896,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 0.0,
+              "best_bound": 0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.0414421999885235,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000012_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "reduced_cost": 0.0,
+            "assignments": [],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 0.0,
+            "best_bound": 0.0,
+            "solve_seconds": 0.04564490000484511,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 0.0,
+              "best_bound": 0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.04416259999561589,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000013_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "station",
+              "B",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": 2.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "B",
+              "0"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": 1.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 1,
+            "weight": 0.5,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ]
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 2,
+            "weight": 0.5,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ]
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 0,
+            "weight": 0.5,
+            "assignments": []
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 1,
+            "weight": 0.5,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ]
+          }
+        ],
+        "columns_before": 5,
+        "columns_added": 0,
+        "lp_upper_bound": 4.0,
+        "maximum_reduced_cost": 0.0,
+        "lp_lower_bound": 4.0,
+        "lp_gap": 0.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima"
+      }
+    ],
+    "column_counts": [
+      {
+        "line": "A",
+        "station": 1,
+        "count": 3
+      },
+      {
+        "line": "B",
+        "station": 1,
+        "count": 2
+      }
+    ],
+    "lp_solution": [
+      {
+        "line": "A",
+        "station": 1,
+        "column": 1,
+        "weight": 0.5,
+        "assignments": [
+          [
+            "0",
+            "R"
+          ]
+        ]
+      },
+      {
+        "line": "A",
+        "station": 1,
+        "column": 2,
+        "weight": 0.5,
+        "assignments": [
+          [
+            "0",
+            "H"
+          ]
+        ]
+      },
+      {
+        "line": "B",
+        "station": 1,
+        "column": 0,
+        "weight": 0.5,
+        "assignments": []
+      },
+      {
+        "line": "B",
+        "station": 1,
+        "column": 1,
+        "weight": 0.5,
+        "assignments": [
+          [
+            "0",
+            "J"
+          ]
+        ]
+      }
+    ],
+    "final_duals": [
+      {
+        "row": [
+          "station",
+          "A",
+          1
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "station",
+          "B",
+          1
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "task",
+          "A",
+          "0"
+        ],
+        "value": 2.0
+      },
+      {
+        "row": [
+          "recovery",
+          "A"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "task",
+          "B",
+          "0"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "recovery",
+          "B"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "human"
+        ],
+        "value": 1.0
+      },
+      {
+        "row": [
+          "robot"
+        ],
+        "value": 1.0
+      }
+    ],
+    "integer_recovery": {
+      "status": "infeasible_on_generated_columns",
+      "has_feasible_solution": false,
+      "optimal": false,
+      "objective": null,
+      "restricted_master_optimal": false,
+      "restricted_master_infeasible_proven": true,
+      "original_integer_optimal_proven": false
+    }
+  },
+  "certificate_rounds": [
+    {
+      "phase": 1,
+      "iteration": 1,
+      "dual_objective": -2.0,
+      "upper": 1.0,
+      "maximum": 2.0,
+      "blocks": 2
+    },
+    {
+      "phase": 1,
+      "iteration": 2,
+      "dual_objective": -0.5,
+      "upper": 0.5,
+      "maximum": 1.0,
+      "blocks": 2
+    },
+    {
+      "phase": 2,
+      "iteration": 1,
+      "dual_objective": 4.0,
+      "upper": 4.0,
+      "maximum": 0.0,
+      "blocks": 2
+    }
+  ],
+  "pricing_comparisons": [
+    {
+      "phase": 1,
+      "line": "A",
+      "station": 1,
+      "solver": 2.0627834927537516,
+      "enumerated": 2.0627834927537516
+    },
+    {
+      "phase": 1,
+      "line": "B",
+      "station": 1,
+      "solver": 5.080029941261852,
+      "enumerated": 5.080029941261852
+    },
+    {
+      "phase": 2,
+      "line": "A",
+      "station": 1,
+      "solver": -3.4708013926744474,
+      "enumerated": -3.4708013926744474
+    },
+    {
+      "phase": 2,
+      "line": "B",
+      "station": 1,
+      "solver": 6.2092174483976965,
+      "enumerated": 6.2092174483976965
+    }
+  ],
+  "loose_bound_test": {
+    "dual_objective": 5.799593683710721,
+    "upper": 12.758811132108416,
+    "bounds": [
+      {
+        "line": "A",
+        "station": 1,
+        "bound": -2.7208013926744474
+      },
+      {
+        "line": "B",
+        "station": 1,
+        "bound": 6.9592174483976965
+      }
+    ]
+  },
+  "solver_events": [
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "infeasible",
+      "native_status": -1,
+      "native_status_text": "Infeasible",
+      "optimal": false,
+      "has_incumbent": false,
+      "objective": null,
+      "best_bound": null,
+      "relative_gap": null,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0463679999957094,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000000_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 4.0,
+      "best_bound": 4.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04901090000930708,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000001_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "infeasible",
+      "native_status": -1,
+      "native_status_text": "Infeasible",
+      "optimal": false,
+      "has_incumbent": false,
+      "objective": null,
+      "best_bound": null,
+      "relative_gap": null,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04802140001265798,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000002_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 4.0,
+      "best_bound": 4.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04094530000293162,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000003_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -2.0,
+      "best_bound": -2.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.037953399994876236,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000004_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 1.0,
+      "best_bound": 1.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.039474500008509494,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000005_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 2.0,
+      "best_bound": 2.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.03808019999996759,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000006_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -0.5,
+      "best_bound": -0.5,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.035820600009174086,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000007_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 1.0,
+      "best_bound": 1.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.037711500001023524,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000008_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.039308499995968305,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000009_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -0.0,
+      "best_bound": -0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.03921529999934137,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000010_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 4.0,
+      "best_bound": 4.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.03794039999775123,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000011_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0414421999885235,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000012_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04416259999561589,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000013_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "recovery",
+      "status": "infeasible",
+      "native_status": -1,
+      "native_status_text": "Infeasible",
+      "optimal": false,
+      "has_incumbent": false,
+      "objective": null,
+      "best_bound": null,
+      "relative_gap": null,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04444080000394024,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000014_recovery_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 2.0627834927537516,
+      "best_bound": 2.0627834927537516,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05254829999466892,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000015_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 5.080029941261851,
+      "best_bound": 5.080029941261851,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.043345700003555976,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000016_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -3.470801392674448,
+      "best_bound": -3.470801392674448,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04677619998983573,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000017_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.2092174483976965,
+      "best_bound": 6.2092174483976965,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.04247500000928994,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\lp_yes_ip_no_cbc\\solver_logs\\000018_pricing_cbc.log"
+    }
+  ]
+}

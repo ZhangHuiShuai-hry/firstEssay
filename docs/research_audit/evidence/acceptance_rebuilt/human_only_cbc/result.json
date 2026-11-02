@@ -1,0 +1,1662 @@
+{
+  "backend": "cbc",
+  "native": false,
+  "checks": {
+    "complete_enumeration_and_vectors": "PASS",
+    "compact_to_full_mapping": "PASS",
+    "full_ip_to_compact_mapping": "PASS",
+    "full_lp_to_compact_mapping": "PASS",
+    "four_models": "PASS",
+    "cg_and_independent_certificate": "PASS",
+    "pricing_both_phases": "PASS",
+    "general_best_bound_theorem": "PASS"
+  },
+  "status": "PASS",
+  "columns": {
+    "A:1": 3,
+    "A:2": 3
+  },
+  "enumerated_patterns": [
+    {
+      "line": "A",
+      "station": 1,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 3
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 3
+        }
+      ]
+    },
+    {
+      "line": "A",
+      "station": 2,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 3
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 3
+        }
+      ]
+    }
+  ],
+  "models": {
+    "full_ip": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06501059999573044,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000000_verification_cbc.log"
+    },
+    "full_lp": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05721679999260232,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000001_verification_cbc.log"
+    },
+    "compact_ip": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05011660000309348,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000002_verification_cbc.log"
+    },
+    "compact_lp": {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 7.66666667,
+      "best_bound": 7.66666667,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05696719999832567,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000003_verification_cbc.log"
+    }
+  },
+  "cg": {
+    "algorithm": "two_phase_exact_pricing_CG",
+    "status": "LP_optimal_within_tolerance",
+    "certificate_version": 2,
+    "certificate_status": "lp_optimal_proven",
+    "full_lp_feasible_established": true,
+    "proof_scope": "full_column_LP_with_floating_point_tolerances",
+    "termination_reason": "complete_exact_pricing",
+    "lp_converged": true,
+    "lp_objective": 6.0,
+    "lp_upper_bound": 6.0,
+    "epsilon": 1e-07,
+    "feasibility_tolerance": 1e-07,
+    "history": [
+      {
+        "phase": 1,
+        "iteration": 1,
+        "artificial_sum": -0.0,
+        "objective": 0.0,
+        "event": "feasible_RMP_found"
+      },
+      {
+        "phase": 2,
+        "iteration": 1,
+        "objective": 0.0,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 3.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 3.0,
+            "best_bound": 3.0,
+            "solve_seconds": 0.06621160000213422,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 3.0,
+              "best_bound": 3.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.06296680000377819,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000006_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "reduced_cost": 3.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 3.0,
+            "best_bound": 3.0,
+            "solve_seconds": 0.06880649999948218,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 3.0,
+              "best_bound": 3.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.06578499999886844,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000007_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "station",
+              "A",
+              2
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "1"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "weight": 1.0,
+            "assignments": []
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 0,
+            "weight": 1.0,
+            "assignments": []
+          }
+        ],
+        "columns_before": 2,
+        "columns_added": 2,
+        "lp_upper_bound": 6.0,
+        "maximum_reduced_cost": 3.0,
+        "lp_lower_bound": 0.0,
+        "lp_gap": 6.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima"
+      },
+      {
+        "phase": 2,
+        "iteration": 2,
+        "objective": 3.0,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 3.0,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 3.0,
+            "best_bound": 3.0,
+            "solve_seconds": 0.06546059998800047,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 3.0,
+              "best_bound": 3.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.062200800006394275,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000009_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "reduced_cost": 3.0,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 3.0,
+            "best_bound": 3.0,
+            "solve_seconds": 0.07474090000323486,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 3.0,
+              "best_bound": 3.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.02,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.07172130000253674,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000010_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "station",
+              "A",
+              2
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": 3.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "1"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "weight": 1.0,
+            "assignments": []
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 1,
+            "weight": 1.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ]
+          }
+        ],
+        "columns_before": 4,
+        "columns_added": 2,
+        "lp_upper_bound": 9.0,
+        "maximum_reduced_cost": 3.0,
+        "lp_lower_bound": 3.0,
+        "lp_gap": 6.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima"
+      },
+      {
+        "phase": 2,
+        "iteration": 3,
+        "objective": 6.0,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 0.0,
+            "assignments": [],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 0.0,
+            "best_bound": 0.0,
+            "solve_seconds": 0.06644119998964015,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 0.0,
+              "best_bound": 0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.01,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.0635541999945417,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000012_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "reduced_cost": 0.0,
+            "assignments": [],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 0.0,
+            "best_bound": 0.0,
+            "solve_seconds": 0.066284500004258,
+            "solver_result": {
+              "backend": "cbc",
+              "role": "pricing",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 0.0,
+              "best_bound": 0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 30,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": 30,
+                "role_limits": {},
+                "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+                "deadline": null
+              },
+              "wall_time": 0.06232480000471696,
+              "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000013_pricing_cbc.log"
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "station",
+              "A",
+              2
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "1"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": 3.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 1,
+            "weight": 1.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ]
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 2,
+            "weight": 1.0,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ]
+            ]
+          }
+        ],
+        "columns_before": 6,
+        "columns_added": 0,
+        "lp_upper_bound": 6.0,
+        "maximum_reduced_cost": 0.0,
+        "lp_lower_bound": 6.0,
+        "lp_gap": 0.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima"
+      }
+    ],
+    "column_counts": [
+      {
+        "line": "A",
+        "station": 1,
+        "count": 3
+      },
+      {
+        "line": "A",
+        "station": 2,
+        "count": 3
+      }
+    ],
+    "lp_solution": [
+      {
+        "line": "A",
+        "station": 1,
+        "column": 1,
+        "weight": 1.0,
+        "assignments": [
+          [
+            "0",
+            "H"
+          ]
+        ]
+      },
+      {
+        "line": "A",
+        "station": 2,
+        "column": 2,
+        "weight": 1.0,
+        "assignments": [
+          [
+            "1",
+            "H"
+          ]
+        ]
+      }
+    ],
+    "final_duals": [
+      {
+        "row": [
+          "station",
+          "A",
+          1
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "station",
+          "A",
+          2
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "task",
+          "A",
+          "0"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "task",
+          "A",
+          "1"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "recovery",
+          "A"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "human"
+        ],
+        "value": 3.0
+      },
+      {
+        "row": [
+          "robot"
+        ],
+        "value": -0.0
+      }
+    ],
+    "integer_recovery": {
+      "status": "Feasible",
+      "solution_status": "Solution Found",
+      "optimal": false,
+      "has_feasible_solution": true,
+      "objective": 6.0,
+      "profit_breakdown": {
+        "revenue": 12.0,
+        "execution_cost": 2.0,
+        "station_cost": 2.0,
+        "human_cost": 2.0,
+        "robot_cost": 0.0
+      },
+      "resources_used": {
+        "humans": 2,
+        "robots": 0
+      },
+      "lines": [
+        {
+          "id": "A",
+          "selected_tasks": [
+            "0",
+            "1"
+          ],
+          "recovery": 2,
+          "stations": [
+            {
+              "station": 1,
+              "active": 1,
+              "human": 1,
+              "robot": 0,
+              "assignments_in_order": [
+                {
+                  "task": "0",
+                  "mode": "H"
+                }
+              ],
+              "time_used": 2,
+              "fatigue_load": 0.2,
+              "fatigue_level": 0.18126924692201815,
+              "fatigue_budget": 0.6931471805599453
+            },
+            {
+              "station": 2,
+              "active": 1,
+              "human": 1,
+              "robot": 0,
+              "assignments_in_order": [
+                {
+                  "task": "1",
+                  "mode": "H"
+                }
+              ],
+              "time_used": 2,
+              "fatigue_load": 0.2,
+              "fatigue_level": 0.18126924692201815,
+              "fatigue_budget": 0.6931471805599453
+            }
+          ]
+        }
+      ],
+      "scope": "restricted_column_integer_recovery",
+      "restricted_master_optimal": true,
+      "original_integer_optimal_proven": false,
+      "restricted_master_infeasible_proven": false,
+      "solver_result": {
+        "backend": "cbc",
+        "role": "recovery",
+        "status": "optimal",
+        "native_status": 1,
+        "native_status_text": "Optimal",
+        "optimal": true,
+        "has_incumbent": true,
+        "objective": 6.0,
+        "best_bound": 6.0,
+        "relative_gap": 0.0,
+        "solver_time": 0.01,
+        "translation_time": null,
+        "effective_time_limit": 30,
+        "relative_gap_requested": 0,
+        "options": {
+          "name": "cbc",
+          "overrides": {},
+          "threads": 1,
+          "seed": 11,
+          "primal_tolerance": 1e-08,
+          "dual_tolerance": 1e-08,
+          "mip_integrality_tolerance": 1e-07,
+          "time_limit": 30,
+          "role_limits": {},
+          "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+          "deadline": null
+        },
+        "wall_time": 0.05988220000290312,
+        "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000014_recovery_cbc.log"
+      }
+    },
+    "integer_upper_bound_gap": 0
+  },
+  "certificate_rounds": [
+    {
+      "phase": 2,
+      "iteration": 1,
+      "dual_objective": 0.0,
+      "upper": 6.0,
+      "maximum": 3.0,
+      "blocks": 2
+    },
+    {
+      "phase": 2,
+      "iteration": 2,
+      "dual_objective": 3.0,
+      "upper": 9.0,
+      "maximum": 3.0,
+      "blocks": 2
+    },
+    {
+      "phase": 2,
+      "iteration": 3,
+      "dual_objective": 6.0,
+      "upper": 6.0,
+      "maximum": 0.0,
+      "blocks": 2
+    }
+  ],
+  "pricing_comparisons": [
+    {
+      "phase": 1,
+      "line": "A",
+      "station": 1,
+      "solver": 0.06450048825507615,
+      "enumerated": 0.06450048825507615
+    },
+    {
+      "phase": 1,
+      "line": "A",
+      "station": 2,
+      "solver": 0.2760740830408386,
+      "enumerated": 0.2760740830408386
+    },
+    {
+      "phase": 2,
+      "line": "A",
+      "station": 1,
+      "solver": -1.8115389013270153,
+      "enumerated": -1.8115389013270153
+    },
+    {
+      "phase": 2,
+      "line": "A",
+      "station": 2,
+      "solver": -2.858197734892965,
+      "enumerated": -2.858197734892965
+    }
+  ],
+  "loose_bound_test": {
+    "dual_objective": 18.943741428952748,
+    "upper": 18.943741428952748,
+    "bounds": [
+      {
+        "line": "A",
+        "station": 1,
+        "bound": -1.0615389013270153
+      },
+      {
+        "line": "A",
+        "station": 2,
+        "bound": -2.108197734892965
+      }
+    ]
+  },
+  "solver_events": [
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06501059999573044,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000000_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05721679999260232,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000001_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05011660000309348,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000002_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 7.66666667,
+      "best_bound": 7.66666667,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05696719999832567,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000003_verification_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -0.0,
+      "best_bound": -0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06655430000682827,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000004_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05690799999865703,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000005_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06296680000377819,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000006_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06578499999886844,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000007_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05579940001189243,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000008_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.062200800006394275,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000009_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.02,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.07172130000253674,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000010_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.061100399994757026,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000011_rmp_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0635541999945417,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000012_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06232480000471696,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000013_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "recovery",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 6.0,
+      "best_bound": 6.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.05988220000290312,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000014_recovery_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.06450048825507615,
+      "best_bound": 0.06450048825507615,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06820170000719372,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000015_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.2760740830408386,
+      "best_bound": 0.2760740830408386,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.060857800010126084,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000016_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -1.811538901327015,
+      "best_bound": -1.811538901327015,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06736749999981839,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000017_pricing_cbc.log"
+    },
+    {
+      "backend": "cbc",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "Optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -2.8581977348929652,
+      "best_bound": -2.8581977348929652,
+      "relative_gap": 0.0,
+      "solver_time": 0.01,
+      "translation_time": null,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cbc",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.06463090000033844,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_rebuilt\\human_only_cbc\\solver_logs\\000018_pricing_cbc.log"
+    }
+  ]
+}

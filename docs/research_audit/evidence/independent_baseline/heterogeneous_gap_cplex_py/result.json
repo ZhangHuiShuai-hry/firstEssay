@@ -1,0 +1,1309 @@
+{
+  "backend": "cplex_py",
+  "native": false,
+  "checks": {
+    "complete_enumeration_and_vectors": "PASS",
+    "compact_to_full_mapping": "PASS",
+    "full_ip_to_compact_mapping": "PASS",
+    "full_lp_to_compact_mapping": "PASS",
+    "four_models": "PASS",
+    "cg_and_independent_certificate": "PASS",
+    "pricing_both_phases": "PASS"
+  },
+  "status": "PASS",
+  "columns": {
+    "A:1": 4,
+    "A:2": 4
+  },
+  "enumerated_patterns": [
+    {
+      "line": "A",
+      "station": 1,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": -96
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "R"
+            ]
+          ],
+          "active": 1,
+          "human": 0,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0,
+          "recovery": 1,
+          "profit": -96
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": -97
+        }
+      ]
+    },
+    {
+      "line": "A",
+      "station": 2,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 3
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "R"
+            ]
+          ],
+          "active": 1,
+          "human": 0,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0,
+          "recovery": 1,
+          "profit": 3
+        },
+        {
+          "assignments": [
+            [
+              "0",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0.2,
+          "recovery": 1,
+          "profit": 2
+        }
+      ]
+    }
+  ],
+  "models": {
+    "full_ip": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0013763000024482608,
+      "translation_time": 0.0030512999946950004,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.004793500003870577,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000000_verification_cplex_py.log"
+    },
+    "full_lp": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": null,
+      "solver_time": 0.002034399993135594,
+      "translation_time": 0.0025999999925261363,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.005360200011637062,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000001_verification_cplex_py.log"
+    },
+    "compact_ip": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.003250200010370463,
+      "translation_time": 0.003667300014058128,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0074311999924248084,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000002_verification_cplex_py.log"
+    },
+    "compact_lp": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": null,
+      "solver_time": 0.0009875999967334792,
+      "translation_time": 0.003404900009627454,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.004969000001437962,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000003_verification_cplex_py.log"
+    }
+  },
+  "cg": {
+    "algorithm": "two_phase_exact_pricing_CG",
+    "status": "LP_optimal_within_tolerance",
+    "lp_converged": true,
+    "lp_objective": 3.0,
+    "lp_upper_bound": 3.0,
+    "epsilon": 1e-07,
+    "feasibility_tolerance": 1e-07,
+    "history": [
+      {
+        "phase": 1,
+        "iteration": 1,
+        "objective": -1.0,
+        "lp_upper_bound": 1.0,
+        "maximum_reduced_cost": 1.0,
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "station",
+              "A",
+              2
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": 0.0
+          }
+        ],
+        "columns_before": 2,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 1.0,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ]
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "reduced_cost": 1.0,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ]
+          }
+        ],
+        "columns_added": 2,
+        "artificial_sum": 1.0,
+        "artificials": [
+          {
+            "name": "artificial_2",
+            "value": 1.0
+          },
+          {
+            "name": "artificial_3",
+            "value": 0.0
+          }
+        ]
+      },
+      {
+        "phase": 1,
+        "iteration": 2,
+        "artificial_sum": -0.0,
+        "objective": 0.0,
+        "event": "feasible_RMP_found"
+      },
+      {
+        "phase": 2,
+        "iteration": 1,
+        "objective": 2.0,
+        "lp_upper_bound": 4.0,
+        "maximum_reduced_cost": 1.0,
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "station",
+              "A",
+              2
+            ],
+            "value": 99.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -97.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "columns_before": 4,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 1.0,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ]
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "reduced_cost": 1.0,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ]
+          }
+        ],
+        "columns_added": 2
+      },
+      {
+        "phase": 2,
+        "iteration": 2,
+        "objective": 3.0,
+        "lp_upper_bound": 3.0,
+        "maximum_reduced_cost": 0.0,
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "station",
+              "A",
+              2
+            ],
+            "value": 3.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "columns_before": 6,
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "reduced_cost": 0.0,
+            "assignments": []
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "reduced_cost": 0.0,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ]
+          }
+        ],
+        "columns_added": 0
+      }
+    ],
+    "column_counts": [
+      {
+        "line": "A",
+        "station": 1,
+        "count": 3
+      },
+      {
+        "line": "A",
+        "station": 2,
+        "count": 3
+      }
+    ],
+    "lp_solution": [
+      {
+        "line": "A",
+        "station": 1,
+        "column": 0,
+        "weight": 1.0,
+        "assignments": []
+      },
+      {
+        "line": "A",
+        "station": 2,
+        "column": 2,
+        "weight": 1.0,
+        "assignments": [
+          [
+            "0",
+            "R"
+          ]
+        ]
+      }
+    ],
+    "final_duals": [
+      {
+        "row": [
+          "station",
+          "A",
+          1
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "station",
+          "A",
+          2
+        ],
+        "value": 3.0
+      },
+      {
+        "row": [
+          "task",
+          "A",
+          "0"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "recovery",
+          "A"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "human"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "robot"
+        ],
+        "value": -0.0
+      }
+    ],
+    "integer_recovery": {
+      "status": "Feasible",
+      "solution_status": "Solution Found",
+      "optimal": false,
+      "has_feasible_solution": true,
+      "objective": 3.0,
+      "profit_breakdown": {
+        "revenue": 6.0,
+        "execution_cost": 1.0,
+        "station_cost": 1.0,
+        "human_cost": 0.0,
+        "robot_cost": 1.0
+      },
+      "resources_used": {
+        "humans": 0,
+        "robots": 1
+      },
+      "lines": [
+        {
+          "id": "A",
+          "selected_tasks": [
+            "0"
+          ],
+          "recovery": 1,
+          "stations": [
+            {
+              "station": 1,
+              "active": 0,
+              "human": 0,
+              "robot": 0,
+              "assignments_in_order": [],
+              "time_used": 0,
+              "fatigue_load": 0,
+              "fatigue_level": -0.0,
+              "fatigue_budget": 0.6931471805599453
+            },
+            {
+              "station": 2,
+              "active": 1,
+              "human": 0,
+              "robot": 1,
+              "assignments_in_order": [
+                {
+                  "task": "0",
+                  "mode": "R"
+                }
+              ],
+              "time_used": 2,
+              "fatigue_load": 0,
+              "fatigue_level": -0.0,
+              "fatigue_budget": 0.6931471805599453
+            }
+          ]
+        }
+      ],
+      "scope": "restricted_column_integer_recovery"
+    },
+    "integer_upper_bound_gap": 0
+  },
+  "certificate_rounds": [
+    {
+      "phase": 1,
+      "iteration": 1,
+      "dual_objective": -1.0,
+      "upper": 1.0,
+      "maximum": 1.0,
+      "blocks": 2
+    },
+    {
+      "phase": 2,
+      "iteration": 1,
+      "dual_objective": 2.0,
+      "upper": 4.0,
+      "maximum": 1.0,
+      "blocks": 2
+    },
+    {
+      "phase": 2,
+      "iteration": 2,
+      "dual_objective": 3.0,
+      "upper": 3.0,
+      "maximum": 0.0,
+      "blocks": 2
+    }
+  ],
+  "pricing_comparisons": [
+    {
+      "phase": 1,
+      "line": "A",
+      "station": 1,
+      "solver": 0.07798686479944372,
+      "enumerated": 0.07798686479944372
+    },
+    {
+      "phase": 1,
+      "line": "A",
+      "station": 2,
+      "solver": 0.28956045958520615,
+      "enumerated": 0.28956045958520615
+    },
+    {
+      "phase": 2,
+      "line": "A",
+      "station": 1,
+      "solver": 2.703750612692743,
+      "enumerated": 2.703750612692743
+    },
+    {
+      "phase": 2,
+      "line": "A",
+      "station": 2,
+      "solver": -0.3871269984538248,
+      "enumerated": -0.3871269984538248
+    }
+  ],
+  "solver_events": [
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0013763000024482608,
+      "translation_time": 0.0030512999946950004,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.004793500003870577,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000000_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": null,
+      "solver_time": 0.002034399993135594,
+      "translation_time": 0.0025999999925261363,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.005360200011637062,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000001_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.003250200010370463,
+      "translation_time": 0.003667300014058128,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0074311999924248084,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000002_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": null,
+      "solver_time": 0.0009875999967334792,
+      "translation_time": 0.003404900009627454,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.004969000001437962,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000003_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -1.0,
+      "best_bound": -1.0,
+      "relative_gap": null,
+      "solver_time": 0.0009552999981679022,
+      "translation_time": 0.002372899994952604,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0038668999914079905,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000004_rmp_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 1.0,
+      "best_bound": 1.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0020729999960167333,
+      "translation_time": 0.004443800004082732,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.007042299999739043,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000005_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 1.0,
+      "best_bound": 1.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0034502999915275723,
+      "translation_time": 0.0025703999999677762,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006666000001132488,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000006_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -0.0,
+      "best_bound": -0.0,
+      "relative_gap": null,
+      "solver_time": 0.0013609000016003847,
+      "translation_time": 0.0020511999900918454,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0040206999983638525,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000007_rmp_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 2.0,
+      "best_bound": 2.0,
+      "relative_gap": null,
+      "solver_time": 0.0009675999899627641,
+      "translation_time": 0.002812499995343387,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.004117499993299134,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000008_rmp_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 1.0,
+      "best_bound": 1.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.00213649999932386,
+      "translation_time": 0.0025557999906595796,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.005062399999587797,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000009_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 1.0,
+      "best_bound": 100.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.002804400006425567,
+      "translation_time": 0.0025323000008938834,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006023699999786913,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000010_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "rmp",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": null,
+      "solver_time": 0.0010385000059613958,
+      "translation_time": 0.0022056999878259376,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0038560999964829534,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000011_rmp_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0033345999981975183,
+      "translation_time": 0.003730399999767542,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.007724600000074133,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000012_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.004371200004243292,
+      "translation_time": 0.0033069999917643145,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.008261000009952113,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000013_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "recovery",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 3.0,
+      "best_bound": 3.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.0015918999997666106,
+      "translation_time": 0.0036872000055154786,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006533299994771369,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000014_recovery_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.07798686479944372,
+      "best_bound": 0.013486376544367573,
+      "relative_gap": 0.0,
+      "solver_time": 0.007794900011504069,
+      "translation_time": 0.005262299993773922,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.013703200005693361,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000015_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 0.28956045958520615,
+      "best_bound": 0.013486376544367573,
+      "relative_gap": 0.0,
+      "solver_time": 0.003685599993332289,
+      "translation_time": 0.004132799993385561,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.008245699995313771,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000016_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 2.703750612692743,
+      "best_bound": 0.0,
+      "relative_gap": 0.0,
+      "solver_time": 0.002335900004254654,
+      "translation_time": 0.004044900008011609,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006787200007238425,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000017_pricing_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "pricing",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": -0.3871269984538248,
+      "best_bound": 2.4752271176947787,
+      "relative_gap": 0.0,
+      "solver_time": 0.0026227000053040683,
+      "translation_time": 0.0023607000039191917,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.005359799994039349,
+      "log_path": "docs\\research_audit\\evidence\\independent_baseline\\heterogeneous_gap_cplex_py\\solver_logs\\000018_pricing_cplex_py.log"
+    }
+  ]
+}

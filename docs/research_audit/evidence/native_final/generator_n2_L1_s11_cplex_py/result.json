@@ -1,0 +1,369 @@
+{
+  "backend": "cplex_py",
+  "native": true,
+  "checks": {
+    "complete_enumeration_and_vectors": "PASS",
+    "compact_to_full_mapping": "PASS",
+    "full_ip_to_compact_mapping": "PASS",
+    "full_lp_to_compact_mapping": "PASS",
+    "four_models": "PASS"
+  },
+  "status": "FAIL",
+  "columns": {
+    "L1:1": 6
+  },
+  "enumerated_patterns": [
+    {
+      "line": "L1",
+      "station": 1,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "2",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.12693467542888393,
+          "recovery": 2,
+          "profit": 2.4399999999999995
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 3,
+          "fatigue": 0.1390609027689882,
+          "recovery": 2,
+          "profit": 2.709999999999999
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "H"
+            ],
+            [
+              "2",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 5,
+          "fatigue": 0.2659955781978721,
+          "recovery": 4,
+          "profit": 14.149999999999999
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0.10259161602997827,
+          "recovery": 2,
+          "profit": -0.8900000000000006
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 4,
+          "fatigue": 0.2295262914588622,
+          "recovery": 4,
+          "profit": 10.549999999999997
+        }
+      ]
+    }
+  ],
+  "models": {
+    "full_ip": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "solver_time": 0.001603700002306141,
+      "translation_time": 0.0032254999969154596,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.00553819999913685,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000000_verification_cplex_py.log"
+    },
+    "full_lp": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "solver_time": 0.001327799996943213,
+      "translation_time": 0.0044602999987546355,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006390700000338256,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000001_verification_cplex_py.log"
+    },
+    "compact_ip": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "solver_time": 0.0015841999993426725,
+      "translation_time": 0.0027977999998256564,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0048900999972829595,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000002_verification_cplex_py.log"
+    },
+    "compact_lp": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "solver_time": 0.0013104999961797148,
+      "translation_time": 0.0042791000014403835,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006330800009891391,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000003_verification_cplex_py.log"
+    }
+  },
+  "error": "Traceback (most recent call last):\n  File \"D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\docs\\research_audit\\independent_validation.py\", line 300, in run_case\n    result,restricted=cg.run_cg(data)\n  File \"D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\code\\dwcg\\solve.py\", line 182, in run_cg\n    integer = recover_integer(data, pool, verbose)\n  File \"D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\code\\dwcg\\solve.py\", line 17, in recover_integer\n    master = build_master(data, pool, integer=True)\n  File \"C:\\Users\\Hrychang\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\mock.py\", line 1114, in __call__\n    return self._mock_call(*args, **kwargs)\n  File \"C:\\Users\\Hrychang\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\mock.py\", line 1118, in _mock_call\n    return self._execute_mock_call(*args, **kwargs)\n  File \"C:\\Users\\Hrychang\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\mock.py\", line 1179, in _execute_mock_call\n    result = effect(*args, **kwargs)\nTypeError: run_case.<locals>.<lambda>() got an unexpected keyword argument 'integer'\n",
+  "solver_events": [
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "solver_time": 0.001603700002306141,
+      "translation_time": 0.0032254999969154596,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.00553819999913685,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000000_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "solver_time": 0.001327799996943213,
+      "translation_time": 0.0044602999987546355,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006390700000338256,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000001_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "solver_time": 0.0015841999993426725,
+      "translation_time": 0.0027977999998256564,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0048900999972829595,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000002_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "solver_time": 0.0013104999961797148,
+      "translation_time": 0.0042791000014403835,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006330800009891391,
+      "log_path": "docs\\research_audit\\evidence\\native_final\\generator_n2_L1_s11_cplex_py\\solver_logs\\000003_verification_cplex_py.log"
+    }
+  ]
+}

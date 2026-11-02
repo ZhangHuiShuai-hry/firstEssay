@@ -35,8 +35,18 @@ def cbc(mip=True, verbose=False, role="verification"):
 def require_optimal(problem):
     if (problem.status != pulp.LpStatusOptimal or problem.sol_status != pulp.LpSolutionOptimal
             or not problem.valid(1e-6)):
-        raise RuntimeError(f"Exact solve failed: {pulp.LpStatus[problem.status]} / "
-                           f"{pulp.LpSolution.get(problem.sol_status)}")
+        error = RuntimeError(f"Exact solve failed: {pulp.LpStatus[problem.status]} / "
+                             f"{pulp.LpSolution.get(problem.sol_status)}")
+        error.solver_result = getattr(problem, "backend_result", {})
+        raise error
+
+
+class PricingResult(tuple):
+    """Backward-compatible (column, rc) pair with solver certificate metadata."""
+    def __new__(cls, column, rc, certificate):
+        answer = super().__new__(cls, (column, rc))
+        answer.certificate = certificate
+        return answer
 
 
 @dataclass(frozen=True)

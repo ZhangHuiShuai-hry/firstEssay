@@ -1,0 +1,1005 @@
+{
+  "backend": "cplex_py",
+  "native": true,
+  "checks": {
+    "complete_enumeration_and_vectors": "PASS",
+    "compact_to_full_mapping": "PASS",
+    "full_ip_to_compact_mapping": "PASS",
+    "full_lp_to_compact_mapping": "PASS",
+    "four_models": "PASS",
+    "cg_and_independent_certificate": "PASS",
+    "pricing_both_phases": "PASS",
+    "general_best_bound_theorem": "PASS"
+  },
+  "status": "PASS",
+  "columns": {
+    "L1:1": 6
+  },
+  "enumerated_patterns": [
+    {
+      "line": "L1",
+      "station": 1,
+      "patterns": [
+        {
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0,
+          "fatigue": 0,
+          "recovery": 0,
+          "profit": 0
+        },
+        {
+          "assignments": [
+            [
+              "2",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 2,
+          "fatigue": 0.12693467542888393,
+          "recovery": 2,
+          "profit": 2.4399999999999995
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 3,
+          "fatigue": 0.1390609027689882,
+          "recovery": 2,
+          "profit": 2.709999999999999
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "H"
+            ],
+            [
+              "2",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 5,
+          "fatigue": 0.2659955781978721,
+          "recovery": 4,
+          "profit": 14.149999999999999
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 2,
+          "fatigue": 0.10259161602997827,
+          "recovery": 2,
+          "profit": -0.8900000000000006
+        },
+        {
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 4,
+          "fatigue": 0.2295262914588622,
+          "recovery": 4,
+          "profit": 10.549999999999997
+        }
+      ]
+    }
+  ],
+  "models": {
+    "full_ip": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "native_relative_gap": 0.0,
+      "solver_time": 0.0017244000046048313,
+      "translation_time": 0.00408469999092631,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006359100007102825,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000000_verification_cplex_py.log"
+    },
+    "full_lp": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "native_relative_gap": null,
+      "solver_time": 0.0013770999939879403,
+      "translation_time": 0.0040034000121522695,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.00601680000545457,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000001_verification_cplex_py.log"
+    },
+    "compact_ip": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "native_relative_gap": 0.0,
+      "solver_time": 0.0020487000001594424,
+      "translation_time": 0.006768299994291738,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.009565700005623512,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000002_verification_cplex_py.log"
+    },
+    "compact_lp": {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "native_relative_gap": null,
+      "solver_time": 0.0014370999997481704,
+      "translation_time": 0.0035743999906117097,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0057859000080497935,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000003_verification_cplex_py.log"
+    }
+  },
+  "cg": {
+    "algorithm": "two_phase_exact_pricing_CG",
+    "status": "LP_optimal_within_tolerance",
+    "certificate_version": 2,
+    "certificate_status": "lp_optimal_proven",
+    "full_lp_feasible_established": true,
+    "proof_scope": "full_column_LP_with_floating_point_tolerances",
+    "termination_reason": "complete_exact_pricing",
+    "lp_converged": true,
+    "lp_objective": 14.149999999999999,
+    "lp_upper_bound": 14.149999999999999,
+    "epsilon": 1e-07,
+    "feasibility_tolerance": 1e-07,
+    "history": [
+      {
+        "phase": 1,
+        "iteration": 1,
+        "objective": -3.0,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "L1",
+            "station": 1,
+            "reduced_cost": 5.0,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ],
+              [
+                "2",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 5.0,
+            "best_bound": 5.0,
+            "solve_seconds": 0.004015200000139885,
+            "solver_result": {
+              "phase": 1,
+              "line": "L1",
+              "station": 1,
+              "objective_update_time": 7.259999983943999e-05,
+              "native_time": 0.0035281000018585473,
+              "read_time": 0.00019389999215491116,
+              "status": "optimal",
+              "native_status": 101,
+              "rc": 5.0,
+              "best_bound": 5.0,
+              "optimal": true,
+              "native_status_text": "integer optimal solution",
+              "objective": 5.0,
+              "nodes": 0,
+              "mip_gap": 0.0
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "L1",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "L1",
+              "1"
+            ],
+            "value": -1.0
+          },
+          {
+            "row": [
+              "task",
+              "L1",
+              "2"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "L1"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": 0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "L1",
+            "station": 1,
+            "column": 0,
+            "weight": 1.0,
+            "assignments": []
+          }
+        ],
+        "columns_before": 1,
+        "columns_added": 1,
+        "artificial_rows": [
+          {
+            "row": [
+              "task",
+              "L1",
+              "1"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "L1"
+            ],
+            "value": 2.0
+          }
+        ],
+        "lp_upper_bound": 2.0,
+        "maximum_reduced_cost": 5.0,
+        "lp_lower_bound": -3.0,
+        "lp_gap": 5.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima",
+        "artificial_sum": 3.0,
+        "artificials": [
+          {
+            "name": "artificial_1",
+            "value": 1.0
+          },
+          {
+            "name": "artificial_3",
+            "value": 2.0
+          }
+        ]
+      },
+      {
+        "phase": 1,
+        "iteration": 2,
+        "artificial_sum": -0.0,
+        "objective": 0.0,
+        "event": "feasible_RMP_found"
+      },
+      {
+        "phase": 2,
+        "iteration": 1,
+        "objective": 14.149999999999999,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "L1",
+            "station": 1,
+            "reduced_cost": 2.4399999999999995,
+            "assignments": [
+              [
+                "2",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 2.4399999999999995,
+            "best_bound": 2.4399999999999995,
+            "solve_seconds": 0.0025788000057218596,
+            "solver_result": {
+              "phase": 2,
+              "line": "L1",
+              "station": 1,
+              "objective_update_time": 0.00010560000373516232,
+              "native_time": 0.002055600009043701,
+              "read_time": 0.00020009999570902437,
+              "status": "optimal",
+              "native_status": 101,
+              "rc": 2.4399999999999995,
+              "best_bound": 2.4399999999999995,
+              "optimal": true,
+              "native_status_text": "integer optimal solution",
+              "objective": 2.4399999999999995,
+              "nodes": 0,
+              "mip_gap": 0.0
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "L1",
+              1
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "task",
+              "L1",
+              "1"
+            ],
+            "value": 14.149999999999999
+          },
+          {
+            "row": [
+              "task",
+              "L1",
+              "2"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "L1"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "L1",
+            "station": 1,
+            "column": 1,
+            "weight": 1.0,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ],
+              [
+                "2",
+                "H"
+              ]
+            ]
+          }
+        ],
+        "columns_before": 2,
+        "columns_added": 1,
+        "lp_upper_bound": 16.589999999999996,
+        "maximum_reduced_cost": 2.4399999999999995,
+        "lp_lower_bound": 14.149999999999999,
+        "lp_gap": 2.4399999999999977,
+        "upper_bound_source": "proven_optimal_pricing_maxima"
+      },
+      {
+        "phase": 2,
+        "iteration": 2,
+        "objective": 14.149999999999999,
+        "rmp_status": "optimal",
+        "complete_pricing": true,
+        "pricing": [
+          {
+            "line": "L1",
+            "station": 1,
+            "reduced_cost": 0.0,
+            "assignments": [
+              [
+                "2",
+                "H"
+              ]
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "incumbent": 0.0,
+            "best_bound": 0.0,
+            "solve_seconds": 0.002542999995057471,
+            "solver_result": {
+              "phase": 2,
+              "line": "L1",
+              "station": 1,
+              "objective_update_time": 0.0001436000020476058,
+              "native_time": 0.00199869999778457,
+              "read_time": 0.00019910000264644623,
+              "status": "optimal",
+              "native_status": 101,
+              "rc": 0.0,
+              "best_bound": 0.0,
+              "optimal": true,
+              "native_status_text": "integer optimal solution",
+              "objective": 0.0,
+              "nodes": 0,
+              "mip_gap": 0.0
+            },
+            "evidence_source": "solver_metadata"
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "L1",
+              1
+            ],
+            "value": 2.4399999999999995
+          },
+          {
+            "row": [
+              "task",
+              "L1",
+              "1"
+            ],
+            "value": 11.709999999999999
+          },
+          {
+            "row": [
+              "task",
+              "L1",
+              "2"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "L1"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": -0.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": -0.0
+          }
+        ],
+        "rmp_solution": [
+          {
+            "line": "L1",
+            "station": 1,
+            "column": 1,
+            "weight": 1.0,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ],
+              [
+                "2",
+                "H"
+              ]
+            ]
+          }
+        ],
+        "columns_before": 3,
+        "columns_added": 0,
+        "lp_upper_bound": 14.149999999999999,
+        "maximum_reduced_cost": 0.0,
+        "lp_lower_bound": 14.149999999999999,
+        "lp_gap": 0.0,
+        "upper_bound_source": "proven_optimal_pricing_maxima"
+      }
+    ],
+    "column_counts": [
+      {
+        "line": "L1",
+        "station": 1,
+        "count": 3
+      }
+    ],
+    "lp_solution": [
+      {
+        "line": "L1",
+        "station": 1,
+        "column": 1,
+        "weight": 1.0,
+        "assignments": [
+          [
+            "1",
+            "H"
+          ],
+          [
+            "2",
+            "H"
+          ]
+        ]
+      }
+    ],
+    "final_duals": [
+      {
+        "row": [
+          "station",
+          "L1",
+          1
+        ],
+        "value": 2.4399999999999995
+      },
+      {
+        "row": [
+          "task",
+          "L1",
+          "1"
+        ],
+        "value": 11.709999999999999
+      },
+      {
+        "row": [
+          "task",
+          "L1",
+          "2"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "recovery",
+          "L1"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "human"
+        ],
+        "value": -0.0
+      },
+      {
+        "row": [
+          "robot"
+        ],
+        "value": -0.0
+      }
+    ],
+    "integer_recovery": {
+      "status": "Feasible",
+      "solution_status": "Solution Found",
+      "optimal": false,
+      "has_feasible_solution": true,
+      "objective": 14.149999999999999,
+      "profit_breakdown": {
+        "revenue": 32.15,
+        "execution_cost": 9.0,
+        "station_cost": 6.0,
+        "human_cost": 3.0,
+        "robot_cost": 0.0
+      },
+      "resources_used": {
+        "humans": 1,
+        "robots": 0
+      },
+      "lines": [
+        {
+          "id": "L1",
+          "selected_tasks": [
+            "1",
+            "2"
+          ],
+          "recovery": 4,
+          "stations": [
+            {
+              "station": 1,
+              "active": 1,
+              "human": 1,
+              "robot": 0,
+              "assignments_in_order": [
+                {
+                  "task": "1",
+                  "mode": "H"
+                },
+                {
+                  "task": "2",
+                  "mode": "H"
+                }
+              ],
+              "time_used": 5,
+              "fatigue_load": 0.2659955781978721,
+              "fatigue_level": 0.23355748344932314,
+              "fatigue_budget": 0.916290731874155
+            }
+          ]
+        }
+      ],
+      "scope": "restricted_column_integer_recovery",
+      "restricted_master_optimal": true,
+      "original_integer_optimal_proven": false,
+      "restricted_master_infeasible_proven": false,
+      "solver_result": {
+        "backend": "cplex_py",
+        "role": "recovery",
+        "status": "optimal",
+        "native_status": 101,
+        "native_status_text": "integer optimal solution",
+        "optimal": true,
+        "has_incumbent": true,
+        "objective": 14.149999999999999,
+        "best_bound": 14.149999999999999,
+        "relative_gap": 0.0,
+        "native_relative_gap": 0.0,
+        "solver_time": 0.001970700002857484,
+        "translation_time": 0.003843699989374727,
+        "effective_time_limit": 30,
+        "relative_gap_requested": 0,
+        "options": {
+          "name": "cplex_py",
+          "overrides": {},
+          "threads": 1,
+          "seed": 11,
+          "primal_tolerance": 1e-08,
+          "dual_tolerance": 1e-08,
+          "mip_integrality_tolerance": 1e-07,
+          "time_limit": 30,
+          "role_limits": {},
+          "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+          "deadline": null
+        },
+        "wall_time": 0.006405100008123554,
+        "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000004_recovery_cplex_py.log"
+      }
+    }
+  },
+  "certificate_rounds": [
+    {
+      "phase": 1,
+      "iteration": 1,
+      "dual_objective": -3.0,
+      "upper": 2.0,
+      "maximum": 5.0,
+      "blocks": 1
+    },
+    {
+      "phase": 2,
+      "iteration": 1,
+      "dual_objective": 14.149999999999999,
+      "upper": 16.589999999999996,
+      "maximum": 2.4399999999999995,
+      "blocks": 1
+    },
+    {
+      "phase": 2,
+      "iteration": 2,
+      "dual_objective": 14.149999999999999,
+      "upper": 14.149999999999999,
+      "maximum": 0.0,
+      "blocks": 1
+    }
+  ],
+  "pricing_comparisons": [
+    {
+      "phase": 1,
+      "line": "L1",
+      "station": 1,
+      "solver": 2.0812462678440875,
+      "enumerated": 2.0812462678440875
+    },
+    {
+      "phase": 2,
+      "line": "L1",
+      "station": 1,
+      "solver": 23.020220785707583,
+      "enumerated": 23.020220785707583
+    }
+  ],
+  "loose_bound_test": {
+    "dual_objective": -1.6140439052047788,
+    "upper": 22.156176880502805,
+    "bounds": [
+      {
+        "line": "L1",
+        "station": 1,
+        "bound": 23.770220785707583
+      }
+    ]
+  },
+  "solver_events": [
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "native_relative_gap": 0.0,
+      "solver_time": 0.0017244000046048313,
+      "translation_time": 0.00408469999092631,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006359100007102825,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000000_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "native_relative_gap": null,
+      "solver_time": 0.0013770999939879403,
+      "translation_time": 0.0040034000121522695,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.00601680000545457,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000001_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "native_relative_gap": 0.0,
+      "solver_time": 0.0020487000001594424,
+      "translation_time": 0.006768299994291738,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.009565700005623512,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000002_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "verification",
+      "status": "optimal",
+      "native_status": 1,
+      "native_status_text": "optimal",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": null,
+      "native_relative_gap": null,
+      "solver_time": 0.0014370999997481704,
+      "translation_time": 0.0035743999906117097,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.0057859000080497935,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000003_verification_cplex_py.log"
+    },
+    {
+      "backend": "cplex_py",
+      "role": "recovery",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 14.149999999999999,
+      "best_bound": 14.149999999999999,
+      "relative_gap": 0.0,
+      "native_relative_gap": 0.0,
+      "solver_time": 0.001970700002857484,
+      "translation_time": 0.003843699989374727,
+      "effective_time_limit": 30,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": 30,
+        "role_limits": {},
+        "log_dir": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs",
+        "deadline": null
+      },
+      "wall_time": 0.006405100008123554,
+      "log_path": "docs\\research_audit\\evidence\\acceptance_native\\generator_n2_L1_s11_cplex_py\\solver_logs\\000004_recovery_cplex_py.log"
+    }
+  ]
+}

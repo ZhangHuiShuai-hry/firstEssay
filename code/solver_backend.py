@@ -12,6 +12,7 @@ import math
 import os
 from pathlib import Path
 import re
+from decimal import Decimal
 import sys
 import tempfile
 import time
@@ -74,10 +75,27 @@ def objective_value(problem):
     for variable, coefficient in expression.items():
         if coefficient:
             value = variable.value()
+            # PuLP temporarily inserts a fixed-zero dummy into constant objectives.
+            if value is None and variable.lowBound is not None and variable.lowBound == variable.upBound:
+                value = variable.lowBound
             if value is None or not math.isfinite(value):
                 return None
             total += coefficient * value
     return total if math.isfinite(total) else None
+
+
+def cbc_max_bound(text, constant):
+    """CBC prints a rounded maximization bound; round outwards before using it.
+
+    The log excludes PuLP's objective constant. Half a printed unit protects
+    against nearest rounding (including negative values and exponent notation).
+    """
+    match = re.search(r"Upper bound:\s*([-+0-9.eE]+)", text)
+    if not match:
+        return None
+    printed = Decimal(match.group(1))
+    value = float(printed + Decimal(5).scaleb(printed.as_tuple().exponent - 1)) + constant
+    return value if math.isfinite(value) else None
 
 
 def _store(problem, info, start, log_path):
@@ -160,16 +178,24 @@ def make_solver(mip=True, msg=False, role="generic", time_limit=None, gap=0):
                 relative = None
                 if mip:
                     try:
-                        bound = float(solution.MIP.get_best_objective())
-                        if abs(bound) >= 1e19:
-                            bound = None
+                        raw_bound = float(solution.MIP.get_best_objective())
+                        bound = (raw_bound + float(problem.objective.constant)
+                                 if math.isfinite(raw_bound) and abs(raw_bound) < 1e19 else None)
                         if incumbent:
                             relative = float(solution.MIP.get_mip_relative_gap())
                     except cplex.exceptions.CplexSolverError:
                         pass
+                if optimal:
+                    bound = value
+                elif status == "infeasible":
+                    bound = None
+                native_relative = relative
+                if mip and bound is not None and value is not None:
+                    relative = abs(bound-value)/(abs(value)+1e-10)
                 info = dict(backend=name, role=role, status=status, native_status=code,
                             native_status_text=text, optimal=optimal, has_incumbent=incumbent,
                             objective=value, best_bound=bound, relative_gap=relative,
+                            native_relative_gap=native_relative,
                             solver_time=self.native_wall, translation_time=self.translation_wall,
                             effective_time_limit=limit, relative_gap_requested=gap,
                             options=asdict(config))
@@ -206,8 +232,9 @@ def make_solver(mip=True, msg=False, role="generic", time_limit=None, gap=0):
                       else "infeasible" if problem.status == pulp.LpStatusInfeasible
                       else "feasible_unproven" if incumbent else "not_solved")
             value = objective_value(problem) if incumbent else None
-            match = re.search(r"Upper bound:\s*([-+0-9.eE]+)", text)
-            bound = value if optimal else float(match.group(1)) if match else None
+            bound = value if optimal else cbc_max_bound(text, float(problem.objective.constant))
+            if status == "infeasible":
+                bound = None
             match_time = re.search(r"Total time \(CPU seconds\):\s*([0-9.]+)", text)
             info = dict(backend=name, role=role, status=status, native_status=problem.status,
                         native_status_text=pulp.LpStatus[problem.status], optimal=optimal,

@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 import time
 
-from common import make_column,reduced_cost
+from common import make_column,reduced_cost,PricingResult
 from solver_backend import BackendConfig,load_cplex
 
 
@@ -90,6 +90,8 @@ class PersistentPricing:
                 bound=float(solution.MIP.get_best_objective())
                 record['best_bound']=bound+self.objective_constant if math.isfinite(bound) and abs(bound)<1e19 else None
             except self.cplex.exceptions.CplexSolverError:pass
+            if solution.is_primal_feasible():
+                record['objective']=solution.get_objective_value()+self.objective_constant
             if code!=101:
                 record['status']='time_limit' if code in (10,11,12,107,108) else 'unproven'
                 if record['status']=='time_limit':raise TimeoutError(f'Exact native PP time limit: {code}')
@@ -104,7 +106,10 @@ class PersistentPricing:
                 raise RuntimeError('Native PP objective disagrees with explicit reduced cost')
             record.update(status='optimal',optimal=True,rc=rc,objective=value,nodes=solution.progress.get_num_nodes_processed(),
                           mip_gap=solution.MIP.get_mip_relative_gap(),read_time=time.perf_counter()-tick)
-            return col,rc
+            return PricingResult(col,rc,dict(record))
+        except Exception as error:
+            error.solver_result=dict(record)
+            raise
         finally:self.records.append(record)
 
     def close(self):

@@ -3,7 +3,7 @@ import math
 
 import pulp
 
-from common import make_column, reduced_cost, cbc, require_optimal
+from common import make_column, reduced_cost, cbc, require_optimal, PricingResult
 
 
 def price(line, station, duals, phase=2, verbose=False):
@@ -53,4 +53,4 @@ def price(line, station, duals, phase=2, verbose=False):
         value = objective.constant  # possible identically-zero objective with solver dummy
     if abs(rc - value) > 1e-5:
         raise RuntimeError("Pricing objective disagrees with explicit column reduced cost")
-    return col, rc
+    return PricingResult(col, rc, dict(getattr(problem, "backend_result", {})))

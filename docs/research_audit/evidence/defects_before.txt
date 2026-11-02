@@ -1,0 +1,61 @@
+test_best_bound_includes_objective_constant (test_research_audit.ResearchAuditTests) ... D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\.venv\lib\site-packages\pulp\pulp.py:318: DeprecationWarning: Constructing LpVariable(name, ...) directly is deprecated; in PuLP 4.0 use prob.add_variable(name, lowBound, upBound, cat=...). Variables are then attached to the model when created.
+  _v4_deprecation(msg, stacklevel=2)
+D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\.venv\lib\site-packages\pulp\apis\coin_api.py:70: DeprecationWarning: PULP_CBC_CMD is deprecated and will be removed in PuLP 4.0. Install CBC with `pip install pulp[cbc]` and use COIN_CMD instead.
+  v4_deprecation(PULP_CBC_CMD_DEPRECATION_MSG, stacklevel=stacklevel)
+test_cbc_printed_bound_rounds_outwards (test_research_audit.ResearchAuditTests) ... ERROR
+test_complete_round_certificate_and_integer_scope (test_research_audit.ResearchAuditTests) ... ERROR
+test_failure_retains_partial_certificate (test_research_audit.ResearchAuditTests) ... ERROR
+test_unproven_solver_status_and_error_distinct (test_research_audit.ResearchAuditTests) ... ERROR
+
+======================================================================
+ERROR: test_cbc_printed_bound_rounds_outwards (test_research_audit.ResearchAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\test_research_audit.py", line 30, in test_cbc_printed_bound_rounds_outwards
+    from solver_backend import cbc_max_bound
+ImportError: cannot import name 'cbc_max_bound' from 'solver_backend' (D:\Hrychang\Code\PostGraduate\test\P1Test\code\solver_backend.py)
+
+======================================================================
+ERROR: test_complete_round_certificate_and_integer_scope (test_research_audit.ResearchAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\test_research_audit.py", line 37, in test_complete_round_certificate_and_integer_scope
+    self.assertEqual(result['certificate_status'],'lp_optimal_proven')
+KeyError: 'certificate_status'
+
+======================================================================
+ERROR: test_failure_retains_partial_certificate (test_research_audit.ResearchAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\test_research_audit.py", line 50, in test_failure_retains_partial_certificate
+    result=caught.exception.cg_result
+AttributeError: 'TimeoutError' object has no attribute 'cg_result'
+
+======================================================================
+ERROR: test_unproven_solver_status_and_error_distinct (test_research_audit.ResearchAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\test_research_audit.py", line 61, in test_unproven_solver_status_and_error_distinct
+    self.assertEqual(caught.exception.cg_result['certificate_status'],'lp_feasible_unproven')
+AttributeError: 'RuntimeError' object has no attribute 'cg_result'
+
+======================================================================
+FAIL: test_best_bound_includes_objective_constant (test_research_audit.ResearchAuditTests) (backend='cplex_py', constant=-7.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\test_research_audit.py", line 27, in test_best_bound_includes_objective_constant
+    self.assertAlmostEqual(p.backend_result['best_bound'],3+constant)
+AssertionError: 3.0 != -4.0 within 7 places (7.0 difference)
+
+======================================================================
+FAIL: test_best_bound_includes_objective_constant (test_research_audit.ResearchAuditTests) (backend='cplex_py', constant=7.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Hrychang\Code\PostGraduate\test\P1Test\experiments\test_research_audit.py", line 27, in test_best_bound_includes_objective_constant
+    self.assertAlmostEqual(p.backend_result['best_bound'],3+constant)
+AssertionError: 3.0 != 10.0 within 7 places (7.0 difference)
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.735s
+
+FAILED (failures=2, errors=4)
