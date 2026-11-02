@@ -1,0 +1,2551 @@
+{
+  "algorithm": "deterministic_DFS_exact_Branch_and_Price",
+  "certificate_version": 1,
+  "code_version": {
+    "git_head": "70d5bca0c3635691dcaff9377ee4abf44576e35b",
+    "source_sha256": {
+      "code/dwcg/branch_price.py": "6b0f1129344d40be555c6582abc2f3060e38e8448f442cd7740e5cc29eddd555",
+      "code/dwcg/node_state.py": "59e84691ab7f59dfed827c57aba4859f0e56d7894715d2ad4167757f442e962f",
+      "code/dwcg/node_master.py": "1ff3f58d5aa651dfbaf949dc1db9b12283ccc29c9bb56919ca789d0ffdd4f174",
+      "code/dwcg/node_pricing.py": "910637e1142e398a9378fffdb7c9ba587b25fbad4069c2a701e34fb6a77cd37f",
+      "code/dwcg/bp_solution.py": "17a2c048b9dd395bef075826c52aae707d3e5d1957e88d57d403c6e4b062dfbd",
+      "code/dwcg/common.py": "9a2154b4521f73d59fcdcd5d2ee856773eda675fdad458d166e79b36ab412b31",
+      "code/dwcg/master.py": "ffe8a2f2a6b0cecbcb25e2fd8b0a302d16b7a35490de207c58640bed8b9eb858",
+      "code/milp/model.py": "1a1be642490bd77c65ae427f950a778f9418100e86dfd95067fe1d9ed09222dd",
+      "code/solver_backend.py": "6202d34b24bd40a1c3a5ec617bafe2133c21658363c3712f6fccbcf60e00a41f"
+    }
+  },
+  "solver_backend": "cbc",
+  "proof_scope": "MILP_global_integer_optimality_with_recorded_floating_point_tolerances",
+  "status": "optimal_within_tolerance",
+  "numeric_policy": {
+    "lp_primal_tolerance": 1e-08,
+    "lp_dual_tolerance": 1e-08,
+    "pricing_integrality_tolerance": 1e-07,
+    "branch_integrality_tolerance": 1e-07,
+    "column_local_tolerance": 1e-08,
+    "reduced_cost_epsilon": 1e-07,
+    "artificial_tolerance": 1e-07,
+    "primal_validation_tolerance": 1e-06,
+    "bound_consistency_tolerance": 1e-05,
+    "global_absolute_tolerance": 1e-05,
+    "global_relative_tolerance": 1e-08
+  },
+  "search_config": {
+    "time_limit": 60,
+    "node_limit": 1000,
+    "max_cg_iterations": 1000,
+    "node_order": "DFS_0_before_1"
+  },
+  "has_integer_incumbent": true,
+  "integer_incumbent_objective": 10.0,
+  "integer_incumbent_solution": {
+    "objective": 10.0,
+    "stations": [
+      {
+        "line": "A",
+        "station": 1,
+        "assignments": [
+          [
+            "0",
+            "R"
+          ]
+        ],
+        "active": 1,
+        "human": 0,
+        "robot": 1,
+        "duration": 2.0,
+        "fatigue": 0.0,
+        "recovery": 1.0,
+        "profit": 5.0
+      },
+      {
+        "line": "A",
+        "station": 2,
+        "assignments": [
+          [
+            "1",
+            "H"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 0,
+        "duration": 2.0,
+        "fatigue": 0.2,
+        "recovery": 1.0,
+        "profit": 5.0
+      }
+    ],
+    "resources_used": {
+      "humans": 1,
+      "robots": 1
+    },
+    "data_level_validated": true,
+    "compact_constraints_validated": true,
+    "branch_restrictions_validated": true
+  },
+  "integer_incumbent_node": 0,
+  "global_lower_bound": 10.0,
+  "global_upper_bound": 10.0,
+  "absolute_gap": 0.0,
+  "relative_gap": 0.0,
+  "global_integer_optimal_proven": true,
+  "global_infeasibility_proven": false,
+  "root_lp_status": "node_lp_optimal_proven",
+  "root_lp_objective": 10.0,
+  "root_lp_upper_bound": 10.0,
+  "total_nodes_created": 1,
+  "total_nodes_processed": 1,
+  "total_nodes_pruned": 1,
+  "total_pricing_calls": 8,
+  "total_columns_generated": 6,
+  "wall_time": 0.809442300000228,
+  "open_nodes": [],
+  "node_history": [
+    {
+      "node_id": 0,
+      "parent_id": null,
+      "depth": 0,
+      "branching_variable": null,
+      "branching_value": null,
+      "restrictions": [],
+      "inherited_upper_bound": null,
+      "node_lp_upper_bound": 10.0,
+      "safe_upper_bound": 10.0,
+      "upper_bound_source": "complete_node_pricing",
+      "phase1_status": "feasible_real_RMP_confirmed",
+      "phase2_status": "node_lp_optimal_proven",
+      "node_status": "pruned_integer",
+      "termination_reason": "Verified integer witness closes node bound",
+      "children": [],
+      "columns_generated": 6,
+      "pricing_calls": 8,
+      "solve_seconds": 0.6974648000032175,
+      "process_index": 0,
+      "lower_bound_before": null,
+      "node_result": {
+        "status": "node_lp_optimal_proven",
+        "lp_objective": 10.0,
+        "lp_upper_bound": 10.0,
+        "lp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "assignments": [],
+            "weight": 0.0
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 1,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ],
+            "weight": 0.0
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 2,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ]
+            ],
+            "weight": 0.0
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 3,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ],
+            "weight": 1.0
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 0,
+            "assignments": [],
+            "weight": 0.0
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 1,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ],
+            "weight": 0.0
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 2,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ]
+            ],
+            "weight": 1.0
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "column": 3,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ],
+            "weight": 0.0
+          }
+        ],
+        "x_values": [
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "H"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "R"
+            ],
+            "value": 1.0
+          },
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "J"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "1",
+              1,
+              "H"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "1",
+              1,
+              "R"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "1",
+              1,
+              "J"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "0",
+              2,
+              "H"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "0",
+              2,
+              "R"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "0",
+              2,
+              "J"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "1",
+              2,
+              "H"
+            ],
+            "value": 1.0
+          },
+          {
+            "variable": [
+              "A",
+              "1",
+              2,
+              "R"
+            ],
+            "value": 0.0
+          },
+          {
+            "variable": [
+              "A",
+              "1",
+              2,
+              "J"
+            ],
+            "value": 0.0
+          }
+        ],
+        "columns_generated": 6,
+        "pricing_calls": 8,
+        "solve_seconds": 0.6974648000032175,
+        "termination_reason": "Complete exact pricing in all node blocks"
+      },
+      "certificate": {
+        "restrictions": [],
+        "initialization": [
+          {
+            "line": "A",
+            "station": 1,
+            "inherited_count": 1,
+            "legal_inherited_count": 1
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "inherited_count": 1,
+            "legal_inherited_count": 1
+          }
+        ],
+        "initial_pool": [
+          {
+            "line": "A",
+            "station": 1,
+            "patterns": [
+              []
+            ]
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "patterns": [
+              []
+            ]
+          }
+        ],
+        "rounds": [
+          {
+            "phase": 1,
+            "iteration": 1,
+            "complete_pricing": false,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  []
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "patterns": [
+                  []
+                ]
+              }
+            ],
+            "pricing": [],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cbc",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": -0.0,
+              "best_bound": -0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 59.897421600006055,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                "deadline": 116432.8136102
+              },
+              "wall_time": 0.05111200000101235,
+              "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000000_rmp_cbc.log"
+            },
+            "objective": -0.0,
+            "dual_objective": 0.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": -0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              }
+            ],
+            "artificials": [
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_2_minus"
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_3_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_4_minus"
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_5_minus"
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_6_minus"
+              }
+            ],
+            "artificial_sum": 0.0,
+            "event": "attempt_phase2_without_artificials"
+          },
+          {
+            "phase": 2,
+            "iteration": 1,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  []
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "patterns": [
+                  []
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 5.0,
+                "reduced_cost": 5.0,
+                "objective": 5.0,
+                "best_bound": 5.0,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "solve_seconds": 0.05949269999109674,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 5.0,
+                  "best_bound": 5.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.79050410000491,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.05772620000061579,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000002_pricing_cbc.log"
+                },
+                "error": null
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 5.0,
+                "reduced_cost": 5.0,
+                "objective": 5.0,
+                "best_bound": 5.0,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "solve_seconds": 0.0614285000046948,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 5.0,
+                  "best_bound": 5.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.731096999996225,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.05982680000306573,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000003_pricing_cbc.log"
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cbc",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 0.0,
+              "best_bound": 0.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 59.8445936999924,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                "deadline": 116432.8136102
+              },
+              "wall_time": 0.05207639999571256,
+              "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000001_rmp_cbc.log"
+            },
+            "objective": 0.0,
+            "dual_objective": 0.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": -0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              }
+            ],
+            "artificials": [],
+            "maximum_reduced_cost": 5.0,
+            "rmp_formula_upper_bound": 10.0,
+            "repaired_upper_bound": 10.0,
+            "upper_bound_base": 0.0,
+            "lp_gap": 10.0,
+            "columns_added": [
+              {
+                "line": "A",
+                "station": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "phase": 2,
+            "iteration": 2,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 5.0,
+                "reduced_cost": 5.0,
+                "objective": 5.0,
+                "best_bound": 5.0,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ],
+                "solve_seconds": 0.05886360000295099,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 5.0,
+                  "best_bound": 5.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.62154269999883,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.057081200007814914,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000005_pricing_cbc.log"
+                },
+                "error": null
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 5.0,
+                "reduced_cost": 5.0,
+                "objective": 5.0,
+                "best_bound": 5.0,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ],
+                "solve_seconds": 0.06038799999805633,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 5.0,
+                  "best_bound": 5.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.56250499999442,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.05868449999252334,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000006_pricing_cbc.log"
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cbc",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 5.0,
+              "best_bound": 5.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 59.66968560000532,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                "deadline": 116432.8136102
+              },
+              "wall_time": 0.046457300006295554,
+              "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000004_rmp_cbc.log"
+            },
+            "objective": 5.0,
+            "dual_objective": 5.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": -0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 1.0
+              }
+            ],
+            "artificials": [],
+            "maximum_reduced_cost": 5.0,
+            "rmp_formula_upper_bound": 15.0,
+            "repaired_upper_bound": 15.0,
+            "upper_bound_base": 5.0,
+            "lp_gap": 10.0,
+            "columns_added": [
+              {
+                "line": "A",
+                "station": 1,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "phase": 2,
+            "iteration": 3,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ],
+                  [
+                    [
+                      "1",
+                      "H"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ],
+                  [
+                    [
+                      "1",
+                      "H"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 5.0,
+                "reduced_cost": 5.0,
+                "objective": 5.0,
+                "best_bound": 5.0,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "solve_seconds": 0.051780499998130836,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 5.0,
+                  "best_bound": 5.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.447548500000266,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.04983270000957418,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000008_pricing_cbc.log"
+                },
+                "error": null
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 5.0,
+                "reduced_cost": 5.0,
+                "objective": 5.0,
+                "best_bound": 5.0,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "solve_seconds": 0.050756700002239086,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 5.0,
+                  "best_bound": 5.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.39590790000511,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.049272299991571344,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000009_pricing_cbc.log"
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cbc",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 10.0,
+              "best_bound": 10.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 59.50221710000187,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                "deadline": 116432.8136102
+              },
+              "wall_time": 0.05259940000541974,
+              "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000007_rmp_cbc.log"
+            },
+            "objective": 10.0,
+            "dual_objective": 10.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": -0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 1.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 2,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 2,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ],
+                "weight": 1.0
+              }
+            ],
+            "artificials": [],
+            "maximum_reduced_cost": 5.0,
+            "rmp_formula_upper_bound": 20.0,
+            "repaired_upper_bound": 20.0,
+            "upper_bound_base": 10.0,
+            "lp_gap": 10.0,
+            "columns_added": [
+              {
+                "line": "A",
+                "station": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "phase": 2,
+            "iteration": 4,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ],
+                  [
+                    [
+                      "1",
+                      "H"
+                    ]
+                  ],
+                  [
+                    [
+                      "0",
+                      "R"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ],
+                  [
+                    [
+                      "1",
+                      "H"
+                    ]
+                  ],
+                  [
+                    [
+                      "0",
+                      "R"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [],
+                "solve_seconds": 0.0470396000018809,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 0.0,
+                  "best_bound": 0.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.29839919999358,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.04564720000780653,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000011_pricing_cbc.log"
+                },
+                "error": null
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [],
+                "solve_seconds": 0.04985199999646284,
+                "solver_result": {
+                  "backend": "cbc",
+                  "role": "pricing",
+                  "status": "optimal",
+                  "native_status": 1,
+                  "native_status_text": "Optimal",
+                  "optimal": true,
+                  "has_incumbent": true,
+                  "objective": 0.0,
+                  "best_bound": 0.0,
+                  "relative_gap": 0.0,
+                  "solver_time": 0.01,
+                  "translation_time": null,
+                  "effective_time_limit": 59.25093850000121,
+                  "relative_gap_requested": 0,
+                  "options": {
+                    "name": "cbc",
+                    "overrides": {},
+                    "threads": 1,
+                    "seed": 11,
+                    "primal_tolerance": 1e-08,
+                    "dual_tolerance": 1e-08,
+                    "mip_integrality_tolerance": 1e-07,
+                    "time_limit": null,
+                    "role_limits": {},
+                    "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                    "deadline": 116432.8136102
+                  },
+                  "wall_time": 0.047585599997546524,
+                  "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000012_pricing_cbc.log"
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cbc",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "Optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 10.0,
+              "best_bound": 10.0,
+              "relative_gap": 0.0,
+              "solver_time": 0.0,
+              "translation_time": null,
+              "effective_time_limit": 59.34524559999409,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cbc",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+                "deadline": 116432.8136102
+              },
+              "wall_time": 0.04553039999154862,
+              "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000010_rmp_cbc.log"
+            },
+            "objective": 10.0,
+            "dual_objective": 10.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": -0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "A",
+                  2
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "1"
+                ],
+                "value": 5.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 2,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 3,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "weight": 1.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 2,
+                "assignments": [
+                  [
+                    "1",
+                    "H"
+                  ]
+                ],
+                "weight": 1.0
+              },
+              {
+                "line": "A",
+                "station": 2,
+                "column": 3,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "weight": 0.0
+              }
+            ],
+            "artificials": [],
+            "maximum_reduced_cost": 0.0,
+            "rmp_formula_upper_bound": 10.0,
+            "repaired_upper_bound": 10.0,
+            "upper_bound_base": 10.0,
+            "lp_gap": 0.0,
+            "columns_added": []
+          }
+        ],
+        "phase1_status": "feasible_real_RMP_confirmed",
+        "phase2_status": "node_lp_optimal_proven",
+        "solver_events": [
+          {
+            "backend": "cbc",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -0.0,
+            "best_bound": -0.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.0,
+            "translation_time": null,
+            "effective_time_limit": 59.897421600006055,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.05111200000101235,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000000_rmp_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 0.0,
+            "best_bound": 0.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.0,
+            "translation_time": null,
+            "effective_time_limit": 59.8445936999924,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.05207639999571256,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000001_rmp_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.79050410000491,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.05772620000061579,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000002_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.731096999996225,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.05982680000306573,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000003_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.0,
+            "translation_time": null,
+            "effective_time_limit": 59.66968560000532,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.046457300006295554,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000004_rmp_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.62154269999883,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.057081200007814914,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000005_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.56250499999442,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.05868449999252334,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000006_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 10.0,
+            "best_bound": 10.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.0,
+            "translation_time": null,
+            "effective_time_limit": 59.50221710000187,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.05259940000541974,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000007_rmp_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.447548500000266,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.04983270000957418,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000008_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 5.0,
+            "best_bound": 5.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.39590790000511,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.049272299991571344,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000009_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 10.0,
+            "best_bound": 10.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.0,
+            "translation_time": null,
+            "effective_time_limit": 59.34524559999409,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.04553039999154862,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000010_rmp_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 0.0,
+            "best_bound": 0.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.29839919999358,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.04564720000780653,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000011_pricing_cbc.log"
+          },
+          {
+            "backend": "cbc",
+            "role": "pricing",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "Optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 0.0,
+            "best_bound": 0.0,
+            "relative_gap": 0.0,
+            "solver_time": 0.01,
+            "translation_time": null,
+            "effective_time_limit": 59.25093850000121,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cbc",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs",
+              "deadline": 116432.8136102
+            },
+            "wall_time": 0.047585599997546524,
+            "log_path": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000_logs\\000012_pricing_cbc.log"
+          }
+        ],
+        "error": null
+      },
+      "integer_witness": {
+        "objective": 10.0,
+        "stations": [
+          {
+            "line": "A",
+            "station": 1,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ],
+            "active": 1,
+            "human": 0,
+            "robot": 1,
+            "duration": 2.0,
+            "fatigue": 0.0,
+            "recovery": 1.0,
+            "profit": 5.0
+          },
+          {
+            "line": "A",
+            "station": 2,
+            "assignments": [
+              [
+                "1",
+                "H"
+              ]
+            ],
+            "active": 1,
+            "human": 1,
+            "robot": 0,
+            "duration": 2.0,
+            "fatigue": 0.2,
+            "recovery": 1.0,
+            "profit": 5.0
+          }
+        ],
+        "resources_used": {
+          "humans": 1,
+          "robots": 1
+        },
+        "data_level_validated": true,
+        "compact_constraints_validated": true,
+        "branch_restrictions_validated": true
+      },
+      "incumbent_update": {
+        "objective": 10.0,
+        "solution": {
+          "objective": 10.0,
+          "stations": [
+            {
+              "line": "A",
+              "station": 1,
+              "assignments": [
+                [
+                  "0",
+                  "R"
+                ]
+              ],
+              "active": 1,
+              "human": 0,
+              "robot": 1,
+              "duration": 2.0,
+              "fatigue": 0.0,
+              "recovery": 1.0,
+              "profit": 5.0
+            },
+            {
+              "line": "A",
+              "station": 2,
+              "assignments": [
+                [
+                  "1",
+                  "H"
+                ]
+              ],
+              "active": 1,
+              "human": 1,
+              "robot": 0,
+              "duration": 2.0,
+              "fatigue": 0.2,
+              "recovery": 1.0,
+              "profit": 5.0
+            }
+          ],
+          "resources_used": {
+            "humans": 1,
+            "robots": 1
+          },
+          "data_level_validated": true,
+          "compact_constraints_validated": true,
+          "branch_restrictions_validated": true
+        }
+      },
+      "pruning": {
+        "kind": "integer",
+        "upper_bound": 10.0,
+        "integer_objective": 10.0,
+        "allowance": 1e-05
+      },
+      "lower_bound_after": 10.0,
+      "certificate_file": "docs\\branch_and_price\\evidence\\validation_final\\multi_optimum_cbc\\tree\\node_000000.json"
+    }
+  ],
+  "processing_order": [
+    0
+  ],
+  "termination_reason": "All tree leaves safely fathomed with verified integer incumbent",
+  "input_sha256": "d4fceee0dfb6269f586291fe1ea5fd8c92c0cad8a99179f3961cdfc2efabd512"
+}
