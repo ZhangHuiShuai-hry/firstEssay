@@ -1,0 +1,717 @@
+{
+  "algorithm": "root_CG_diagnostics_with_verified_integer_recovery",
+  "schema_version": 1,
+  "proof_scope": "root_complete_pricing_upper_bound_and_verified_original_integer_witness",
+  "mode": "baseline",
+  "settings": {
+    "solver": "cplex_py",
+    "time_limit": 10,
+    "initial_seconds": 0.75,
+    "recovery_every": 10,
+    "recovery_seconds": 0.5,
+    "threads": 1,
+    "seed": 11
+  },
+  "numeric_policy": {
+    "lp_primal_tolerance": 1e-08,
+    "lp_dual_tolerance": 1e-08,
+    "pricing_integrality_tolerance": 1e-07,
+    "branch_integrality_tolerance": 1e-07,
+    "column_local_tolerance": 1e-08,
+    "reduced_cost_epsilon": 1e-07,
+    "artificial_tolerance": 1e-07,
+    "primal_validation_tolerance": 1e-06,
+    "bound_consistency_tolerance": 1e-05,
+    "global_absolute_tolerance": 1e-05,
+    "global_relative_tolerance": 1e-08
+  },
+  "acquisition": {
+    "scope": "compact_initial_incumbent",
+    "witness": {
+      "objective": 56.629999999999995,
+      "stations": [
+        {
+          "line": "L1",
+          "station": 1,
+          "assignments": [
+            [
+              "1",
+              "H"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 7.0,
+          "fatigue": 0.4176371832961005,
+          "recovery": 6.0,
+          "profit": 31.689999999999998
+        },
+        {
+          "line": "L1",
+          "station": 2,
+          "assignments": [
+            [
+              "4",
+              "R"
+            ],
+            [
+              "5",
+              "R"
+            ],
+            [
+              "6",
+              "R"
+            ]
+          ],
+          "active": 1,
+          "human": 0,
+          "robot": 1,
+          "duration": 11.0,
+          "fatigue": 0.0,
+          "recovery": 9.0,
+          "profit": 24.939999999999998
+        }
+      ],
+      "resources_used": {
+        "humans": 1,
+        "robots": 1
+      },
+      "data_level_validated": true,
+      "compact_constraints_validated": true,
+      "branch_restrictions_validated": true
+    },
+    "solver_result": {
+      "backend": "cplex_py",
+      "role": "compact_ip",
+      "status": "optimal",
+      "native_status": 101,
+      "native_status_text": "integer optimal solution",
+      "optimal": true,
+      "has_incumbent": true,
+      "objective": 56.63000000000001,
+      "best_bound": 56.63000000000001,
+      "relative_gap": 0.0,
+      "native_relative_gap": 0.0,
+      "solver_time": 0.01177579999784939,
+      "translation_time": 0.0041621999989729375,
+      "effective_time_limit": 0.7474699000013061,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": null,
+        "role_limits": {},
+        "log_dir": null,
+        "deadline": 205712.0493656
+      },
+      "wall_time": 0.01790509998681955,
+      "log_path": null
+    },
+    "seconds": 0.026250499999150634
+  },
+  "recoveries": [],
+  "round_diagnostics": [
+    {
+      "phase": 1,
+      "iteration": 1,
+      "objective": -7.0,
+      "artificial_sum": 7.0,
+      "maximum_reduced_cost": 14.0,
+      "repaired_upper_bound": 21.0,
+      "complete_pricing": true,
+      "pool_columns": 2,
+      "pricing_seconds": 0.0098260999948252,
+      "artificials_by_row_type": {
+        "task": 1.0,
+        "precedence": 0.0,
+        "recovery": 6.0,
+        "human": 0.0,
+        "robot": 0.0
+      }
+    },
+    {
+      "phase": 1,
+      "iteration": 2,
+      "objective": -0.0,
+      "artificial_sum": 0.0,
+      "maximum_reduced_cost": null,
+      "repaired_upper_bound": null,
+      "complete_pricing": false,
+      "pool_columns": 4,
+      "pricing_seconds": 0,
+      "artificials_by_row_type": {
+        "task": 0.0,
+        "precedence": 0.0,
+        "recovery": 0.0,
+        "human": 0.0,
+        "robot": 0.0
+      },
+      "dual_change_l1": 2.0
+    },
+    {
+      "phase": 2,
+      "iteration": 1,
+      "objective": 44.510000000000005,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 48.94,
+      "repaired_upper_bound": 142.39,
+      "complete_pricing": true,
+      "pool_columns": 4,
+      "pricing_seconds": 0.007302999991225079,
+      "artificials_by_row_type": {},
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 84.41,
+          "execution_cost": 26.9,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 44.51,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 7.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.3824215585695982,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.5338691733045569
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 2,
+      "objective": 44.510000000000005,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 57.77999999999999,
+      "repaired_upper_bound": 160.07,
+      "complete_pricing": true,
+      "pool_columns": 6,
+      "pricing_seconds": 0.00998599999002181,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 97.88,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 84.41,
+          "execution_cost": 26.9,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 44.51,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 7.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.3824215585695982,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.5338691733045569
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 3,
+      "objective": 53.349999999999994,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 48.06999999999999,
+      "repaired_upper_bound": 149.48999999999998,
+      "complete_pricing": true,
+      "pool_columns": 8,
+      "pricing_seconds": 0.010072399978525937,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 106.71999999999998,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 93.25,
+          "execution_cost": 26.9,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 53.35,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 7.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.3793538252341801,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.536936906639975
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 4,
+      "objective": 53.349999999999994,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 40.36,
+      "repaired_upper_bound": 134.07,
+      "complete_pricing": true,
+      "pool_columns": 10,
+      "pricing_seconds": 0.00842889997875318,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 96.13999999999999,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 93.25,
+          "execution_cost": 26.9,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 53.35,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 7.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.3793538252341801,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.536936906639975
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 5,
+      "objective": 54.47999999999999,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 28.48000000000004,
+      "repaired_upper_bound": 111.44000000000007,
+      "complete_pricing": true,
+      "pool_columns": 12,
+      "pricing_seconds": 0.0090998999949079,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 79.59,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 91.47999999999999,
+          "execution_cost": 24.0,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 54.47999999999999,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 14.0,
+            "fatigue": 0.4176371832961005,
+            "time_slack": 1.0,
+            "fatigue_slack": 0.4986535485780545
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 6,
+      "objective": 54.47999999999999,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 22.1,
+      "repaired_upper_bound": 98.68,
+      "complete_pricing": true,
+      "pool_columns": 14,
+      "pricing_seconds": 0.010806599981151521,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 56.960000000000065,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 91.47999999999999,
+          "execution_cost": 24.0,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 54.47999999999999,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 14.0,
+            "fatigue": 0.4176371832961005,
+            "time_slack": 1.0,
+            "fatigue_slack": 0.4986535485780545
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 7,
+      "objective": 54.47999999999999,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 9.800000000000026,
+      "repaired_upper_bound": 74.08000000000004,
+      "complete_pricing": true,
+      "pool_columns": 16,
+      "pricing_seconds": 0.007691199978580698,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 44.200000000000045,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 2,
+      "structure": {
+        "profit_parts": {
+          "revenue": 91.47999999999999,
+          "execution_cost": 24.0,
+          "station_cost": 6.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 54.47999999999999,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 14.0,
+            "fatigue": 0.4176371832961005,
+            "time_slack": 1.0,
+            "fatigue_slack": 0.4986535485780545
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 8,
+      "objective": 59.38,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 0.0,
+      "repaired_upper_bound": 59.38,
+      "complete_pricing": true,
+      "pool_columns": 18,
+      "pricing_seconds": 0.017463199998019263,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 44.100000000000094,
+      "fractional_x_count": 8,
+      "positive_lambda_count": 4,
+      "structure": {
+        "profit_parts": {
+          "revenue": 105.92999999999999,
+          "execution_cost": 30.549999999999997,
+          "station_cost": 9.0,
+          "human_cost": 3.0,
+          "robot_cost": 4.0
+        },
+        "net_profit": 59.379999999999995,
+        "human_slack": 0.0,
+        "robot_slack": 0.0,
+        "recovery_slack": {
+          "L1": 9.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.5,
+            "duration": 11.0,
+            "fatigue": 0.40002937093284935,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.5162613609413056
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.5,
+            "human": 0.0,
+            "robot": 0.5,
+            "duration": 6.5,
+            "fatigue": 0.0,
+            "time_slack": 1.0,
+            "fatigue_slack": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "integer_incumbent_solution": {
+    "objective": 56.629999999999995,
+    "stations": [
+      {
+        "line": "L1",
+        "station": 1,
+        "assignments": [
+          [
+            "1",
+            "H"
+          ],
+          [
+            "2",
+            "H"
+          ],
+          [
+            "3",
+            "H"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 0,
+        "duration": 7.0,
+        "fatigue": 0.4176371832961005,
+        "recovery": 6.0,
+        "profit": 31.689999999999998
+      },
+      {
+        "line": "L1",
+        "station": 2,
+        "assignments": [
+          [
+            "4",
+            "R"
+          ],
+          [
+            "5",
+            "R"
+          ],
+          [
+            "6",
+            "R"
+          ]
+        ],
+        "active": 1,
+        "human": 0,
+        "robot": 1,
+        "duration": 11.0,
+        "fatigue": 0.0,
+        "recovery": 9.0,
+        "profit": 24.939999999999998
+      }
+    ],
+    "resources_used": {
+      "humans": 1,
+      "robots": 1
+    },
+    "data_level_validated": true,
+    "compact_constraints_validated": true,
+    "branch_restrictions_validated": true
+  },
+  "global_lower_bound": 56.629999999999995,
+  "global_upper_bound": 59.38,
+  "absolute_gap": 2.750000000000007,
+  "integer_structure": {
+    "profit_parts": {
+      "revenue": 105.92999999999999,
+      "execution_cost": 30.299999999999997,
+      "station_cost": 12.0,
+      "human_cost": 3.0,
+      "robot_cost": 4.0
+    },
+    "net_profit": 56.629999999999995,
+    "human_slack": 0.0,
+    "robot_slack": 0.0,
+    "recovery_slack": {
+      "L1": 9.0
+    },
+    "stations": [
+      {
+        "line": "L1",
+        "station": 1,
+        "active": 1.0,
+        "human": 1.0,
+        "robot": 0.0,
+        "duration": 7.0,
+        "fatigue": 0.4176371832961005,
+        "time_slack": 8.0,
+        "fatigue_slack": 0.4986535485780545
+      },
+      {
+        "line": "L1",
+        "station": 2,
+        "active": 1.0,
+        "human": 0.0,
+        "robot": 1.0,
+        "duration": 11.0,
+        "fatigue": 0.0,
+        "time_slack": 4.0,
+        "fatigue_slack": 0.0
+      }
+    ]
+  },
+  "relative_gap": 0.0485608334804875,
+  "global_integer_optimal_proven": false,
+  "global_infeasibility_proven": false,
+  "first_integer_seconds": 0.026466900017112494,
+  "algorithm_seconds": 0.26611330002197064,
+  "observer_seconds": 0.10295919998316094,
+  "root_status": "node_lp_optimal_proven",
+  "timings": {
+    "pp_wall": 0.09784060000674799,
+    "rmp_build": 0.01828759998898022,
+    "rmp_solve_read": 0.009856000047875568,
+    "other": 0.11297069996362552,
+    "node_total": 0.2389549000072293
+  },
+  "input_sha256": "4229034af5a2d20e8a19634dbcf849587b795216fc969e87e9e790858b84db92",
+  "nominal_soft_budget": 10
+}

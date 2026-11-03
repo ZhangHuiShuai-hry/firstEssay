@@ -1,0 +1,181 @@
+{
+  "root_status": "optimal",
+  "global_lower_bound": 24.0,
+  "global_upper_bound": 24.0,
+  "absolute_gap": 0.0,
+  "global_integer_optimal_proven": true,
+  "solver_result": {
+    "backend": "cplex_py",
+    "role": "compact_ip",
+    "status": "optimal",
+    "native_status": 101,
+    "native_status_text": "integer optimal solution",
+    "optimal": true,
+    "has_incumbent": true,
+    "objective": 24.0,
+    "best_bound": 24.0,
+    "relative_gap": 0.0,
+    "native_relative_gap": 0.0,
+    "solver_time": 0.012442200008081272,
+    "translation_time": 0.02388619998237118,
+    "effective_time_limit": 9.99687649999396,
+    "relative_gap_requested": 0,
+    "options": {
+      "name": "cplex_py",
+      "overrides": {},
+      "threads": 1,
+      "seed": 11,
+      "primal_tolerance": 1e-08,
+      "dual_tolerance": 1e-08,
+      "mip_integrality_tolerance": 1e-07,
+      "time_limit": null,
+      "role_limits": {},
+      "log_dir": "D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\docs\\root_diagnostics\\pilot\\tasks005_lines02_each03-02\\compact\\logs",
+      "deadline": 205720.0960149
+    },
+    "wall_time": 0.03791539999656379,
+    "log_path": "D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\docs\\root_diagnostics\\pilot\\tasks005_lines02_each03-02\\compact\\logs\\000000_compact_ip_cplex_py.log"
+  },
+  "integer_incumbent_solution": {
+    "objective": 24.0,
+    "stations": [
+      {
+        "line": "L1",
+        "station": 1,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      },
+      {
+        "line": "L1",
+        "station": 2,
+        "assignments": [
+          [
+            "1",
+            "J"
+          ],
+          [
+            "2",
+            "J"
+          ],
+          [
+            "3",
+            "R"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 1,
+        "duration": 6.0,
+        "fatigue": 0.44,
+        "recovery": 4.0,
+        "profit": 19.0
+      },
+      {
+        "line": "L2",
+        "station": 1,
+        "assignments": [
+          [
+            "1",
+            "H"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 0,
+        "duration": 2.0,
+        "fatigue": 0.3,
+        "recovery": 1.0,
+        "profit": 5.0
+      },
+      {
+        "line": "L2",
+        "station": 2,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      }
+    ],
+    "resources_used": {
+      "humans": 2,
+      "robots": 1
+    },
+    "data_level_validated": true,
+    "compact_constraints_validated": true,
+    "branch_restrictions_validated": true
+  },
+  "integer_structure": {
+    "profit_parts": {
+      "revenue": 41.0,
+      "execution_cost": 8.0,
+      "station_cost": 5.0,
+      "human_cost": 2.0,
+      "robot_cost": 2.0
+    },
+    "net_profit": 24.0,
+    "human_slack": 0.0,
+    "robot_slack": 0.0,
+    "recovery_slack": {
+      "L1": 2.0,
+      "L2": 0.0
+    },
+    "stations": [
+      {
+        "line": "L1",
+        "station": 1,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      },
+      {
+        "line": "L1",
+        "station": 2,
+        "active": 1.0,
+        "human": 1.0,
+        "robot": 1.0,
+        "duration": 6.0,
+        "fatigue": 0.44,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.2531471805599453
+      },
+      {
+        "line": "L2",
+        "station": 1,
+        "active": 1.0,
+        "human": 1.0,
+        "robot": 0.0,
+        "duration": 2.0,
+        "fatigue": 0.3,
+        "time_slack": 3.0,
+        "fatigue_slack": 0.3931471805599453
+      },
+      {
+        "line": "L2",
+        "station": 2,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      }
+    ]
+  },
+  "input_sha256": "410f62e379148c3edeb5c1ff517c7c44d0c170f342a662afdbc80a3975d7d418",
+  "nominal_soft_budget": 10
+}

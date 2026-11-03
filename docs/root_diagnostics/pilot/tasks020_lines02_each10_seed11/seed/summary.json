@@ -1,0 +1,2237 @@
+{
+  "algorithm": "root_CG_diagnostics_with_verified_integer_recovery",
+  "schema_version": 1,
+  "proof_scope": "root_complete_pricing_upper_bound_and_verified_original_integer_witness",
+  "mode": "seed",
+  "settings": {
+    "solver": "cplex_py",
+    "time_limit": 15,
+    "initial_seconds": 0.75,
+    "recovery_every": 10,
+    "recovery_seconds": 0.5,
+    "threads": 1,
+    "seed": 11
+  },
+  "numeric_policy": {
+    "lp_primal_tolerance": 1e-08,
+    "lp_dual_tolerance": 1e-08,
+    "pricing_integrality_tolerance": 1e-07,
+    "branch_integrality_tolerance": 1e-07,
+    "column_local_tolerance": 1e-08,
+    "reduced_cost_epsilon": 1e-07,
+    "artificial_tolerance": 1e-07,
+    "primal_validation_tolerance": 1e-06,
+    "bound_consistency_tolerance": 1e-05,
+    "global_absolute_tolerance": 1e-05,
+    "global_relative_tolerance": 1e-08
+  },
+  "acquisition": {
+    "scope": "compact_initial_incumbent",
+    "witness": {
+      "objective": 132.57999999999998,
+      "stations": [
+        {
+          "line": "L1",
+          "station": 1,
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0.0,
+          "fatigue": 0.0,
+          "recovery": 0.0,
+          "profit": 0.0
+        },
+        {
+          "line": "L1",
+          "station": 2,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "10",
+              "R"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ],
+            [
+              "7",
+              "J"
+            ],
+            [
+              "9",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 15.0,
+          "fatigue": 0.4435913177393671,
+          "recovery": 11.0,
+          "profit": 57.17999999999999
+        },
+        {
+          "line": "L1",
+          "station": 3,
+          "assignments": [
+            [
+              "2",
+              "H"
+            ],
+            [
+              "6",
+              "H"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 0,
+          "duration": 4.0,
+          "fatigue": 0.44887815837480616,
+          "recovery": 4.0,
+          "profit": 9.620000000000001
+        },
+        {
+          "line": "L1",
+          "station": 4,
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0.0,
+          "fatigue": 0.0,
+          "recovery": 0.0,
+          "profit": 0.0
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0.0,
+          "fatigue": 0.0,
+          "recovery": 0.0,
+          "profit": 0.0
+        },
+        {
+          "line": "L2",
+          "station": 2,
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0.0,
+          "fatigue": 0.0,
+          "recovery": 0.0,
+          "profit": 0.0
+        },
+        {
+          "line": "L2",
+          "station": 3,
+          "assignments": [],
+          "active": 0,
+          "human": 0,
+          "robot": 0,
+          "duration": 0.0,
+          "fatigue": 0.0,
+          "recovery": 0.0,
+          "profit": 0.0
+        },
+        {
+          "line": "L2",
+          "station": 4,
+          "assignments": [
+            [
+              "11",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "13",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "18",
+              "J"
+            ],
+            [
+              "20",
+              "J"
+            ]
+          ],
+          "active": 1,
+          "human": 1,
+          "robot": 1,
+          "duration": 11.0,
+          "fatigue": 0.6256815996599587,
+          "recovery": 14.0,
+          "profit": 65.77999999999999
+        }
+      ],
+      "resources_used": {
+        "humans": 3,
+        "robots": 2
+      },
+      "data_level_validated": true,
+      "compact_constraints_validated": true,
+      "branch_restrictions_validated": true
+    },
+    "solver_result": {
+      "backend": "cplex_py",
+      "role": "compact_ip",
+      "status": "time_limit",
+      "native_status": 107,
+      "native_status_text": "time limit exceeded",
+      "optimal": false,
+      "has_incumbent": true,
+      "objective": 132.58000000000004,
+      "best_bound": 139.26415537885896,
+      "relative_gap": 0.05041601583084836,
+      "native_relative_gap": 0.05041601583084858,
+      "solver_time": 0.7393131999997422,
+      "translation_time": 0.005917899979976937,
+      "effective_time_limit": 0.7344714000064414,
+      "relative_gap_requested": 0,
+      "options": {
+        "name": "cplex_py",
+        "overrides": {},
+        "threads": 1,
+        "seed": 11,
+        "primal_tolerance": 1e-08,
+        "dual_tolerance": 1e-08,
+        "mip_integrality_tolerance": 1e-07,
+        "time_limit": null,
+        "role_limits": {},
+        "log_dir": null,
+        "deadline": 205715.1719139
+      },
+      "wall_time": 0.7513495000021067,
+      "log_path": null
+    },
+    "seconds": 0.7963151999865659
+  },
+  "recoveries": [],
+  "round_diagnostics": [
+    {
+      "phase": 1,
+      "iteration": 1,
+      "objective": -0.0,
+      "artificial_sum": 0.0,
+      "maximum_reduced_cost": null,
+      "repaired_upper_bound": null,
+      "complete_pricing": false,
+      "pool_columns": 11,
+      "pricing_seconds": 0,
+      "artificials_by_row_type": {
+        "task": 0.0,
+        "precedence": 0.0,
+        "recovery": 0.0,
+        "human": 0.0,
+        "robot": 0.0
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 1,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 65.78,
+      "repaired_upper_bound": 524.48,
+      "complete_pricing": true,
+      "pool_columns": 11,
+      "pricing_seconds": 0.0468232000421267,
+      "artificials_by_row_type": {},
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 2,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 53.879999999999995,
+      "repaired_upper_bound": 555.64,
+      "complete_pricing": true,
+      "pool_columns": 18,
+      "pricing_seconds": 0.04435740003827959,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 262.24,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 3,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 46.040000000000006,
+      "repaired_upper_bound": 460.88000000000005,
+      "complete_pricing": true,
+      "pool_columns": 26,
+      "pricing_seconds": 0.04863500001374632,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 212.26,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 4,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 57.97999999999999,
+      "repaired_upper_bound": 473.59999999999997,
+      "complete_pricing": true,
+      "pool_columns": 34,
+      "pricing_seconds": 0.04517159998067655,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 164.88000000000002,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 5,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 54.780000000000015,
+      "repaired_upper_bound": 452.5000000000001,
+      "complete_pricing": true,
+      "pool_columns": 42,
+      "pricing_seconds": 0.05042509999475442,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 171.24,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 6,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 23.990000000000023,
+      "repaired_upper_bound": 304.58000000000004,
+      "complete_pricing": true,
+      "pool_columns": 50,
+      "pricing_seconds": 0.04598310001892969,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 159.9600000000001,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 7,
+      "objective": 132.57999999999998,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 21.460000000000022,
+      "repaired_upper_bound": 256.26000000000005,
+      "complete_pricing": true,
+      "pool_columns": 58,
+      "pricing_seconds": 0.045511199976317585,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 86.00000000000007,
+      "fractional_x_count": 0,
+      "positive_lambda_count": 8,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 18.0,
+          "human_cost": 9.0,
+          "robot_cost": 8.0
+        },
+        "net_profit": 132.58000000000004,
+        "human_slack": 3.0,
+        "robot_slack": 4.0,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 15.0,
+            "fatigue": 0.4435913177393671,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.4726994141347879
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.0,
+            "duration": 4.0,
+            "fatigue": 0.44887815837480616,
+            "time_slack": 11.0,
+            "fatigue_slack": 0.46741257349934884
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 8,
+      "objective": 135.744,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 27.93,
+      "repaired_upper_bound": 289.336,
+      "complete_pricing": true,
+      "pool_columns": 66,
+      "pricing_seconds": 0.05078910003066994,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 81.66,
+      "fractional_x_count": 19,
+      "positive_lambda_count": 14,
+      "structure": {
+        "profit_parts": {
+          "revenue": 232.52400000000003,
+          "execution_cost": 66.38,
+          "station_cost": 14.400000000000002,
+          "human_cost": 7.200000000000001,
+          "robot_cost": 8.8
+        },
+        "net_profit": 135.74400000000003,
+        "human_slack": 3.6,
+        "robot_slack": 3.8,
+        "recovery_slack": {
+          "L1": 8.600000000000003,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.2,
+            "human": 0.2,
+            "robot": 0.2,
+            "duration": 2.8000000000000003,
+            "fatigue": 0.1531069601370579,
+            "time_slack": 0.19999999999999973,
+            "fatigue_slack": 0.030151186237773103
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.8,
+            "duration": 12.8,
+            "fatigue": 0.5423851824568688,
+            "time_slack": 2.1999999999999993,
+            "fatigue_slack": 0.37390554941728615
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.20000000000000007,
+            "human": 0.20000000000000007,
+            "robot": 0.20000000000000007,
+            "duration": 3.000000000000001,
+            "fatigue": 0.13258863693106226,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0506695094437688
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 9,
+      "objective": 137.16823529411766,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 18.019999999999996,
+      "repaired_upper_bound": 220.21294117647057,
+      "complete_pricing": true,
+      "pool_columns": 74,
+      "pricing_seconds": 0.07768019998911768,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 78.88470588235293,
+      "fractional_x_count": 22,
+      "positive_lambda_count": 15,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 68.1,
+          "station_cost": 14.117647058823529,
+          "human_cost": 7.0588235294117645,
+          "robot_cost": 8.235294117647058
+        },
+        "net_profit": 137.16823529411766,
+        "human_slack": 3.6470588235294117,
+        "robot_slack": 3.9411764705882355,
+        "recovery_slack": {
+          "L1": 8.999999999999998,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.17647058823529416,
+            "human": 0.17647058823529416,
+            "robot": 0.17647058823529416,
+            "duration": 2.470588235294118,
+            "fatigue": 0.1350943765915217,
+            "time_slack": 0.17647058823529393,
+            "fatigue_slack": 0.026603987856858607
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.7058823529411764,
+            "duration": 14.470588235294118,
+            "fatigue": 0.7253592218990559,
+            "time_slack": 0.5294117647058822,
+            "fatigue_slack": 0.1909315099750991
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.1764705882352941,
+            "human": 0.1764705882352941,
+            "robot": 0.1764705882352941,
+            "duration": 2.6470588235294117,
+            "fatigue": 0.11698997376270195,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.044708390685678334
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 10,
+      "objective": 137.60105263157897,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 17.72,
+      "repaired_upper_bound": 212.18631578947372,
+      "complete_pricing": true,
+      "pool_columns": 82,
+      "pricing_seconds": 0.12458810000680387,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 58.60953560371513,
+      "fractional_x_count": 22,
+      "positive_lambda_count": 15,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.81578947368422,
+          "station_cost": 13.894736842105264,
+          "human_cost": 6.947368421052632,
+          "robot_cost": 8.421052631578947
+        },
+        "net_profit": 137.60105263157897,
+        "human_slack": 3.6842105263157894,
+        "robot_slack": 3.8947368421052633,
+        "recovery_slack": {
+          "L1": 9.0,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.1578947368421052,
+            "human": 0.1578947368421052,
+            "robot": 0.1578947368421052,
+            "duration": 2.2105263157894726,
+            "fatigue": 0.12087391589767724,
+            "time_slack": 0.1578947368421053,
+            "fatigue_slack": 0.02380356808245243
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 0.7894736842105263,
+            "duration": 14.842105263157896,
+            "fatigue": 0.7277438840862809,
+            "time_slack": 0.15789473684210442,
+            "fatigue_slack": 0.18854684778787412
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.1578947368421053,
+            "human": 0.1578947368421053,
+            "robot": 0.1578947368421053,
+            "duration": 2.3684210526315796,
+            "fatigue": 0.10467523968241757,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.04000224429771221
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 11,
+      "objective": 137.8657142857143,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 11.505000000000003,
+      "repaired_upper_bound": 183.8857142857143,
+      "complete_pricing": true,
+      "pool_columns": 90,
+      "pricing_seconds": 0.18103350000455976,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 37.829624060150444,
+      "fractional_x_count": 19,
+      "positive_lambda_count": 13,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 13.714285714285715,
+          "human_cost": 6.857142857142858,
+          "robot_cost": 9.142857142857142
+        },
+        "net_profit": 137.86571428571432,
+        "human_slack": 3.7142857142857144,
+        "robot_slack": 3.7142857142857144,
+        "recovery_slack": {
+          "L1": 9.000000000000002,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.1428571428571429,
+            "human": 0.1428571428571429,
+            "robot": 0.1428571428571429,
+            "duration": 2.000000000000001,
+            "fatigue": 0.10936211438361282,
+            "time_slack": 0.1428571428571428,
+            "fatigue_slack": 0.02153656159840936
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 0.9999999999999999,
+            "human": 0.9999999999999999,
+            "robot": 0.9999999999999999,
+            "duration": 14.857142857142858,
+            "fatigue": 0.6884011924940875,
+            "time_slack": 0.14285714285714057,
+            "fatigue_slack": 0.2278895393800674
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.1428571428571428,
+            "human": 0.1428571428571428,
+            "robot": 0.1428571428571428,
+            "duration": 2.142857142857142,
+            "fatigue": 0.09470616923647297,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.03619250674554912
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 12,
+      "objective": 137.8657142857143,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 0.6000000000000227,
+      "repaired_upper_bound": 140.2657142857144,
+      "complete_pricing": true,
+      "pool_columns": 94,
+      "pricing_seconds": 0.18458989998907782,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 23.010000000000005,
+      "fractional_x_count": 19,
+      "positive_lambda_count": 13,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 13.714285714285715,
+          "human_cost": 6.857142857142858,
+          "robot_cost": 9.142857142857142
+        },
+        "net_profit": 137.86571428571432,
+        "human_slack": 3.7142857142857144,
+        "robot_slack": 3.7142857142857144,
+        "recovery_slack": {
+          "L1": 9.000000000000002,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.1428571428571429,
+            "human": 0.1428571428571429,
+            "robot": 0.1428571428571429,
+            "duration": 2.000000000000001,
+            "fatigue": 0.10936211438361282,
+            "time_slack": 0.1428571428571428,
+            "fatigue_slack": 0.02153656159840936
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 0.9999999999999999,
+            "human": 0.9999999999999999,
+            "robot": 0.9999999999999999,
+            "duration": 14.857142857142858,
+            "fatigue": 0.6884011924940875,
+            "time_slack": 0.14285714285714057,
+            "fatigue_slack": 0.2278895393800674
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.1428571428571428,
+            "human": 0.1428571428571428,
+            "robot": 0.1428571428571428,
+            "duration": 2.142857142857142,
+            "fatigue": 0.09470616923647297,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.03619250674554912
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 13,
+      "objective": 137.8657142857143,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 0.1999999999999975,
+      "repaired_upper_bound": 138.6657142857143,
+      "complete_pricing": true,
+      "pool_columns": 98,
+      "pricing_seconds": 0.2135736999916844,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 1.200000000000042,
+      "fractional_x_count": 19,
+      "positive_lambda_count": 13,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 13.714285714285715,
+          "human_cost": 6.857142857142858,
+          "robot_cost": 9.142857142857142
+        },
+        "net_profit": 137.86571428571432,
+        "human_slack": 3.7142857142857144,
+        "robot_slack": 3.7142857142857144,
+        "recovery_slack": {
+          "L1": 9.000000000000002,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.1428571428571429,
+            "human": 0.1428571428571429,
+            "robot": 0.1428571428571429,
+            "duration": 2.000000000000001,
+            "fatigue": 0.10936211438361282,
+            "time_slack": 0.1428571428571428,
+            "fatigue_slack": 0.02153656159840936
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 0.9999999999999999,
+            "human": 0.9999999999999999,
+            "robot": 0.9999999999999999,
+            "duration": 14.857142857142858,
+            "fatigue": 0.6884011924940875,
+            "time_slack": 0.14285714285714057,
+            "fatigue_slack": 0.2278895393800674
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.1428571428571428,
+            "human": 0.1428571428571428,
+            "robot": 0.1428571428571428,
+            "duration": 2.142857142857142,
+            "fatigue": 0.09470616923647297,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.03619250674554912
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "iteration": 14,
+      "objective": 137.8657142857143,
+      "artificial_sum": null,
+      "maximum_reduced_cost": 7.105427357601002e-15,
+      "repaired_upper_bound": 137.86571428571432,
+      "complete_pricing": true,
+      "pool_columns": 102,
+      "pricing_seconds": 0.19873810003628023,
+      "artificials_by_row_type": {},
+      "dual_change_l1": 0.5999999999999943,
+      "fractional_x_count": 19,
+      "positive_lambda_count": 13,
+      "structure": {
+        "profit_parts": {
+          "revenue": 234.68000000000004,
+          "execution_cost": 67.1,
+          "station_cost": 13.714285714285715,
+          "human_cost": 6.857142857142858,
+          "robot_cost": 9.142857142857142
+        },
+        "net_profit": 137.86571428571432,
+        "human_slack": 3.7142857142857144,
+        "robot_slack": 3.7142857142857144,
+        "recovery_slack": {
+          "L1": 9.000000000000002,
+          "L2": 6.0
+        },
+        "stations": [
+          {
+            "line": "L1",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "active": 0.1428571428571429,
+            "human": 0.1428571428571429,
+            "robot": 0.1428571428571429,
+            "duration": 2.000000000000001,
+            "fatigue": 0.10936211438361282,
+            "time_slack": 0.1428571428571428,
+            "fatigue_slack": 0.02153656159840936
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "active": 0.9999999999999999,
+            "human": 0.9999999999999999,
+            "robot": 0.9999999999999999,
+            "duration": 14.857142857142858,
+            "fatigue": 0.6884011924940875,
+            "time_slack": 0.14285714285714057,
+            "fatigue_slack": 0.2278895393800674
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "active": 0.1428571428571428,
+            "human": 0.1428571428571428,
+            "robot": 0.1428571428571428,
+            "duration": 2.142857142857142,
+            "fatigue": 0.09470616923647297,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.03619250674554912
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "active": 0.0,
+            "human": 0.0,
+            "robot": 0.0,
+            "duration": 0.0,
+            "fatigue": 0.0,
+            "time_slack": 0.0,
+            "fatigue_slack": 0.0
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "active": 1.0,
+            "human": 1.0,
+            "robot": 1.0,
+            "duration": 11.0,
+            "fatigue": 0.6256815996599587,
+            "time_slack": 4.0,
+            "fatigue_slack": 0.29060913221419626
+          }
+        ]
+      }
+    }
+  ],
+  "integer_incumbent_solution": {
+    "objective": 132.57999999999998,
+    "stations": [
+      {
+        "line": "L1",
+        "station": 1,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      },
+      {
+        "line": "L1",
+        "station": 2,
+        "assignments": [
+          [
+            "1",
+            "J"
+          ],
+          [
+            "10",
+            "R"
+          ],
+          [
+            "3",
+            "R"
+          ],
+          [
+            "4",
+            "J"
+          ],
+          [
+            "7",
+            "J"
+          ],
+          [
+            "9",
+            "J"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 1,
+        "duration": 15.0,
+        "fatigue": 0.4435913177393671,
+        "recovery": 11.0,
+        "profit": 57.18000000000001
+      },
+      {
+        "line": "L1",
+        "station": 3,
+        "assignments": [
+          [
+            "2",
+            "H"
+          ],
+          [
+            "6",
+            "H"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 0,
+        "duration": 4.0,
+        "fatigue": 0.44887815837480616,
+        "recovery": 4.0,
+        "profit": 9.620000000000001
+      },
+      {
+        "line": "L1",
+        "station": 4,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 1,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 2,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 3,
+        "assignments": [],
+        "active": 0,
+        "human": 0,
+        "robot": 0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "recovery": 0.0,
+        "profit": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 4,
+        "assignments": [
+          [
+            "11",
+            "J"
+          ],
+          [
+            "12",
+            "J"
+          ],
+          [
+            "13",
+            "J"
+          ],
+          [
+            "17",
+            "J"
+          ],
+          [
+            "18",
+            "J"
+          ],
+          [
+            "20",
+            "J"
+          ]
+        ],
+        "active": 1,
+        "human": 1,
+        "robot": 1,
+        "duration": 11.0,
+        "fatigue": 0.6256815996599587,
+        "recovery": 14.0,
+        "profit": 65.77999999999999
+      }
+    ],
+    "resources_used": {
+      "humans": 3,
+      "robots": 2
+    },
+    "data_level_validated": true,
+    "compact_constraints_validated": true,
+    "branch_restrictions_validated": true
+  },
+  "global_lower_bound": 132.57999999999998,
+  "global_upper_bound": 137.86571428571432,
+  "absolute_gap": 5.285714285714334,
+  "integer_structure": {
+    "profit_parts": {
+      "revenue": 234.68000000000004,
+      "execution_cost": 67.1,
+      "station_cost": 18.0,
+      "human_cost": 9.0,
+      "robot_cost": 8.0
+    },
+    "net_profit": 132.58000000000004,
+    "human_slack": 3.0,
+    "robot_slack": 4.0,
+    "recovery_slack": {
+      "L1": 9.0,
+      "L2": 6.0
+    },
+    "stations": [
+      {
+        "line": "L1",
+        "station": 1,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      },
+      {
+        "line": "L1",
+        "station": 2,
+        "active": 1.0,
+        "human": 1.0,
+        "robot": 1.0,
+        "duration": 15.0,
+        "fatigue": 0.4435913177393671,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.4726994141347879
+      },
+      {
+        "line": "L1",
+        "station": 3,
+        "active": 1.0,
+        "human": 1.0,
+        "robot": 0.0,
+        "duration": 4.0,
+        "fatigue": 0.44887815837480616,
+        "time_slack": 11.0,
+        "fatigue_slack": 0.46741257349934884
+      },
+      {
+        "line": "L1",
+        "station": 4,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 1,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 2,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 3,
+        "active": 0.0,
+        "human": 0.0,
+        "robot": 0.0,
+        "duration": 0.0,
+        "fatigue": 0.0,
+        "time_slack": 0.0,
+        "fatigue_slack": 0.0
+      },
+      {
+        "line": "L2",
+        "station": 4,
+        "active": 1.0,
+        "human": 1.0,
+        "robot": 1.0,
+        "duration": 11.0,
+        "fatigue": 0.6256815996599587,
+        "time_slack": 4.0,
+        "fatigue_slack": 0.29060913221419626
+      }
+    ]
+  },
+  "relative_gap": 0.0398681119755192,
+  "global_integer_optimal_proven": false,
+  "global_infeasibility_proven": false,
+  "first_integer_seconds": 0.7967150000040419,
+  "algorithm_seconds": 2.7969768999901135,
+  "observer_seconds": 0.43571560000418685,
+  "root_status": "node_lp_optimal_proven",
+  "timings": {
+    "pp_wall": 1.3767295000434387,
+    "rmp_build": 0.08626539996475913,
+    "rmp_solve_read": 0.028682000061962754,
+    "other": 0.49329699992085807,
+    "node_total": 1.9849738999910187
+  },
+  "input_sha256": "cb395f578b2cae1983e950c8965a51c07bbad2112b0aaf05d8c63d18b89bd6b9",
+  "nominal_soft_budget": 15
+}
