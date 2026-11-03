@@ -59,7 +59,7 @@ def global_bounds(nodes,lower,policy):
     return upper,absolute,relative
 
 
-def run_branch_price(data, *, seed_solution=None, solver='cbc', time_limit=300., node_limit=10000,
+def run_branch_price(data, *, evidence_sink=None, seed_solution=None, solver='cbc', time_limit=300., node_limit=10000,
                      max_cg_iterations=1000, policy=None, output_dir=None, verbose=False,
                      _node_solver=None):
     compact.validate_data(data);policy=policy or NumericPolicy()
@@ -89,9 +89,15 @@ def run_branch_price(data, *, seed_solution=None, solver='cbc', time_limit=300.,
         from bp_solution import verify_integer_assignments
         incumbent=verify_integer_assignments(data,seed_solution['stations'],policy=policy,expected=seed_solution['objective'])
         lower=incumbent['objective']
+    if evidence_sink is not None:
+        evidence_sink.put(dict(status='time_limit',checkpoint_kind='safe_initial_frontier',
+            global_lower_bound=lower,global_upper_bound=None,integer_incumbent_solution=incumbent,
+            global_integer_optimal_proven=False,global_infeasibility_proven=False,
+            open_nodes=[dict(node_id=0,status='unresolved',safe_upper_bound=None)]),'checkpoint')
 
     def save_node(n):
         n['elapsed_at_completion']=time.perf_counter()-started
+        if evidence_sink is not None:evidence_sink.put(n,'node')
         if output_dir:
             path=output_dir/f'node_{n["node_id"]:06d}.json'
             with path.open('x',encoding='utf-8') as f:json.dump(n,f,ensure_ascii=False,indent=2,allow_nan=False)
