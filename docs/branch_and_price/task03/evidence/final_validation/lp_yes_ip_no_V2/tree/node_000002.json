@@ -1,0 +1,471 @@
+{
+  "node_id": 2,
+  "parent_id": 0,
+  "depth": 1,
+  "branching_variable": [
+    "A",
+    "0",
+    1,
+    "H"
+  ],
+  "branching_value": 1,
+  "restrictions": [
+    {
+      "variable": [
+        "A",
+        "0",
+        1,
+        "H"
+      ],
+      "value": 1
+    }
+  ],
+  "inherited_upper_bound": 4.0,
+  "node_lp_upper_bound": null,
+  "safe_upper_bound": 4.0,
+  "upper_bound_source": "parent_inherited",
+  "phase1_status": "infeasible_proven",
+  "phase2_status": "not_run",
+  "node_status": "pruned_phase1_infeasible",
+  "termination_reason": "Complete Phase I repaired dual bound is strictly negative",
+  "children": [],
+  "columns_generated": 0,
+  "pricing_calls": 2,
+  "solve_seconds": 0.013256099991849624,
+  "process_index": 2,
+  "lower_bound_before": null,
+  "node_result": {
+    "status": "phase1_infeasible_proven",
+    "lp_objective": null,
+    "lp_upper_bound": null,
+    "lp_solution": [],
+    "x_values": [],
+    "columns_generated": 0,
+    "pricing_calls": 2,
+    "solve_seconds": 0.013256099991849624,
+    "termination_reason": "Complete Phase I repaired dual bound is strictly negative"
+  },
+  "certificate": {
+    "restrictions": [
+      {
+        "variable": [
+          "A",
+          "0",
+          1,
+          "H"
+        ],
+        "value": 1
+      }
+    ],
+    "initialization": [
+      {
+        "line": "A",
+        "station": 1,
+        "inherited_count": 3,
+        "legal_inherited_count": 1
+      },
+      {
+        "line": "B",
+        "station": 1,
+        "inherited_count": 2,
+        "legal_inherited_count": 2
+      }
+    ],
+    "initial_pool": [
+      {
+        "line": "A",
+        "station": 1,
+        "patterns": [
+          [
+            [
+              "0",
+              "H"
+            ]
+          ]
+        ]
+      },
+      {
+        "line": "B",
+        "station": 1,
+        "patterns": [
+          [],
+          [
+            [
+              "0",
+              "J"
+            ]
+          ]
+        ]
+      }
+    ],
+    "rounds": [
+      {
+        "phase": 1,
+        "iteration": 1,
+        "complete_pricing": true,
+        "pool": [
+          {
+            "line": "A",
+            "station": 1,
+            "patterns": [
+              [
+                [
+                  "0",
+                  "H"
+                ]
+              ]
+            ]
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "patterns": [
+              [],
+              [
+                [
+                  "0",
+                  "J"
+                ]
+              ]
+            ]
+          }
+        ],
+        "pricing": [
+          {
+            "line": "A",
+            "station": 1,
+            "phase": 1,
+            "purpose": "pricing",
+            "fixed_variables": [
+              {
+                "task": "0",
+                "mode": "H",
+                "value": 1
+              }
+            ],
+            "status": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "incumbent": 0.0,
+            "reduced_cost": 0.0,
+            "objective": 0.0,
+            "best_bound": 0.0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "solve_seconds": 0.0011131999926874414,
+            "solver_result": {
+              "phase": 1,
+              "line": "A",
+              "station": 1,
+              "objective_update_time": 3.070000093430281e-05,
+              "native_time": 0.0008517999958712608,
+              "read_time": 9.709999721962959e-05,
+              "status": "optimal",
+              "native_status": 101,
+              "rc": 0.0,
+              "best_bound": 0.0,
+              "optimal": true,
+              "native_status_text": "integer optimal solution",
+              "objective": 0.0,
+              "nodes": 0,
+              "mip_gap": 0.0,
+              "backend": "node_persistent_cplex",
+              "has_incumbent": true
+            },
+            "error": null
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "phase": 1,
+            "purpose": "pricing",
+            "fixed_variables": [],
+            "status": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "incumbent": 0.0,
+            "reduced_cost": 0.0,
+            "objective": 0.0,
+            "best_bound": 0.0,
+            "assignments": [],
+            "solve_seconds": 0.001324400000157766,
+            "solver_result": {
+              "phase": 1,
+              "line": "B",
+              "station": 1,
+              "objective_update_time": 4.499999340623617e-05,
+              "native_time": 0.0010506999969948083,
+              "read_time": 9.080000745598227e-05,
+              "status": "optimal",
+              "native_status": 101,
+              "rc": 0.0,
+              "best_bound": 0.0,
+              "optimal": true,
+              "native_status_text": "integer optimal solution",
+              "objective": 0.0,
+              "nodes": 0,
+              "mip_gap": 0.0,
+              "backend": "node_persistent_cplex",
+              "has_incumbent": true
+            },
+            "error": null
+          }
+        ],
+        "rmp_status": "optimal",
+        "rmp_solver_result": {
+          "status": "optimal",
+          "optimal": true,
+          "objective": -0.5,
+          "best_bound": -0.5,
+          "has_incumbent": true,
+          "native_status": 1,
+          "backend": "incremental_node_cplex",
+          "wall_time": 0.001054500011377968,
+          "solver_time": 0.001054500011377968
+        },
+        "objective": -0.5,
+        "dual_objective": -0.5,
+        "raw_duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -2.0
+          },
+          {
+            "row": [
+              "station",
+              "B",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "B",
+              "0"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": 0.5
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": 0.0
+          }
+        ],
+        "duals": [
+          {
+            "row": [
+              "station",
+              "A",
+              1
+            ],
+            "value": -2.0
+          },
+          {
+            "row": [
+              "station",
+              "B",
+              1
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "task",
+              "B",
+              "0"
+            ],
+            "value": 0.0
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "value": 0.5
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "value": 1.0
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "value": 0.0
+          }
+        ],
+        "solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "weight": 1.0
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 0,
+            "assignments": [],
+            "weight": 0.5
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 1,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ],
+            "weight": 0.5
+          }
+        ],
+        "artificials": [
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "sign": 1,
+            "value": 0.0,
+            "name": "elastic_2_plus"
+          },
+          {
+            "row": [
+              "task",
+              "A",
+              "0"
+            ],
+            "sign": -1,
+            "value": 0.0,
+            "name": "elastic_2_minus"
+          },
+          {
+            "row": [
+              "recovery",
+              "A"
+            ],
+            "sign": -1,
+            "value": 0.0,
+            "name": "elastic_3_minus"
+          },
+          {
+            "row": [
+              "task",
+              "B",
+              "0"
+            ],
+            "sign": -1,
+            "value": 0.0,
+            "name": "elastic_4_minus"
+          },
+          {
+            "row": [
+              "recovery",
+              "B"
+            ],
+            "sign": -1,
+            "value": 0.0,
+            "name": "elastic_5_minus"
+          },
+          {
+            "row": [
+              "human"
+            ],
+            "sign": -1,
+            "value": 0.5,
+            "name": "elastic_6_minus"
+          },
+          {
+            "row": [
+              "robot"
+            ],
+            "sign": -1,
+            "value": 0.0,
+            "name": "elastic_7_minus"
+          }
+        ],
+        "artificial_sum": 0.5,
+        "maximum_reduced_cost": 0.0,
+        "rmp_formula_upper_bound": -0.5,
+        "repaired_upper_bound": -0.5,
+        "upper_bound_base": -0.5,
+        "lp_gap": 0.0,
+        "columns_added": []
+      }
+    ],
+    "phase1_status": "infeasible_proven",
+    "phase2_status": "not_run",
+    "solver_events": [],
+    "error": null
+  },
+  "pruning": {
+    "kind": "infeasible",
+    "proof": "phase1_infeasible_proven"
+  },
+  "lower_bound_after": null,
+  "elapsed_at_completion": 0.13268239999888465
+}

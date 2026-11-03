@@ -1,0 +1,101 @@
+{
+  "algorithm": "deterministic_DFS_exact_Branch_and_Price",
+  "certificate_version": 1,
+  "code_version": {
+    "git_head": "5a95dd793f2f84d82a7431f9dbcc3142abcc482a",
+    "source_sha256": {
+      "code/dwcg/branch_price.py": "6b0f1129344d40be555c6582abc2f3060e38e8448f442cd7740e5cc29eddd555",
+      "code/dwcg/node_state.py": "59e84691ab7f59dfed827c57aba4859f0e56d7894715d2ad4167757f442e962f",
+      "code/dwcg/node_master.py": "1ff3f58d5aa651dfbaf949dc1db9b12283ccc29c9bb56919ca789d0ffdd4f174",
+      "code/dwcg/node_pricing.py": "910637e1142e398a9378fffdb7c9ba587b25fbad4069c2a701e34fb6a77cd37f",
+      "code/dwcg/bp_solution.py": "17a2c048b9dd395bef075826c52aae707d3e5d1957e88d57d403c6e4b062dfbd",
+      "code/dwcg/common.py": "9a2154b4521f73d59fcdcd5d2ee856773eda675fdad458d166e79b36ab412b31",
+      "code/dwcg/master.py": "ffe8a2f2a6b0cecbcb25e2fd8b0a302d16b7a35490de207c58640bed8b9eb858",
+      "code/milp/model.py": "1a1be642490bd77c65ae427f950a778f9418100e86dfd95067fe1d9ed09222dd",
+      "code/solver_backend.py": "6202d34b24bd40a1c3a5ec617bafe2133c21658363c3712f6fccbcf60e00a41f"
+    }
+  },
+  "solver_backend": "cplex_py",
+  "proof_scope": "MILP_global_integer_optimality_with_recorded_floating_point_tolerances",
+  "status": "solver_error",
+  "numeric_policy": {
+    "lp_primal_tolerance": 1e-08,
+    "lp_dual_tolerance": 1e-08,
+    "pricing_integrality_tolerance": 1e-07,
+    "branch_integrality_tolerance": 1e-07,
+    "column_local_tolerance": 1e-08,
+    "reduced_cost_epsilon": 1e-07,
+    "artificial_tolerance": 1e-07,
+    "primal_validation_tolerance": 1e-06,
+    "bound_consistency_tolerance": 1e-05,
+    "global_absolute_tolerance": 1e-05,
+    "global_relative_tolerance": 1e-08
+  },
+  "search_config": {
+    "time_limit": 300.0,
+    "node_limit": 10000,
+    "max_cg_iterations": 1000,
+    "node_order": "DFS_0_before_1"
+  },
+  "has_integer_incumbent": false,
+  "integer_incumbent_objective": null,
+  "integer_incumbent_solution": null,
+  "integer_incumbent_node": null,
+  "global_lower_bound": null,
+  "global_upper_bound": null,
+  "absolute_gap": null,
+  "relative_gap": null,
+  "global_integer_optimal_proven": false,
+  "global_infeasibility_proven": false,
+  "root_lp_status": "not_run",
+  "root_lp_objective": null,
+  "root_lp_upper_bound": null,
+  "total_nodes_created": 1,
+  "total_nodes_processed": 1,
+  "total_nodes_pruned": 0,
+  "total_pricing_calls": 0,
+  "total_columns_generated": 0,
+  "wall_time": 0.0848513999953866,
+  "open_nodes": [
+    {
+      "node_id": 0,
+      "status": "unresolved_solver_error",
+      "safe_upper_bound": null,
+      "restrictions": []
+    }
+  ],
+  "node_history": [
+    {
+      "node_id": 0,
+      "parent_id": null,
+      "depth": 0,
+      "branching_variable": null,
+      "branching_value": null,
+      "restrictions": [],
+      "inherited_upper_bound": null,
+      "node_lp_upper_bound": null,
+      "safe_upper_bound": null,
+      "upper_bound_source": "unknown",
+      "phase1_status": "not_run",
+      "phase2_status": "not_run",
+      "node_status": "unresolved_solver_error",
+      "termination_reason": "RuntimeError('Explicit test injection: node API exception')",
+      "children": [],
+      "columns_generated": 0,
+      "pricing_calls": 0,
+      "solve_seconds": 0.0,
+      "process_index": 0,
+      "lower_bound_before": null,
+      "error": {
+        "traceback": "Traceback (most recent call last):\n  File \"D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\code\\dwcg\\branch_price.py\", line 110, in run_branch_price\n    answer=node_solver(data,restrictions,parent_pool,policy=policy,solver=solver,deadline=deadline,\n  File \"D:\\Hrychang\\Code\\PostGraduate\\test\\P1Test\\docs\\branch_and_price\\run_validation.py\", line 136, in fail\n    def fail(*args,**kwargs):raise RuntimeError('Explicit test injection: node API exception')\nRuntimeError: Explicit test injection: node API exception\n"
+      },
+      "lower_bound_after": null,
+      "certificate_file": "docs\\branch_and_price\\task03\\evidence\\task02_full\\interruptions\\solver_error\\tree\\node_000000.json"
+    }
+  ],
+  "processing_order": [
+    0
+  ],
+  "termination_reason": "Node solver raised an exception",
+  "input_sha256": "25ffc8cb17ec38d5a50afd09b52945d4d66b72daa44648a2f8b0a95e92660e8f"
+}

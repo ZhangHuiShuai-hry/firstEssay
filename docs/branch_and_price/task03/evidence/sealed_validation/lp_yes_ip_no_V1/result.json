@@ -1,0 +1,2882 @@
+{
+  "algorithm": "deterministic_DFS_exact_Branch_and_Price",
+  "certificate_version": 1,
+  "code_version": {
+    "git_head": "5a95dd793f2f84d82a7431f9dbcc3142abcc482a",
+    "source_sha256": {
+      "code/dwcg/branch_price.py": "6b0f1129344d40be555c6582abc2f3060e38e8448f442cd7740e5cc29eddd555",
+      "code/dwcg/node_state.py": "59e84691ab7f59dfed827c57aba4859f0e56d7894715d2ad4167757f442e962f",
+      "code/dwcg/node_master.py": "1ff3f58d5aa651dfbaf949dc1db9b12283ccc29c9bb56919ca789d0ffdd4f174",
+      "code/dwcg/node_pricing.py": "910637e1142e398a9378fffdb7c9ba587b25fbad4069c2a701e34fb6a77cd37f",
+      "code/dwcg/bp_solution.py": "17a2c048b9dd395bef075826c52aae707d3e5d1957e88d57d403c6e4b062dfbd",
+      "code/dwcg/common.py": "9a2154b4521f73d59fcdcd5d2ee856773eda675fdad458d166e79b36ab412b31",
+      "code/dwcg/master.py": "ffe8a2f2a6b0cecbcb25e2fd8b0a302d16b7a35490de207c58640bed8b9eb858",
+      "code/milp/model.py": "1a1be642490bd77c65ae427f950a778f9418100e86dfd95067fe1d9ed09222dd",
+      "code/solver_backend.py": "6202d34b24bd40a1c3a5ec617bafe2133c21658363c3712f6fccbcf60e00a41f"
+    }
+  },
+  "solver_backend": "cplex_py",
+  "proof_scope": "MILP_global_integer_optimality_with_recorded_floating_point_tolerances",
+  "status": "infeasible_proven",
+  "numeric_policy": {
+    "lp_primal_tolerance": 1e-08,
+    "lp_dual_tolerance": 1e-08,
+    "pricing_integrality_tolerance": 1e-07,
+    "branch_integrality_tolerance": 1e-07,
+    "column_local_tolerance": 1e-08,
+    "reduced_cost_epsilon": 1e-07,
+    "artificial_tolerance": 1e-07,
+    "primal_validation_tolerance": 1e-06,
+    "bound_consistency_tolerance": 1e-05,
+    "global_absolute_tolerance": 1e-05,
+    "global_relative_tolerance": 1e-08
+  },
+  "search_config": {
+    "time_limit": 30,
+    "node_limit": 10000,
+    "max_cg_iterations": 1000,
+    "node_order": "DFS_0_before_1"
+  },
+  "has_integer_incumbent": false,
+  "integer_incumbent_objective": null,
+  "integer_incumbent_solution": null,
+  "integer_incumbent_node": null,
+  "global_lower_bound": null,
+  "global_upper_bound": null,
+  "absolute_gap": null,
+  "relative_gap": null,
+  "global_integer_optimal_proven": false,
+  "global_infeasibility_proven": true,
+  "root_lp_status": "node_lp_optimal_proven",
+  "root_lp_objective": 4.0,
+  "root_lp_upper_bound": 4.0,
+  "total_nodes_created": 3,
+  "total_nodes_processed": 3,
+  "total_nodes_pruned": 2,
+  "total_pricing_calls": 10,
+  "total_columns_generated": 3,
+  "wall_time": 0.14860000000044238,
+  "open_nodes": [],
+  "node_history": [
+    {
+      "node_id": 0,
+      "parent_id": null,
+      "depth": 0,
+      "branching_variable": null,
+      "branching_value": null,
+      "restrictions": [],
+      "inherited_upper_bound": null,
+      "node_lp_upper_bound": 4.0,
+      "safe_upper_bound": 4.0,
+      "upper_bound_source": "complete_node_pricing",
+      "phase1_status": "feasible_real_RMP_confirmed",
+      "phase2_status": "node_lp_optimal_proven",
+      "node_status": "branched",
+      "termination_reason": "Most fractional original x; disjoint 0/1 children",
+      "children": [
+        1,
+        2
+      ],
+      "columns_generated": 3,
+      "pricing_calls": 6,
+      "solve_seconds": 0.03437150000536349,
+      "process_index": 0,
+      "lower_bound_before": null,
+      "node_result": {
+        "status": "node_lp_optimal_proven",
+        "lp_objective": 4.0,
+        "lp_upper_bound": 4.0,
+        "lp_solution": [
+          {
+            "line": "A",
+            "station": 1,
+            "column": 0,
+            "assignments": [],
+            "weight": 0.0
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 1,
+            "assignments": [
+              [
+                "0",
+                "H"
+              ]
+            ],
+            "weight": 0.5
+          },
+          {
+            "line": "A",
+            "station": 1,
+            "column": 2,
+            "assignments": [
+              [
+                "0",
+                "R"
+              ]
+            ],
+            "weight": 0.5
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 0,
+            "assignments": [],
+            "weight": 0.5
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "column": 1,
+            "assignments": [
+              [
+                "0",
+                "J"
+              ]
+            ],
+            "weight": 0.5
+          }
+        ],
+        "x_values": [
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "H"
+            ],
+            "value": 0.5
+          },
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "R"
+            ],
+            "value": 0.5
+          },
+          {
+            "variable": [
+              "B",
+              "0",
+              1,
+              "J"
+            ],
+            "value": 0.5
+          }
+        ],
+        "columns_generated": 3,
+        "pricing_calls": 6,
+        "solve_seconds": 0.03437150000536349,
+        "termination_reason": "Complete exact pricing in all node blocks"
+      },
+      "certificate": {
+        "restrictions": [],
+        "initialization": [
+          {
+            "line": "A",
+            "station": 1,
+            "inherited_count": 1,
+            "legal_inherited_count": 1
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "inherited_count": 1,
+            "legal_inherited_count": 1
+          }
+        ],
+        "initial_pool": [
+          {
+            "line": "A",
+            "station": 1,
+            "patterns": [
+              []
+            ]
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "patterns": [
+              []
+            ]
+          }
+        ],
+        "rounds": [
+          {
+            "phase": 1,
+            "iteration": 1,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  []
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "patterns": [
+                  []
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 1.0,
+                "reduced_cost": 1.0,
+                "objective": 1.0,
+                "best_bound": 1.0,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ],
+                "solve_seconds": 0.0013097000046400353,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "A",
+                  "station": 1,
+                  "objective_update_time": 5.919999966863543e-05,
+                  "native_time": 0.0010187000007135794,
+                  "read_time": 9.539999882690609e-05,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 1.0,
+                  "best_bound": 1.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 1.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 2.0,
+                "reduced_cost": 2.0,
+                "objective": 2.0,
+                "best_bound": 2.0,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "solve_seconds": 0.0009362999990116805,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "B",
+                  "station": 1,
+                  "objective_update_time": 3.640000068116933e-05,
+                  "native_time": 0.0007093000021995977,
+                  "read_time": 7.570000889245421e-05,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 2.0,
+                  "best_bound": 2.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 2.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cplex_py",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": -2.0,
+              "best_bound": -2.0,
+              "relative_gap": null,
+              "native_relative_gap": null,
+              "solver_time": 0.0008125000022118911,
+              "translation_time": 0.001880299998447299,
+              "effective_time_limit": 29.934720100005507,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cplex_py",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+                "deadline": 123693.3793229
+              },
+              "wall_time": 0.0030701999930897728,
+              "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000000_rmp_cplex_py.log"
+            },
+            "objective": -2.0,
+            "dual_objective": -2.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 1.0
+              }
+            ],
+            "artificials": [
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": 1,
+                "value": 1.0,
+                "name": "elastic_2_plus"
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_2_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_3_minus"
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_4_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "sign": -1,
+                "value": 1.0,
+                "name": "elastic_5_minus"
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_6_minus"
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_7_minus"
+              }
+            ],
+            "artificial_sum": 2.0,
+            "maximum_reduced_cost": 2.0,
+            "rmp_formula_upper_bound": 1.0,
+            "repaired_upper_bound": 1.0,
+            "upper_bound_base": -2.0,
+            "lp_gap": 3.0,
+            "columns_added": [
+              {
+                "line": "A",
+                "station": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "phase": 1,
+            "iteration": 2,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "H"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 1.0,
+                "reduced_cost": 1.0,
+                "objective": 1.0,
+                "best_bound": 1.0,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "solve_seconds": 0.001058900001225993,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "A",
+                  "station": 1,
+                  "objective_update_time": 8.05000017862767e-05,
+                  "native_time": 0.0007187000010162592,
+                  "read_time": 9.349999891128391e-05,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 1.0,
+                  "best_bound": 1.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 1.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "solve_seconds": 0.00087340000027325,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "B",
+                  "station": 1,
+                  "objective_update_time": 7.639999967068434e-05,
+                  "native_time": 0.0005734000005759299,
+                  "read_time": 7.189999450929463e-05,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cplex_py",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": -0.5,
+              "best_bound": -0.5,
+              "relative_gap": null,
+              "native_relative_gap": null,
+              "solver_time": 0.0009652000007918105,
+              "translation_time": 0.001985800001421012,
+              "effective_time_limit": 29.92321720000473,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cplex_py",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+                "deadline": 123693.3793229
+              },
+              "wall_time": 0.0033536999981151894,
+              "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000001_rmp_cplex_py.log"
+            },
+            "objective": -0.5,
+            "dual_objective": -0.5,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.5
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.5
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ],
+                "weight": 1.0
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.5
+              }
+            ],
+            "artificials": [
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": 1,
+                "value": 0.0,
+                "name": "elastic_2_plus"
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_2_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_3_minus"
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_4_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_5_minus"
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "sign": -1,
+                "value": 0.5,
+                "name": "elastic_6_minus"
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_7_minus"
+              }
+            ],
+            "artificial_sum": 0.5,
+            "maximum_reduced_cost": 1.0,
+            "rmp_formula_upper_bound": 0.5,
+            "repaired_upper_bound": 0.5,
+            "upper_bound_base": -0.5,
+            "lp_gap": 1.0,
+            "columns_added": [
+              {
+                "line": "A",
+                "station": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "phase": 1,
+            "iteration": 3,
+            "complete_pricing": false,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "H"
+                    ]
+                  ],
+                  [
+                    [
+                      "0",
+                      "R"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cplex_py",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": -0.0,
+              "best_bound": -0.0,
+              "relative_gap": null,
+              "native_relative_gap": null,
+              "solver_time": 0.0010909999982686713,
+              "translation_time": 0.0019327000045450404,
+              "effective_time_limit": 29.916049399995245,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cplex_py",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+                "deadline": 123693.3793229
+              },
+              "wall_time": 0.00355660000059288,
+              "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000002_rmp_cplex_py.log"
+            },
+            "objective": -0.0,
+            "dual_objective": 0.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": -0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ],
+                "weight": 0.5
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 2,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.5
+              }
+            ],
+            "artificials": [
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": 1,
+                "value": 0.0,
+                "name": "elastic_2_plus"
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_2_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_3_minus"
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_4_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_5_minus"
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_6_minus"
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_7_minus"
+              }
+            ],
+            "artificial_sum": 0.0,
+            "event": "attempt_phase2_without_artificials"
+          },
+          {
+            "phase": 2,
+            "iteration": 1,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "H"
+                    ]
+                  ],
+                  [
+                    [
+                      "0",
+                      "R"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "solve_seconds": 0.0014789999986533076,
+                "solver_result": {
+                  "phase": 2,
+                  "line": "A",
+                  "station": 1,
+                  "objective_update_time": 9.530001261737198e-05,
+                  "native_time": 0.001077399996574968,
+                  "read_time": 0.0001196000084746629,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "phase": 2,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "solve_seconds": 0.001244400002178736,
+                "solver_result": {
+                  "phase": 2,
+                  "line": "B",
+                  "station": 1,
+                  "objective_update_time": 7.500000356230885e-05,
+                  "native_time": 0.0008731999987503514,
+                  "read_time": 0.00012409999908413738,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cplex_py",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": 4.0,
+              "best_bound": 4.0,
+              "relative_gap": null,
+              "native_relative_gap": null,
+              "solver_time": 0.001443799992557615,
+              "translation_time": 0.0024564000050304458,
+              "effective_time_limit": 29.911154800007353,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cplex_py",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+                "deadline": 123693.3793229
+              },
+              "wall_time": 0.00449000000662636,
+              "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000003_rmp_cplex_py.log"
+            },
+            "objective": 4.0,
+            "dual_objective": 4.0,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 2.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 1.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 2.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 1.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ],
+                "weight": 0.5
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 2,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.5
+              }
+            ],
+            "artificials": [],
+            "maximum_reduced_cost": 0.0,
+            "rmp_formula_upper_bound": 4.0,
+            "repaired_upper_bound": 4.0,
+            "upper_bound_base": 4.0,
+            "lp_gap": 0.0,
+            "columns_added": []
+          }
+        ],
+        "phase1_status": "feasible_real_RMP_confirmed",
+        "phase2_status": "node_lp_optimal_proven",
+        "solver_events": [
+          {
+            "backend": "cplex_py",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -2.0,
+            "best_bound": -2.0,
+            "relative_gap": null,
+            "native_relative_gap": null,
+            "solver_time": 0.0008125000022118911,
+            "translation_time": 0.001880299998447299,
+            "effective_time_limit": 29.934720100005507,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+              "deadline": 123693.3793229
+            },
+            "wall_time": 0.0030701999930897728,
+            "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000000_rmp_cplex_py.log"
+          },
+          {
+            "backend": "cplex_py",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -0.5,
+            "best_bound": -0.5,
+            "relative_gap": null,
+            "native_relative_gap": null,
+            "solver_time": 0.0009652000007918105,
+            "translation_time": 0.001985800001421012,
+            "effective_time_limit": 29.92321720000473,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+              "deadline": 123693.3793229
+            },
+            "wall_time": 0.0033536999981151894,
+            "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000001_rmp_cplex_py.log"
+          },
+          {
+            "backend": "cplex_py",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -0.0,
+            "best_bound": -0.0,
+            "relative_gap": null,
+            "native_relative_gap": null,
+            "solver_time": 0.0010909999982686713,
+            "translation_time": 0.0019327000045450404,
+            "effective_time_limit": 29.916049399995245,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+              "deadline": 123693.3793229
+            },
+            "wall_time": 0.00355660000059288,
+            "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000002_rmp_cplex_py.log"
+          },
+          {
+            "backend": "cplex_py",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 4.0,
+            "best_bound": 4.0,
+            "relative_gap": null,
+            "native_relative_gap": null,
+            "solver_time": 0.001443799992557615,
+            "translation_time": 0.0024564000050304458,
+            "effective_time_limit": 29.911154800007353,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs",
+              "deadline": 123693.3793229
+            },
+            "wall_time": 0.00449000000662636,
+            "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000_logs\\000003_rmp_cplex_py.log"
+          }
+        ],
+        "error": null
+      },
+      "branch_decision": {
+        "variable": [
+          "A",
+          "0",
+          1,
+          "H"
+        ],
+        "lp_value": 0.5
+      },
+      "lower_bound_after": null,
+      "elapsed_at_completion": 0.10148559999652207,
+      "certificate_file": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000000.json"
+    },
+    {
+      "node_id": 1,
+      "parent_id": 0,
+      "depth": 1,
+      "branching_variable": [
+        "A",
+        "0",
+        1,
+        "H"
+      ],
+      "branching_value": 0,
+      "restrictions": [
+        {
+          "variable": [
+            "A",
+            "0",
+            1,
+            "H"
+          ],
+          "value": 0
+        }
+      ],
+      "inherited_upper_bound": 4.0,
+      "node_lp_upper_bound": null,
+      "safe_upper_bound": 4.0,
+      "upper_bound_source": "parent_inherited",
+      "phase1_status": "infeasible_proven",
+      "phase2_status": "not_run",
+      "node_status": "pruned_phase1_infeasible",
+      "termination_reason": "Complete Phase I repaired dual bound is strictly negative",
+      "children": [],
+      "columns_generated": 0,
+      "pricing_calls": 2,
+      "solve_seconds": 0.01654929999494925,
+      "process_index": 1,
+      "lower_bound_before": null,
+      "node_result": {
+        "status": "phase1_infeasible_proven",
+        "lp_objective": null,
+        "lp_upper_bound": null,
+        "lp_solution": [],
+        "x_values": [],
+        "columns_generated": 0,
+        "pricing_calls": 2,
+        "solve_seconds": 0.01654929999494925,
+        "termination_reason": "Complete Phase I repaired dual bound is strictly negative"
+      },
+      "certificate": {
+        "restrictions": [
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "H"
+            ],
+            "value": 0
+          }
+        ],
+        "initialization": [
+          {
+            "line": "A",
+            "station": 1,
+            "inherited_count": 3,
+            "legal_inherited_count": 2
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "inherited_count": 2,
+            "legal_inherited_count": 2
+          }
+        ],
+        "initial_pool": [
+          {
+            "line": "A",
+            "station": 1,
+            "patterns": [
+              [],
+              [
+                [
+                  "0",
+                  "R"
+                ]
+              ]
+            ]
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "patterns": [
+              [],
+              [
+                [
+                  "0",
+                  "J"
+                ]
+              ]
+            ]
+          }
+        ],
+        "rounds": [
+          {
+            "phase": 1,
+            "iteration": 1,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "R"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [
+                  {
+                    "task": "0",
+                    "mode": "H",
+                    "value": 0
+                  }
+                ],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [],
+                "solve_seconds": 0.002129800006514415,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "A",
+                  "station": 1,
+                  "objective_update_time": 5.420000525191426e-05,
+                  "native_time": 0.0016552000015508384,
+                  "read_time": 0.00017109999316744506,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [],
+                "solve_seconds": 0.00170829999842681,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "B",
+                  "station": 1,
+                  "objective_update_time": 6.829999620094895e-05,
+                  "native_time": 0.0013746000040555373,
+                  "read_time": 8.990000060293823e-05,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cplex_py",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": -0.5,
+              "best_bound": -0.5,
+              "relative_gap": null,
+              "native_relative_gap": null,
+              "solver_time": 0.0014627999917138368,
+              "translation_time": 0.0022812000097474083,
+              "effective_time_limit": 29.891375699997297,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cplex_py",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000001_logs",
+                "deadline": 123693.3793229
+              },
+              "wall_time": 0.004255700012436137,
+              "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000001_logs\\000000_rmp_cplex_py.log"
+            },
+            "objective": -0.5,
+            "dual_objective": -0.5,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.5
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 1.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -0.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": -1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.5
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 1.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.0
+              },
+              {
+                "line": "A",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "R"
+                  ]
+                ],
+                "weight": 1.0
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.5
+              }
+            ],
+            "artificials": [
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": 1,
+                "value": 0.0,
+                "name": "elastic_2_plus"
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_2_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_3_minus"
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_4_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_5_minus"
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_6_minus"
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "sign": -1,
+                "value": 0.5,
+                "name": "elastic_7_minus"
+              }
+            ],
+            "artificial_sum": 0.5,
+            "maximum_reduced_cost": 0.0,
+            "rmp_formula_upper_bound": -0.5,
+            "repaired_upper_bound": -0.5,
+            "upper_bound_base": -0.5,
+            "lp_gap": 0.0,
+            "columns_added": []
+          }
+        ],
+        "phase1_status": "infeasible_proven",
+        "phase2_status": "not_run",
+        "solver_events": [
+          {
+            "backend": "cplex_py",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -0.5,
+            "best_bound": -0.5,
+            "relative_gap": null,
+            "native_relative_gap": null,
+            "solver_time": 0.0014627999917138368,
+            "translation_time": 0.0022812000097474083,
+            "effective_time_limit": 29.891375699997297,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000001_logs",
+              "deadline": 123693.3793229
+            },
+            "wall_time": 0.004255700012436137,
+            "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000001_logs\\000000_rmp_cplex_py.log"
+          }
+        ],
+        "error": null
+      },
+      "pruning": {
+        "kind": "infeasible",
+        "proof": "phase1_infeasible_proven"
+      },
+      "lower_bound_after": null,
+      "elapsed_at_completion": 0.12488119999761693,
+      "certificate_file": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000001.json"
+    },
+    {
+      "node_id": 2,
+      "parent_id": 0,
+      "depth": 1,
+      "branching_variable": [
+        "A",
+        "0",
+        1,
+        "H"
+      ],
+      "branching_value": 1,
+      "restrictions": [
+        {
+          "variable": [
+            "A",
+            "0",
+            1,
+            "H"
+          ],
+          "value": 1
+        }
+      ],
+      "inherited_upper_bound": 4.0,
+      "node_lp_upper_bound": null,
+      "safe_upper_bound": 4.0,
+      "upper_bound_source": "parent_inherited",
+      "phase1_status": "infeasible_proven",
+      "phase2_status": "not_run",
+      "node_status": "pruned_phase1_infeasible",
+      "termination_reason": "Complete Phase I repaired dual bound is strictly negative",
+      "children": [],
+      "columns_generated": 0,
+      "pricing_calls": 2,
+      "solve_seconds": 0.017036999997799285,
+      "process_index": 2,
+      "lower_bound_before": null,
+      "node_result": {
+        "status": "phase1_infeasible_proven",
+        "lp_objective": null,
+        "lp_upper_bound": null,
+        "lp_solution": [],
+        "x_values": [],
+        "columns_generated": 0,
+        "pricing_calls": 2,
+        "solve_seconds": 0.017036999997799285,
+        "termination_reason": "Complete Phase I repaired dual bound is strictly negative"
+      },
+      "certificate": {
+        "restrictions": [
+          {
+            "variable": [
+              "A",
+              "0",
+              1,
+              "H"
+            ],
+            "value": 1
+          }
+        ],
+        "initialization": [
+          {
+            "line": "A",
+            "station": 1,
+            "inherited_count": 3,
+            "legal_inherited_count": 1
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "inherited_count": 2,
+            "legal_inherited_count": 2
+          }
+        ],
+        "initial_pool": [
+          {
+            "line": "A",
+            "station": 1,
+            "patterns": [
+              [
+                [
+                  "0",
+                  "H"
+                ]
+              ]
+            ]
+          },
+          {
+            "line": "B",
+            "station": 1,
+            "patterns": [
+              [],
+              [
+                [
+                  "0",
+                  "J"
+                ]
+              ]
+            ]
+          }
+        ],
+        "rounds": [
+          {
+            "phase": 1,
+            "iteration": 1,
+            "complete_pricing": true,
+            "pool": [
+              {
+                "line": "A",
+                "station": 1,
+                "patterns": [
+                  [
+                    [
+                      "0",
+                      "H"
+                    ]
+                  ]
+                ]
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "patterns": [
+                  [],
+                  [
+                    [
+                      "0",
+                      "J"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "pricing": [
+              {
+                "line": "A",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [
+                  {
+                    "task": "0",
+                    "mode": "H",
+                    "value": 1
+                  }
+                ],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ],
+                "solve_seconds": 0.0012824000004911795,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "A",
+                  "station": 1,
+                  "objective_update_time": 3.809999907389283e-05,
+                  "native_time": 0.000971800007391721,
+                  "read_time": 0.00010309999925084412,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "phase": 1,
+                "purpose": "pricing",
+                "fixed_variables": [],
+                "status": "optimal",
+                "optimal": true,
+                "has_incumbent": true,
+                "incumbent": 0.0,
+                "reduced_cost": 0.0,
+                "objective": 0.0,
+                "best_bound": 0.0,
+                "assignments": [],
+                "solve_seconds": 0.0017822999943746254,
+                "solver_result": {
+                  "phase": 1,
+                  "line": "B",
+                  "station": 1,
+                  "objective_update_time": 6.500000017695129e-05,
+                  "native_time": 0.0014044999988982454,
+                  "read_time": 0.00011940000695176423,
+                  "status": "optimal",
+                  "native_status": 101,
+                  "rc": 0.0,
+                  "best_bound": 0.0,
+                  "optimal": true,
+                  "native_status_text": "integer optimal solution",
+                  "objective": 0.0,
+                  "nodes": 0,
+                  "mip_gap": 0.0,
+                  "backend": "node_persistent_cplex",
+                  "has_incumbent": true
+                },
+                "error": null
+              }
+            ],
+            "rmp_status": "optimal",
+            "rmp_solver_result": {
+              "backend": "cplex_py",
+              "role": "rmp",
+              "status": "optimal",
+              "native_status": 1,
+              "native_status_text": "optimal",
+              "optimal": true,
+              "has_incumbent": true,
+              "objective": -0.5,
+              "best_bound": -0.5,
+              "relative_gap": null,
+              "native_relative_gap": null,
+              "solver_time": 0.001246899992111139,
+              "translation_time": 0.0030562000029021874,
+              "effective_time_limit": 29.871378600000753,
+              "relative_gap_requested": 0,
+              "options": {
+                "name": "cplex_py",
+                "overrides": {},
+                "threads": 1,
+                "seed": 11,
+                "primal_tolerance": 1e-08,
+                "dual_tolerance": 1e-08,
+                "mip_integrality_tolerance": 1e-07,
+                "time_limit": null,
+                "role_limits": {},
+                "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000002_logs",
+                "deadline": 123693.3793229
+              },
+              "wall_time": 0.005043700002715923,
+              "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000002_logs\\000000_rmp_cplex_py.log"
+            },
+            "objective": -0.5,
+            "dual_objective": -0.5,
+            "raw_duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -2.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.5
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "duals": [
+              {
+                "row": [
+                  "station",
+                  "A",
+                  1
+                ],
+                "value": -2.0
+              },
+              {
+                "row": [
+                  "station",
+                  "B",
+                  1
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "value": 0.0
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "value": 0.5
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "value": 1.0
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "value": 0.0
+              }
+            ],
+            "solution": [
+              {
+                "line": "A",
+                "station": 1,
+                "column": 0,
+                "assignments": [
+                  [
+                    "0",
+                    "H"
+                  ]
+                ],
+                "weight": 1.0
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 0,
+                "assignments": [],
+                "weight": 0.5
+              },
+              {
+                "line": "B",
+                "station": 1,
+                "column": 1,
+                "assignments": [
+                  [
+                    "0",
+                    "J"
+                  ]
+                ],
+                "weight": 0.5
+              }
+            ],
+            "artificials": [
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": 1,
+                "value": 0.0,
+                "name": "elastic_2_plus"
+              },
+              {
+                "row": [
+                  "task",
+                  "A",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_2_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "A"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_3_minus"
+              },
+              {
+                "row": [
+                  "task",
+                  "B",
+                  "0"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_4_minus"
+              },
+              {
+                "row": [
+                  "recovery",
+                  "B"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_5_minus"
+              },
+              {
+                "row": [
+                  "human"
+                ],
+                "sign": -1,
+                "value": 0.5,
+                "name": "elastic_6_minus"
+              },
+              {
+                "row": [
+                  "robot"
+                ],
+                "sign": -1,
+                "value": 0.0,
+                "name": "elastic_7_minus"
+              }
+            ],
+            "artificial_sum": 0.5,
+            "maximum_reduced_cost": 0.0,
+            "rmp_formula_upper_bound": -0.5,
+            "repaired_upper_bound": -0.5,
+            "upper_bound_base": -0.5,
+            "lp_gap": 0.0,
+            "columns_added": []
+          }
+        ],
+        "phase1_status": "infeasible_proven",
+        "phase2_status": "not_run",
+        "solver_events": [
+          {
+            "backend": "cplex_py",
+            "role": "rmp",
+            "status": "optimal",
+            "native_status": 1,
+            "native_status_text": "optimal",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -0.5,
+            "best_bound": -0.5,
+            "relative_gap": null,
+            "native_relative_gap": null,
+            "solver_time": 0.001246899992111139,
+            "translation_time": 0.0030562000029021874,
+            "effective_time_limit": 29.871378600000753,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000002_logs",
+              "deadline": 123693.3793229
+            },
+            "wall_time": 0.005043700002715923,
+            "log_path": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000002_logs\\000000_rmp_cplex_py.log"
+          }
+        ],
+        "error": null
+      },
+      "pruning": {
+        "kind": "infeasible",
+        "proof": "phase1_infeasible_proven"
+      },
+      "lower_bound_after": null,
+      "elapsed_at_completion": 0.1452766000002157,
+      "certificate_file": "docs\\branch_and_price\\task03\\evidence\\sealed_validation\\lp_yes_ip_no_V1\\tree\\node_000002.json"
+    }
+  ],
+  "processing_order": [
+    0,
+    1,
+    2
+  ],
+  "termination_reason": "Every leaf has a proven infeasibility certificate",
+  "input_sha256": "37d73f83d95904d89815c378276bbd61d121792bcc1920a6f04dc98a35f16cf3",
+  "initial_incumbent": null,
+  "acquisition": {
+    "mode": "off",
+    "seconds": 0.000338099998771213,
+    "solver_result": null
+  },
+  "first_integer_seconds": null,
+  "task03_version": "V1",
+  "component_timings": [
+    {
+      "pp_wall": 0.011571099981665611,
+      "rmp_build": 0.0015238000050885603,
+      "rmp_solve_read": 0.01818690000800416,
+      "other": 0.0030897000106051564,
+      "node_total": 0.03437150000536349
+    },
+    {
+      "pp_wall": 0.009703000003355555,
+      "rmp_build": 0.0002558999985922128,
+      "rmp_solve_read": 0.005128599994350225,
+      "other": 0.0014617999986512586,
+      "node_total": 0.01654929999494925
+    },
+    {
+      "pp_wall": 0.008990499991341494,
+      "rmp_build": 0.0002981000143336132,
+      "rmp_solve_read": 0.006068200003937818,
+      "other": 0.0016801999881863594,
+      "node_total": 0.017036999997799285
+    }
+  ],
+  "adapter_sha256": {
+    "branch_price_engine.py": "05d0da623e79a0a1a7168738159ca040ce60efd9fcad12041e007989ca04c326",
+    "node_incremental_master.py": "6acff0ab4a803170434d1aeb9ddbac2350fd97b6aeeeb27a391ea8ed3037638d",
+    "node_master.py": "1ff3f58d5aa651dfbaf949dc1db9b12283ccc29c9bb56919ca789d0ffdd4f174",
+    "node_master_optimized.py": "4661635c1f66a0e7a99c7f2d21015dc2999b0b88899732714078c82e93f6d51c",
+    "node_master_v0.py": "1ff3f58d5aa651dfbaf949dc1db9b12283ccc29c9bb56919ca789d0ffdd4f174",
+    "node_persistent_pricing.py": "cf46538444ae2dee964246b8979a6dde424be11aa33efd037d7b516fabb0ec74",
+    "node_pricing.py": "910637e1142e398a9378fffdb7c9ba587b25fbad4069c2a701e34fb6a77cd37f",
+    "node_state.py": "59e84691ab7f59dfed827c57aba4859f0e56d7894715d2ad4167757f442e962f",
+    "task03.py": "04b6e4492fa2e2119a5a5e0d1fa3103f835bc63396d209b80aef320e9dc8eed8",
+    "test_node_cg.py": "c1820cbf12909bc264be362f626f89b5a982141446bf3b5f2ce5708d0a801ebe",
+    "test_node_state.py": "d140f8d18fc2ed70018e041f9a6ec5dc9e7ada46aa231d002072773e936f414f"
+  }
+}
