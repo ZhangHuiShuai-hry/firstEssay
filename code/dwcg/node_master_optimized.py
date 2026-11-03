@@ -93,13 +93,19 @@ def _unproven_status(cert):
 
 
 def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver='cbc',
-               deadline=None, max_iterations=1000, log_dir=None, verbose=False, version='V1'):
+               deadline=None, max_iterations=1000, log_dir=None, verbose=False, version='V1',incremental_evidence=False,round_sink=None):
     """No enumeration, no monkeypatch, no native state shared between nodes."""
     compact.validate_data(data);policy=policy or NumericPolicy()
     restrictions=(restrictions or NodeRestrictions()).validate(data)
     compact.integer(max_iterations,'max_iterations',1)
     cert=NodeCertificate(restrictions.to_records())
+    def publish(record):
+        if round_sink is not None:round_sink.put(dict(restrictions=restrictions.to_records(),record=record),'pricing_round')
     result=NodeResult('numerical_uncertain',cert);started=time.perf_counter()
+    if incremental_evidence:
+        from incremental_evidence import ColumnLedger
+        capture_pool=ColumnLedger().capture
+    else:capture_pool=pool_snapshot
     config=BackendConfig(name=solver,threads=1,seed=11,deadline=deadline,
         primal_tolerance=policy.lp_primal_tolerance,dual_tolerance=policy.lp_dual_tolerance,
         mip_integrality_tolerance=policy.pricing_integrality_tolerance,
@@ -110,7 +116,7 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
     def node_price(line,s,duals,phase,restrictions,policy,**kwargs):
         tick=time.perf_counter()
         try:
-            if solver!='cplex_py':return price_node(line,s,duals,phase,restrictions,policy,**kwargs)
+            if solver!='cplex_py' or version=='V0':return price_node(line,s,duals,phase,restrictions,policy,**kwargs)
             from node_persistent_pricing import NodePersistentPricing
             key=line['id'],s
             if key not in native_pp:
@@ -149,12 +155,12 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
                         return result
                     validate_column(line,s,answer.column,restrictions,policy)
                     legal.append(answer.column);result.columns_generated+=1
-            cert.initial_pool=pool_snapshot(result.pool)
+            cert.initial_pool=capture_pool(result.pool)
             for phase in (1,2):
                 active_phase=phase
                 for iteration in range(1,max_iterations+1):
                     record={'phase':phase,'iteration':iteration,'complete_pricing':False,
-                            'pool':pool_snapshot(result.pool),'pricing':[]}
+                            'pool':capture_pool(result.pool),'pricing':[]}
                     cert.rounds.append(record)
                     tick=time.perf_counter()
                     m=build_node_master(data,result.pool,restrictions,phase,policy)
@@ -166,10 +172,14 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
                     tick=time.perf_counter()
                     value,raw,duals,dobj,info=solve_node_master(m,policy,verbose)
                     metrics['rmp_solve_read']+=time.perf_counter()-tick
+                    if incremental_evidence:
+                        from incremental_evidence import PrimalView
+                        solution=PrimalView(record['pool'],m.variables)
+                    else:solution=primal_snapshot(m,result.pool)
                     record.update(rmp_status='optimal',rmp_solver_result=info,objective=value,dual_objective=dobj,
                         raw_duals=[{'row':list(k),'value':v} for k,v in raw.items()],
                         duals=[{'row':list(k),'value':v} for k,v in duals.items()],
-                        solution=primal_snapshot(m,result.pool),
+                        solution=solution,
                         artificials=[{'row':list(k),'sign':sign,'value':v.value(),'name':v.name} for k,sign,v in m.elastic])
                     if phase==1:
                         artificial_sum=sum(v.value() for k,sign,v in m.elastic)
@@ -179,6 +189,7 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
                         if artificial_sum<=policy.artificial_tolerance:
                             cert.phase1_status='zero_artificials_pending_real_RMP_check'
                             record['event']='attempt_phase2_without_artificials'
+                            publish(record)
                             break
                     else:
                         # This is the independent real-RMP feasibility confirmation.
@@ -199,6 +210,7 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
                         if not pp.optimal or pp.status!='optimal' or answer.column is None:
                             result.status='solver_error' if pp.status=='infeasible' else _unproven_status(pp)
                             result.termination_reason='Unproven pricing; no new round bound'
+                            publish(record)
                             return result
                         col=validate_column(line,s,answer.column,restrictions,policy)
                         rc=reduced_cost(line,s,col,duals,phase)
@@ -225,12 +237,15 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
                             else:
                                 cert.phase1_status='numerical_uncertain';result.status='numerical_uncertain'
                                 result.termination_reason='Phase I certificate insufficient for infeasibility'
+                            publish(record)
                             return result
                         cert.phase2_status='node_lp_optimal_proven';result.status='node_lp_optimal_proven'
                         result.termination_reason='Complete exact pricing in all node blocks'
+                        publish(record)
                         return result
                     if iteration==max_iterations:
                         result.status='cg_iteration_limit';result.termination_reason=f'Phase {phase} CG iteration limit'
+                        publish(record)
                         return result
                     for line,s,col,rc in candidates:
                         if rc>policy.reduced_cost_epsilon:
@@ -239,6 +254,7 @@ def solve_node(data, restrictions=None, parent_pool=None, *, policy=None, solver
                                 raise NumericalUncertain('Positive reduced cost duplicate column')
                             cols.append(col);result.columns_generated+=1
                             record['columns_added'].append({'line':line['id'],'station':s,'assignments':list(col.assignments)})
+                    publish(record)
     except TimeoutError as error:
         result.status='time_limit';result.termination_reason=str(error)
         cert.error={'type':type(error).__name__,'message':str(error)}

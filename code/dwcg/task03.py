@@ -34,7 +34,8 @@ def run(data,version='V0',**kwargs):
             except Exception as e:acquisition={'error':repr(e)}
         kwargs['time_limit']=max(1e-12,budget-(time.perf_counter()-started))
     warm_seconds=time.perf_counter()-started
-    solver=legacy if version=='V0' else partial(optimized,version='V2' if version=='V3' else version)
+    incremental=kwargs.pop('incremental_evidence',False)
+    solver=legacy if version=='V0' and not incremental else partial(optimized,version='V2' if version=='V3' else version,incremental_evidence=incremental,round_sink=kwargs.get('evidence_sink') if incremental else None)
     metrics=[]
     def measured(*args,**kw):
         r=solver(*args,**kw)

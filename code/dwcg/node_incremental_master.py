@@ -48,6 +48,7 @@ class NodeIncrementalMaster:
         if remaining<=0:raise TimeoutError('Native node RMP deadline')
         self.native.parameters.timelimit.set(remaining)
         tick=time.perf_counter();self.native.solve();elapsed=time.perf_counter()-tick
+        read_started=time.perf_counter()
         code=self.native.solution.get_status()
         if code!=1:
             if code in (10,11,12):raise TimeoutError('Native node LP time limit')
@@ -62,6 +63,7 @@ class NodeIncrementalMaster:
         m.problem.backend_result=dict(status='optimal',optimal=True,objective=self.native.solution.get_objective_value(),
             best_bound=self.native.solution.get_objective_value(),has_incumbent=True,native_status=code,
             backend='incremental_node_cplex',wall_time=elapsed,solver_time=elapsed)
+        m.problem.backend_result['native_read_seconds']=time.perf_counter()-read_started
         self.records.append(dict(m.problem.backend_result))
 
     def close(self):

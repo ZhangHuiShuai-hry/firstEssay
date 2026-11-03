@@ -22,6 +22,7 @@ from common import compact
 from node_state import NumericPolicy,NodeRestrictions,NodeResult,NumericalUncertain,most_fractional
 from node_master import solve_node
 from bp_solution import integer_from_x
+from incremental_evidence import certificate_fields
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -91,6 +92,7 @@ def run_branch_price(data, *, evidence_sink=None, seed_solution=None, solver='cb
         lower=incumbent['objective']
     if evidence_sink is not None:
         evidence_sink.put(dict(status='time_limit',checkpoint_kind='safe_initial_frontier',
+            recoverable_search=False,
             global_lower_bound=lower,global_upper_bound=None,integer_incumbent_solution=incumbent,
             global_integer_optimal_proven=False,global_infeasibility_proven=False,
             open_nodes=[dict(node_id=0,status='unresolved',safe_upper_bound=None)]),'checkpoint')
@@ -100,7 +102,8 @@ def run_branch_price(data, *, evidence_sink=None, seed_solution=None, solver='cb
         if evidence_sink is not None:evidence_sink.put(n,'node')
         if output_dir:
             path=output_dir/f'node_{n["node_id"]:06d}.json'
-            with path.open('x',encoding='utf-8') as f:json.dump(n,f,ensure_ascii=False,indent=2,allow_nan=False)
+            from incremental_evidence import materialize
+            with path.open('x',encoding='utf-8') as f:json.dump(materialize(n),f,ensure_ascii=False,indent=2,allow_nan=False)
             n['certificate_file']=str(path)
 
     try:
@@ -126,7 +129,7 @@ def run_branch_price(data, *, evidence_sink=None, seed_solution=None, solver='cb
                          error={'traceback':traceback.format_exc()},lower_bound_after=lower)
                 stack.append(node_id);status='solver_error';reason='Node solver raised an exception';save_node(n);break
             pricing_calls+=answer.pricing_calls;generated+=answer.columns_generated
-            n.update(node_result=answer.to_dict(),certificate=asdict(answer.certificate),
+            n.update(node_result=answer.to_dict(),certificate=certificate_fields(answer.certificate),
                      phase1_status=answer.certificate.phase1_status,phase2_status=answer.certificate.phase2_status,
                      columns_generated=answer.columns_generated,pricing_calls=answer.pricing_calls,
                      solve_seconds=answer.solve_seconds,node_lp_upper_bound=answer.lp_upper_bound)
