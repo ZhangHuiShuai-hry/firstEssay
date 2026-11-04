@@ -1,0 +1,47 @@
+{
+  "name": "Synthetic shared-resource benchmark",
+  "human_limit": 2, "robot_limit": 1,
+  "lines": [
+    {
+      "id": "L1", "cycle_time": 6, "fatigue_limit": 0.5, "min_recovery": 2,
+      "stations": [
+        {"fixed_cost": 2, "human_cost": 1, "robot_cost": 3},
+        {"fixed_cost": 3, "human_cost": 1, "robot_cost": 2}
+      ],
+      "tasks": [
+        {"id": "1", "value": 8, "weight": 1, "modes": {
+          "H": {"time": 3, "cost": 1, "beta": 0.12},
+          "R": {"time": 2, "cost": 3, "beta": 0},
+          "J": {"time": 2, "cost": 2, "beta": 0.1}
+        }},
+        {"id": "2", "value": 14, "weight": 2, "modes": {
+          "H": {"time": 4, "cost": 2, "beta": 0.14},
+          "J": {"time": 2, "cost": 3, "beta": 0.12}
+        }},
+        {"id": "3", "value": 10, "weight": 1, "modes": {
+          "H": {"time": 3, "cost": 1, "beta": 0.1},
+          "R": {"time": 2, "cost": 2, "beta": 0}
+        }}
+      ],
+      "precedence": [["1", "2"], ["1", "3"]], "required_tasks": ["2"]
+    },
+    {
+      "id": "L2", "cycle_time": 5, "fatigue_limit": 0.5, "min_recovery": 1,
+      "stations": [
+        {"fixed_cost": 2, "human_cost": 1, "robot_cost": 2},
+        {"fixed_cost": 2, "human_cost": 1, "robot_cost": 2}
+      ],
+      "tasks": [
+        {"id": "1", "value": 9, "weight": 1, "modes": {
+          "H": {"time": 2, "cost": 1, "beta": 0.15},
+          "R": {"time": 2, "cost": 2, "beta": 0}
+        }},
+        {"id": "2", "value": 12, "weight": 2, "modes": {
+          "H": {"time": 3, "cost": 1, "beta": 0.16},
+          "J": {"time": 2, "cost": 2, "beta": 0.08}
+        }}
+      ],
+      "precedence": [["1", "2"]], "required_tasks": []
+    }
+  ]
+}

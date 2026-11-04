@@ -1,0 +1,71 @@
+{
+  "human_limit": 1,
+  "robot_limit": 1,
+  "lines": [
+    {
+      "id": "A",
+      "cycle_time": 2,
+      "fatigue_limit": 0.5,
+      "stations": [
+        {
+          "fixed_cost": 1,
+          "human_cost": 1,
+          "robot_cost": 1
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t",
+          "value": 13,
+          "weight": 1,
+          "modes": {
+            "J": {
+              "time": 1,
+              "cost": 1,
+              "beta": 0
+            }
+          }
+        }
+      ],
+      "required_tasks": [],
+      "min_recovery": 0,
+      "precedence": []
+    },
+    {
+      "id": "B",
+      "cycle_time": 2,
+      "fatigue_limit": 0.5,
+      "stations": [
+        {
+          "fixed_cost": 1,
+          "human_cost": 1,
+          "robot_cost": 1
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t",
+          "value": 5,
+          "weight": 1,
+          "modes": {
+            "H": {
+              "time": 1,
+              "cost": 1,
+              "beta": 0
+            },
+            "R": {
+              "time": 1,
+              "cost": 1,
+              "beta": 0
+            }
+          }
+        }
+      ],
+      "required_tasks": [
+        "t"
+      ],
+      "min_recovery": 0,
+      "precedence": []
+    }
+  ]
+}
