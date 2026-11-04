@@ -1,0 +1,2569 @@
+{
+  "algorithm": "conflict_directed_repair_columns",
+  "scope": "verified_integer_LB_only",
+  "global_integer_optimal_proven": false,
+  "status": "no_feasible_solution_found",
+  "initial_columns": 434,
+  "final_columns": 504,
+  "witness": null,
+  "integer_lower_bound": null,
+  "first_integer_seconds": null,
+  "seconds": 6.173476699972525,
+  "config": {
+    "time_limit": 30.0,
+    "rounds": 3,
+    "column_limit": 200,
+    "joint": false,
+    "solver": "cplex_py"
+  },
+  "history": [
+    {
+      "stage": "original_pool_integer",
+      "result": {
+        "scope": "restricted_pool_only",
+        "witness": null,
+        "solver_result": {
+          "backend": "cplex_py",
+          "role": "recovery",
+          "status": "infeasible",
+          "native_status": 103,
+          "native_status_text": "integer infeasible",
+          "optimal": false,
+          "has_incumbent": false,
+          "objective": null,
+          "best_bound": null,
+          "relative_gap": null,
+          "native_relative_gap": null,
+          "solver_time": 0.012796800001524389,
+          "translation_time": 0.009957000002032146,
+          "effective_time_limit": 1.9017507999960799,
+          "relative_gap_requested": 0,
+          "options": {
+            "name": "cplex_py",
+            "overrides": {},
+            "threads": 1,
+            "seed": 11,
+            "primal_tolerance": 1e-08,
+            "dual_tolerance": 1e-08,
+            "mip_integrality_tolerance": 1e-07,
+            "time_limit": null,
+            "role_limits": {},
+            "log_dir": null,
+            "deadline": 245412.08747
+          },
+          "wall_time": 0.023413200018694624,
+          "log_path": null
+        },
+        "seconds": 0.3329267999797594
+      }
+    },
+    {
+      "stage": "repair",
+      "iteration": 1,
+      "seed": {
+        "assignments": [
+          {
+            "line": "L1",
+            "station": 1,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 5,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 6,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 7,
+            "column": 2,
+            "assignments": [
+              [
+                "1",
+                "J"
+              ],
+              [
+                "12",
+                "J"
+              ],
+              [
+                "17",
+                "J"
+              ],
+              [
+                "19",
+                "J"
+              ],
+              [
+                "2",
+                "H"
+              ],
+              [
+                "3",
+                "R"
+              ],
+              [
+                "4",
+                "J"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "column": 3,
+            "assignments": [
+              [
+                "21",
+                "R"
+              ],
+              [
+                "23",
+                "H"
+              ],
+              [
+                "24",
+                "H"
+              ],
+              [
+                "25",
+                "R"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 5,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 6,
+            "column": 4,
+            "assignments": [
+              [
+                "22",
+                "J"
+              ],
+              [
+                "23",
+                "H"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 7,
+            "column": 13,
+            "assignments": [
+              [
+                "26",
+                "J"
+              ],
+              [
+                "28",
+                "J"
+              ],
+              [
+                "30",
+                "J"
+              ],
+              [
+                "31",
+                "J"
+              ],
+              [
+                "34",
+                "J"
+              ],
+              [
+                "35",
+                "J"
+              ],
+              [
+                "37",
+                "J"
+              ],
+              [
+                "39",
+                "H"
+              ],
+              [
+                "40",
+                "R"
+              ]
+            ]
+          }
+        ],
+        "violations": [
+          {
+            "row": [
+              "precedence",
+              "L1",
+              10,
+              7
+            ],
+            "amount": 1.0,
+            "description": "L1优先关系 15→17，截至站7：后继执行次数≤前驱执行次数"
+          },
+          {
+            "row": [
+              "task",
+              "L2",
+              "23"
+            ],
+            "amount": 1.0,
+            "description": "L2任务23：必做且恰好一次"
+          }
+        ],
+        "violation_total": 2.0,
+        "minimum_violation_proven": true,
+        "events": [
+          {
+            "backend": "cplex_py",
+            "role": "repair_elastic",
+            "status": "optimal",
+            "native_status": 101,
+            "native_status_text": "integer optimal solution",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -2.0,
+            "best_bound": -2.0,
+            "relative_gap": 0.0,
+            "native_relative_gap": 0.0,
+            "solver_time": 0.6529172000009567,
+            "translation_time": 0.04236390002188273,
+            "effective_time_limit": 1.999960600020131,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": null,
+              "deadline": 245412.4577931
+            },
+            "wall_time": 0.7060266000044066,
+            "log_path": null
+          },
+          {
+            "backend": "cplex_py",
+            "role": "repair_profit",
+            "status": "time_limit",
+            "native_status": 107,
+            "native_status_text": "time limit exceeded",
+            "optimal": false,
+            "has_incumbent": true,
+            "objective": 188.77000362150002,
+            "best_bound": 291.919014138396,
+            "relative_gap": 0.5464269139055795,
+            "native_relative_gap": 0.5464269139055797,
+            "solver_time": 3.2502454000059515,
+            "translation_time": 0.010432200011564419,
+            "effective_time_limit": 3.238158799998928,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": null,
+              "deadline": 245414.457789
+            },
+            "wall_time": 3.272135499981232,
+            "log_path": null
+          }
+        ]
+      },
+      "columns": [
+        {
+          "line": "L1",
+          "station": 1,
+          "assignments": [
+            [
+              "15",
+              "R"
+            ]
+          ],
+          "profit": -12.129999999999999,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 1,
+          "assignments": [
+            [
+              "15",
+              "H"
+            ]
+          ],
+          "profit": -11.43,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 1,
+          "assignments": [
+            [
+              "15",
+              "J"
+            ]
+          ],
+          "profit": -15.03,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 2,
+          "assignments": [
+            [
+              "15",
+              "R"
+            ]
+          ],
+          "profit": -12.129999999999999,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 2,
+          "assignments": [
+            [
+              "15",
+              "H"
+            ]
+          ],
+          "profit": -11.43,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 2,
+          "assignments": [
+            [
+              "15",
+              "J"
+            ]
+          ],
+          "profit": -15.03,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 3,
+          "assignments": [
+            [
+              "15",
+              "R"
+            ]
+          ],
+          "profit": -12.129999999999999,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 3,
+          "assignments": [
+            [
+              "15",
+              "H"
+            ]
+          ],
+          "profit": -11.43,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 3,
+          "assignments": [
+            [
+              "15",
+              "J"
+            ]
+          ],
+          "profit": -15.03,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 4,
+          "assignments": [
+            [
+              "15",
+              "R"
+            ]
+          ],
+          "profit": -12.129999999999999,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 4,
+          "assignments": [
+            [
+              "15",
+              "H"
+            ]
+          ],
+          "profit": -11.43,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 4,
+          "assignments": [
+            [
+              "15",
+              "J"
+            ]
+          ],
+          "profit": -15.03,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 5,
+          "assignments": [
+            [
+              "15",
+              "R"
+            ]
+          ],
+          "profit": -12.129999999999999,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 5,
+          "assignments": [
+            [
+              "15",
+              "H"
+            ]
+          ],
+          "profit": -11.43,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 5,
+          "assignments": [
+            [
+              "15",
+              "J"
+            ]
+          ],
+          "profit": -15.03,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 6,
+          "assignments": [
+            [
+              "15",
+              "R"
+            ]
+          ],
+          "profit": -12.129999999999999,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 6,
+          "assignments": [
+            [
+              "15",
+              "H"
+            ]
+          ],
+          "profit": -11.43,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 6,
+          "assignments": [
+            [
+              "15",
+              "J"
+            ]
+          ],
+          "profit": -15.03,
+          "operation": "insert_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "15",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 48.769999999999996,
+          "operation": "swap_for_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "15",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 56.620000000000005,
+          "operation": "swap_for_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "15",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 67.89999999999999,
+          "operation": "swap_for_predecessor"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 58.650000000000006,
+          "operation": "delete_successor_closure"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "12",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 56.370000000000005,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 50.8,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 69.92999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "3",
+              "R"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 57.03999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 55.08999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "J"
+            ],
+            [
+              "4",
+              "J"
+            ]
+          ],
+          "profit": 67.08,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L1",
+          "station": 7,
+          "assignments": [
+            [
+              "1",
+              "J"
+            ],
+            [
+              "12",
+              "J"
+            ],
+            [
+              "17",
+              "J"
+            ],
+            [
+              "19",
+              "J"
+            ],
+            [
+              "2",
+              "H"
+            ],
+            [
+              "3",
+              "R"
+            ]
+          ],
+          "profit": 49.99999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 11.5,
+          "operation": "delete_duplicate"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "22",
+              "J"
+            ]
+          ],
+          "profit": -0.6799999999999997,
+          "operation": "delete_duplicate"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "23",
+              "H"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 31.39,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "H"
+            ],
+            [
+              "23",
+              "H"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 26.560000000000002,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "J"
+            ],
+            [
+              "23",
+              "H"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 26.96,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "23",
+              "R"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 26.560000000000002,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "23",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 12.030000000000001,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "23",
+              "H"
+            ],
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 26.560000000000002,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "23",
+              "H"
+            ],
+            [
+              "24",
+              "H"
+            ]
+          ],
+          "profit": 12.66,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "23",
+              "H"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "J"
+            ]
+          ],
+          "profit": 27.260000000000005,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "23",
+              "H"
+            ]
+          ],
+          "profit": 6.359999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "22",
+              "R"
+            ],
+            [
+              "23",
+              "H"
+            ]
+          ],
+          "profit": 14.579999999999998,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "22",
+              "H"
+            ],
+            [
+              "23",
+              "H"
+            ]
+          ],
+          "profit": 18.28,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "22",
+              "J"
+            ],
+            [
+              "23",
+              "R"
+            ]
+          ],
+          "profit": 14.379999999999999,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 63.25,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 70.50999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 69.98999999999998,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 71.45999999999998,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 62.66999999999999,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 70.78,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 66.12,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 72.4,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "R"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 78.44999999999999,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "J"
+            ],
+            [
+              "40",
+              "R"
+            ]
+          ],
+          "profit": 77.35,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 7,
+          "assignments": [
+            [
+              "26",
+              "J"
+            ],
+            [
+              "28",
+              "J"
+            ],
+            [
+              "30",
+              "J"
+            ],
+            [
+              "31",
+              "J"
+            ],
+            [
+              "34",
+              "J"
+            ],
+            [
+              "35",
+              "J"
+            ],
+            [
+              "37",
+              "J"
+            ],
+            [
+              "39",
+              "H"
+            ]
+          ],
+          "profit": 69.82,
+          "operation": "single_deletion"
+        }
+      ],
+      "integer_recovery": {
+        "scope": "restricted_pool_only",
+        "witness": null,
+        "solver_result": {
+          "backend": "cplex_py",
+          "role": "recovery",
+          "status": "infeasible",
+          "native_status": 103,
+          "native_status_text": "integer infeasible",
+          "optimal": false,
+          "has_incumbent": false,
+          "objective": null,
+          "best_bound": null,
+          "relative_gap": null,
+          "native_relative_gap": null,
+          "solver_time": 0.016329600010067225,
+          "translation_time": 0.010860799986403435,
+          "effective_time_limit": 1.9831838000100106,
+          "relative_gap_requested": 0,
+          "options": {
+            "name": "cplex_py",
+            "overrides": {},
+            "threads": 1,
+            "seed": 11,
+            "primal_tolerance": 1e-08,
+            "dual_tolerance": 1e-08,
+            "mip_integrality_tolerance": 1e-07,
+            "time_limit": null,
+            "role_limits": {},
+            "log_dir": null,
+            "deadline": 245416.5117946
+          },
+          "wall_time": 0.028091499989386648,
+          "log_path": null
+        },
+        "seconds": 0.04793999998946674
+      },
+      "elapsed": 4.4887871999817435
+    },
+    {
+      "stage": "repair",
+      "iteration": 2,
+      "seed": {
+        "assignments": [
+          {
+            "line": "L1",
+            "station": 1,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 5,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 6,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 7,
+            "column": 2,
+            "assignments": [
+              [
+                "1",
+                "J"
+              ],
+              [
+                "12",
+                "J"
+              ],
+              [
+                "17",
+                "J"
+              ],
+              [
+                "19",
+                "J"
+              ],
+              [
+                "2",
+                "H"
+              ],
+              [
+                "3",
+                "R"
+              ],
+              [
+                "4",
+                "J"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "column": 30,
+            "assignments": [
+              [
+                "21",
+                "R"
+              ],
+              [
+                "24",
+                "H"
+              ],
+              [
+                "25",
+                "R"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 5,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 6,
+            "column": 33,
+            "assignments": [
+              [
+                "22",
+                "H"
+              ],
+              [
+                "23",
+                "H"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 7,
+            "column": 13,
+            "assignments": [
+              [
+                "26",
+                "J"
+              ],
+              [
+                "28",
+                "J"
+              ],
+              [
+                "30",
+                "J"
+              ],
+              [
+                "31",
+                "J"
+              ],
+              [
+                "34",
+                "J"
+              ],
+              [
+                "35",
+                "J"
+              ],
+              [
+                "37",
+                "J"
+              ],
+              [
+                "39",
+                "H"
+              ],
+              [
+                "40",
+                "R"
+              ]
+            ]
+          }
+        ],
+        "violations": [
+          {
+            "row": [
+              "precedence",
+              "L1",
+              10,
+              7
+            ],
+            "amount": 1.0,
+            "description": "L1优先关系 15→17，截至站7：后继执行次数≤前驱执行次数"
+          }
+        ],
+        "violation_total": 1.0,
+        "minimum_violation_proven": true,
+        "events": [
+          {
+            "backend": "cplex_py",
+            "role": "repair_elastic",
+            "status": "optimal",
+            "native_status": 101,
+            "native_status_text": "integer optimal solution",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -1.0,
+            "best_bound": -1.0,
+            "relative_gap": 0.0,
+            "native_relative_gap": 0.0,
+            "solver_time": 0.19234080001479015,
+            "translation_time": 0.014682000008178875,
+            "effective_time_limit": 1.9999645999923814,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": null,
+              "deadline": 245416.5782762
+            },
+            "wall_time": 0.22261250001611188,
+            "log_path": null
+          },
+          {
+            "backend": "cplex_py",
+            "role": "repair_profit",
+            "status": "optimal",
+            "native_status": 101,
+            "native_status_text": "integer optimal solution",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 177.01000047825926,
+            "best_bound": 177.01000047825926,
+            "relative_gap": 0.0,
+            "native_relative_gap": 0.0,
+            "solver_time": 0.5074446999933571,
+            "translation_time": 0.020437600003788248,
+            "effective_time_limit": 3.7502314999874216,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": null,
+              "deadline": 245418.5782743
+            },
+            "wall_time": 0.5448271000059322,
+            "log_path": null
+          }
+        ]
+      },
+      "columns": [
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 16.03,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "H"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 11.200000000000003,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "J"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 11.600000000000001,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": -0.3299999999999983,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 14.200000000000003,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "H"
+            ]
+          ],
+          "profit": -2.6999999999999993,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "J"
+            ]
+          ],
+          "profit": 11.900000000000002,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "H"
+            ],
+            [
+              "25",
+              "H"
+            ]
+          ],
+          "profit": 11.800000000000004,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "22",
+              "H"
+            ]
+          ],
+          "profit": 2.92,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 6,
+          "assignments": [
+            [
+              "22",
+              "H"
+            ],
+            [
+              "23",
+              "R"
+            ]
+          ],
+          "profit": 13.979999999999997,
+          "operation": "mode_change"
+        }
+      ],
+      "integer_recovery": {
+        "scope": "restricted_pool_only",
+        "witness": null,
+        "solver_result": {
+          "backend": "cplex_py",
+          "role": "recovery",
+          "status": "infeasible",
+          "native_status": 103,
+          "native_status_text": "integer infeasible",
+          "optimal": false,
+          "has_incumbent": false,
+          "objective": null,
+          "best_bound": null,
+          "relative_gap": null,
+          "native_relative_gap": null,
+          "solver_time": 0.013458700006594881,
+          "translation_time": 0.015967700019245967,
+          "effective_time_limit": 1.984421500004828,
+          "relative_gap_requested": 0,
+          "options": {
+            "name": "cplex_py",
+            "overrides": {},
+            "threads": 1,
+            "seed": 11,
+            "primal_tolerance": 1e-08,
+            "dual_tolerance": 1e-08,
+            "mip_integrality_tolerance": 1e-07,
+            "time_limit": null,
+            "role_limits": {},
+            "log_dir": null,
+            "deadline": 245417.3866682
+          },
+          "wall_time": 0.030055600014748052,
+          "log_path": null
+        },
+        "seconds": 0.04805490002036095
+      },
+      "elapsed": 5.363592799985781
+    },
+    {
+      "stage": "repair",
+      "iteration": 3,
+      "seed": {
+        "assignments": [
+          {
+            "line": "L1",
+            "station": 1,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 2,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 3,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 4,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 5,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 6,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L1",
+            "station": 7,
+            "column": 2,
+            "assignments": [
+              [
+                "1",
+                "J"
+              ],
+              [
+                "12",
+                "J"
+              ],
+              [
+                "17",
+                "J"
+              ],
+              [
+                "19",
+                "J"
+              ],
+              [
+                "2",
+                "H"
+              ],
+              [
+                "3",
+                "R"
+              ],
+              [
+                "4",
+                "J"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 1,
+            "column": 43,
+            "assignments": [
+              [
+                "21",
+                "R"
+              ],
+              [
+                "24",
+                "R"
+              ],
+              [
+                "25",
+                "R"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 2,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 3,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 4,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 5,
+            "column": 0,
+            "assignments": []
+          },
+          {
+            "line": "L2",
+            "station": 6,
+            "column": 33,
+            "assignments": [
+              [
+                "22",
+                "H"
+              ],
+              [
+                "23",
+                "H"
+              ]
+            ]
+          },
+          {
+            "line": "L2",
+            "station": 7,
+            "column": 13,
+            "assignments": [
+              [
+                "26",
+                "J"
+              ],
+              [
+                "28",
+                "J"
+              ],
+              [
+                "30",
+                "J"
+              ],
+              [
+                "31",
+                "J"
+              ],
+              [
+                "34",
+                "J"
+              ],
+              [
+                "35",
+                "J"
+              ],
+              [
+                "37",
+                "J"
+              ],
+              [
+                "39",
+                "H"
+              ],
+              [
+                "40",
+                "R"
+              ]
+            ]
+          }
+        ],
+        "violations": [
+          {
+            "row": [
+              "precedence",
+              "L1",
+              10,
+              7
+            ],
+            "amount": 1.0,
+            "description": "L1优先关系 15→17，截至站7：后继执行次数≤前驱执行次数"
+          }
+        ],
+        "violation_total": 1.0,
+        "minimum_violation_proven": true,
+        "events": [
+          {
+            "backend": "cplex_py",
+            "role": "repair_elastic",
+            "status": "optimal",
+            "native_status": 101,
+            "native_status_text": "integer optimal solution",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": -1.0,
+            "best_bound": -1.0,
+            "relative_gap": 0.0,
+            "native_relative_gap": 0.9999999999,
+            "solver_time": 0.11430230000405572,
+            "translation_time": 0.011429400008637458,
+            "effective_time_limit": 1.99997400000575,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": null,
+              "deadline": 245417.4529116
+            },
+            "wall_time": 0.14462210002238862,
+            "log_path": null
+          },
+          {
+            "backend": "cplex_py",
+            "role": "repair_profit",
+            "status": "optimal",
+            "native_status": 101,
+            "native_status_text": "integer optimal solution",
+            "optimal": true,
+            "has_incumbent": true,
+            "objective": 179.71000131607693,
+            "best_bound": 179.71000131607693,
+            "relative_gap": 0.0,
+            "native_relative_gap": 0.0,
+            "solver_time": 0.5492439999943599,
+            "translation_time": 0.01231799999368377,
+            "effective_time_limit": 3.845776099973591,
+            "relative_gap_requested": 0,
+            "options": {
+              "name": "cplex_py",
+              "overrides": {},
+              "threads": 1,
+              "seed": 11,
+              "primal_tolerance": 1e-08,
+              "dual_tolerance": 1e-08,
+              "mip_integrality_tolerance": 1e-07,
+              "time_limit": null,
+              "role_limits": {},
+              "log_dir": null,
+              "deadline": 245419.4529094
+            },
+            "wall_time": 0.5760251999890897,
+            "log_path": null
+          }
+        ]
+      },
+      "columns": [
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 18.73,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "H"
+            ],
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 10.899999999999999,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "J"
+            ],
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "R"
+            ]
+          ],
+          "profit": 11.3,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "R"
+            ]
+          ],
+          "profit": 0.0,
+          "operation": "single_deletion"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "J"
+            ]
+          ],
+          "profit": 11.600000000000001,
+          "operation": "mode_change"
+        },
+        {
+          "line": "L2",
+          "station": 1,
+          "assignments": [
+            [
+              "21",
+              "R"
+            ],
+            [
+              "24",
+              "R"
+            ],
+            [
+              "25",
+              "H"
+            ]
+          ],
+          "profit": 11.5,
+          "operation": "mode_change"
+        }
+      ],
+      "integer_recovery": {
+        "scope": "restricted_pool_only",
+        "witness": null,
+        "solver_result": {
+          "backend": "cplex_py",
+          "role": "recovery",
+          "status": "infeasible",
+          "native_status": 103,
+          "native_status_text": "integer infeasible",
+          "optimal": false,
+          "has_incumbent": false,
+          "objective": null,
+          "best_bound": null,
+          "relative_gap": null,
+          "native_relative_gap": null,
+          "solver_time": 0.012998499994864687,
+          "translation_time": 0.00963919999776408,
+          "effective_time_limit": 1.9785770000016782,
+          "relative_gap_requested": 0,
+          "options": {
+            "name": "cplex_py",
+            "overrides": {},
+            "threads": 1,
+            "seed": 11,
+            "primal_tolerance": 1e-08,
+            "dual_tolerance": 1e-08,
+            "mip_integrality_tolerance": 1e-07,
+            "time_limit": null,
+            "role_limits": {},
+            "log_dir": null,
+            "deadline": 245418.1968221
+          },
+          "wall_time": 0.023486099991714582,
+          "log_path": null
+        },
+        "seconds": 0.047397399990586564
+      },
+      "elapsed": 6.1734619999770075
+    }
+  ],
+  "input_sha256": "4d3db82dae7746c23f5fc005d747cf7b0741f39b7b8f3e92976389d47aa95db1",
+  "certificate_sha256": "908f58e88f13a6db3ef0999a79e7eb02e4954e79c40cf551add118bc62aa2092",
+  "iteration": 25
+}
