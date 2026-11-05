@@ -1,0 +1,397 @@
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,tabularx,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\allowdisplaybreaks
+\newtheorem{proposition}{命题}
+\newcommand{\IP}{\mathrm{IP}}
+\newcommand{\LP}{\mathrm{LP}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\title{多线人机协作选择性拆卸平衡问题的\newline 整线方案列生成模型与整数恢复}
+\author{ML-HRC-DLBP-CF：第二种 Dantzig--Wolfe 分块}
+\date{2026年11月}
+\begin{document}
+\maketitle
+\begin{abstract}
+针对原始多线人机协作选择性拆卸平衡问题，以每条拆卸线的完整整数可行方案为列，建立整线 Dantzig--Wolfe 模型。任务选择、模式、站点分配、AND 优先关系、节拍、累计疲劳、必拆和最低回收要求均保留在列内，仅由主问题协调跨线共享人工和机器人数量。本文定义列域、完整列整数模型、LP 松弛、受限主问题、对偶、两阶段精确定价及有效界，并说明当前实现中的受限整数恢复、按需资源档查询和有限时间证书。整线分解保持原问题物理定义不变；根节点列生成通常只证明完整列 LP 最优，原整数最优性必须由合法整数见证与有效上界闭合等机制另行确认。最后讨论当前计算证据、迭代统计和线数因素实验。
+\end{abstract}
+\tableofcontents
+
+\section{范围、基线与基本假设}
+本文对应 \code{sub/} 路线，源码基线为提交 \code{b534b8ad}。
+原始紧凑模型见 \code{problem/main.tex}；工作站方案分解见
+\code{problem/dwcg/main.tex}。本文改变分块粒度，保留原始目标和约束。
+早期删约束消融不是本文主模型的一部分。
+
+各条线有独立任务集合和 AND 型 DAG，线间无任务优先边；每项任务至多在一个站以一种允许模式执行。同站任务顺序执行，J 模式时间只计一次。同站任务按 DAG 拓扑序执行。人工和机器人在规划期固定配置到站，不描述工人实时跨站移动。疲劳为代表性单周期内从零开始的无恢复累计量，不表示整班次动态疲劳。站点可异质，不预设启用站连续或任务连续编号。
+
+\section{集合、参数和原始决策变量}
+\begin{longtable}{p{0.26\textwidth}p{0.67\textwidth}}
+\toprule 符号 & 定义\\\midrule
+$\mathcal L=\{1,\ldots,L\}$ & 拆卸线集合。\\
+$\mathcal I_l$，$n_l$ & 线 $l$ 的任务集合及任务数；总任务数 $N=\sum_l n_l$。\\
+$\mathcal S_l=\{1,\ldots,K_l\}$ & 有序候选工作站；$k$ 为累计前缀终点。\\
+$\mathcal E_l$ & AND 型直接优先边；$(i,j)$ 表示 $i$ 是 $j$ 的前驱。\\
+$\mathcal I_l^{\rm req}$ & 必拆任务集合，其余任务可选。\\
+$\mathcal M_{li}\subseteq\{H,R,J\}$ & 任务允许的人工、机器人、人机联合模式。\\
+$v_{li}$，$c_{li}^m$ & 回收价值、模式直接执行成本；后者非负。\\
+$t_{li}^m>0$，$\beta_{li}^m\geq0$ & 模式时间与疲劳增长系数。\\
+$d_{li}^m=\beta_{li}^m t_{li}^m$ & 模式疲劳量；$d_{li}^R=0$。\\
+$T_l>0$，$F_l^{\max}\in[0,1)$ & 工作站节拍与疲劳阈值。\\
+$B_l=-\ln(1-F_l^{\max})$ & 等价线性疲劳预算。\\
+$w_{li}\geq0$，$Q_l\geq0$ & 回收指标权重与该线最低回收要求。\\
+$f_{ls},f^H_{ls},f^R_{ls}\geq0$ & 站点启用及人工、机器人配置成本。\\
+$H^{\max},R^{\max}\in\mathbb Z_+$ & 系统共享人工、机器人数量上限。\\
+$a_m^H,a_m^R$ & H、R、J 分别对应 $(1,0),(0,1),(1,1)$。\\\bottomrule
+\end{longtable}
+所有经济项采用同一核算口径；$v$ 不重复扣除另列的费用。
+原始二元变量为 $y_{li}$（任务选择）、$x_{lism}$（站点--模式分配）、
+$u_{ls}$（站启用）、$h_{ls}$（人工配置）、$r_{ls}$（机器人配置）。
+后文 $\sum_{i,s,m}$ 只遍历对应线的允许索引。
+
+\section{整线局部整数可行域与列定义}
+\subsection{局部可行域}
+记 $q_l=(y_l,x_l,u_l,h_l,r_l)$。$X_l$ 由以下约束构成：
+\begin{align}
+\sum_{s,m}x_{lism}&=y_{li} &&\forall i,\label{eq:assign}\\
+y_{li}&=1 &&\forall i\in\mathcal I_l^{\rm req},\\
+\sum_{s=1}^k\sum_m x_{ljsm}&\leq\sum_{s=1}^k\sum_m x_{lism}
+ &&\forall(i,j)\in\mathcal E_l,\ k\in\mathcal S_l,\label{eq:prec}\\
+\sum_{i,m}t_{li}^m x_{lism}&\leq T_lu_{ls} &&\forall s,\\
+u_{ls}\leq\sum_{i,m}x_{lism}&\leq n_lu_{ls} &&\forall s,\\
+h_{ls}\leq\sum_{i,m}a_m^H x_{lism}&\leq n_lh_{ls} &&\forall s,\\
+r_{ls}\leq\sum_{i,m}a_m^R x_{lism}&\leq n_lr_{ls} &&\forall s,\\
+\sum_{i,m}d_{li}^m x_{lism}&\leq B_lh_{ls} &&\forall s,\label{eq:fatigue}\\
+\sum_i w_{li}y_{li}&\geq Q_l,\label{eq:recovery}\\
+y_{li},x_{lism},u_{ls},h_{ls},r_{ls}&\in\{0,1\}.\label{eq:localbinary}
+\end{align}
+式\eqref{eq:prec} 内化跨站优先关系，最后一个前缀也保证选择后继必须选择前驱。
+疲劳模型为 $F_{ls}=1-\exp(-\sum_{i,m}d_{li}^mx_{lism})$，
+结合双向人工配置逻辑，式\eqref{eq:fatigue} 是阈值约束的精确线性形式。
+
+原全局共享约束不放入 $X_l$。代码构造单线模型时把人工和机器人上限各设为
+$K_l$，仅作为每站至多一人的冗余上限；这不是给该线预分配全局资源。
+
+\subsection{列、系数和空方案}
+令 $\mathcal P_l$ 为 $X_l$ 中全部整数方案对应的有限列集合。
+列 $p\in\mathcal P_l$ 保存整条线的任务选择、每个任务所在站和执行模式，
+以及所有站的 $u^p,h^p,r^p$。定义列资源和利润常数
+\begin{align}
+H_{lp}&=\sum_s h^p_{ls},& R_{lp}&=\sum_s r^p_{ls},\label{eq:features}\\
+c_{lp}&=\sum_i v_{li}y^p_{li}-\sum_{i,s,m}c_{li}^mx^p_{lism}
+-\sum_s(f_{ls}u^p_{ls}+f^H_{ls}h^p_{ls}+f^R_{ls}r^p_{ls}).\label{eq:profit}
+\end{align}
+可另记录各站时间和疲劳以供复核，它们不再形成主问题的行。
+区别于工作站列，$H_{lp},R_{lp}$ 是非负整数而非二元值。
+同一任务集合采用不同站点或模式可能是不同列，不能只按任务集合去重。
+
+允许整线方案中有空站，空站由双向逻辑得到 $u=h=r=0$，不产生成本。
+\textbf{整条线的空列不一定存在}：它必须满足必拆和最低回收等全部局部条件。
+若 $X_l=\varnothing$，原问题不可行；短时限内找不到方案不证明该集合为空。
+
+\section{完整列整数主问题与等价性}
+变量 $\lambda_{lp}=1$ 表示线 $l$ 采用方案 $p$。完整列整数模型为
+\begin{align}
+\max\quad &\sum_l\sum_{p\in\mathcal P_l}c_{lp}\lambda_{lp},\label{eq:mpobj}\\
+\text{s.t.}\quad &\sum_{p\in\mathcal P_l}\lambda_{lp}=1 &&\forall l,\label{eq:convex}\\
+&\sum_l\sum_{p\in\mathcal P_l}H_{lp}\lambda_{lp}\leq H^{\max},\label{eq:human}\\
+&\sum_l\sum_{p\in\mathcal P_l}R_{lp}\lambda_{lp}\leq R^{\max},\label{eq:robot}\\
+&\lambda_{lp}\in\{0,1\}.\label{eq:lambinary}
+\end{align}
+列利润已包含全部成本，主问题不再重复收取站点或资源费用。
+任务覆盖、优先关系、必拆、疲劳和回收均属于 $X_l$，不在主问题另列。
+
+\begin{proposition}[整数等价]
+$Z_{\mathrm{Compact-IP}}=Z_{\mathrm{Line-DW-IP}}$。
+\end{proposition}
+\begin{proof}
+从原 Compact 整数可行解中提取每条线的完整变量，它属于 $X_l$；
+选择对应一列，保持资源和利润不变，得到完整列 IP 可行解。
+反向每线恰选一列，将其变量复制回原模型。所有线内约束由列保证，
+共享资源由式\eqref{eq:human}--\eqref{eq:robot}保证，目标逐项一致。
+启用及配置由任务模式通过双向逻辑唯一确定，空站同样被正确恢复。
+\end{proof}
+
+完整列 LP 将式\eqref{eq:lambinary}替换为 $\lambda_{lp}\geq0$，
+凸性等式自动给出上界 $1$，实现中不额外设置列变量上界。
+令 Station-DW 表示原工作站整数方案分解，则
+\begin{equation}
+Z_{\mathrm{Compact-IP}}=Z_{\mathrm{Line-DW-IP}}
+\leq Z_{\mathrm{Line-DW-LP}}
+\leq Z_{\mathrm{Station-DW-LP}}
+\leq Z_{\mathrm{Compact-LP}}.\label{eq:hierarchy}
+\end{equation}
+中间包含关系来自：把每条整线列拆成各工作站列，在所有站使用同一整线权重，
+即可构造等目标的工作站 LP 解。最后一个关系来自工作站局部整数凸包包含于其连续松弛。
+这些关系针对完整列域；有限列池的 RMP 值不享有同样的跨模型排序。
+
+\section{受限主问题、对偶与 Phase II 定价}
+\subsection{RMP 及完整对偶}
+第 $t$ 轮已有列为 $\overline{\mathcal P}_l^{(t)}\subseteq\mathcal P_l$。
+RMP 把式\eqref{eq:mpobj}--\eqref{eq:robot}中的列域换成该集合，变量连续非负。
+完整列 LP 的对偶为
+\begin{align}
+\min\quad &\sum_l\sigma_l+H^{\max}\pi_H+R^{\max}\pi_R,\label{eq:dualobj}\\
+\text{s.t.}\quad &\sigma_l+\pi_H H_{lp}+\pi_R R_{lp}\geq c_{lp}
+ &&\forall l,p\in\mathcal P_l,\\
+&\pi_H,\pi_R\geq0,\qquad\sigma_l\in\mathbb R.
+\end{align}
+RMP 对偶只要求对已有列满足上述不等式。$\sigma_l$ 对应每线凸性等式，
+$\pi_H,\pi_R$ 分别对应两类资源上限，采用最大化问题的非负资源价格约定。
+
+\subsection{检验数和精确定价 MILP}
+对固定本轮 RMP 对偶，遗漏列的检验数为
+\begin{equation}
+\bar c_{lp}=c_{lp}-\pi_H H_{lp}-\pi_R R_{lp}-\sigma_l.
+\end{equation}
+每条线的定价问题为
+\begin{equation}
+\rho_l=\max_{q_l\in X_l}\left\{
+\sum_i v_{li}y_{li}-\sum_{i,s,m}c_{li}^mx_{lism}
+-\sum_s\big[f_{ls}u_{ls}+(f^H_{ls}+\pi_H)h_{ls}
++(f^R_{ls}+\pi_R)r_{ls}\big]-\sigma_l\right\}.\label{eq:pricing}
+\end{equation}
+定价域就是式\eqref{eq:assign}--\eqref{eq:localbinary}，不添加全局共享资源上限。
+凸性常数不影响最优方案，但必须计入检验数及原生 Best Bound 的口径。
+与工作站分解不同，主问题不再有任务、前缀、必拆或回收对偶；
+这些限制通过定价可行域直接保证，不能重复加入对应对偶项。
+
+若 $\rho_l>\varepsilon_{rc}$，加入合法且未重复的改进列。
+若全部块已证明最优且 $\max_l\rho_l\leq\varepsilon_{rc}$，
+可在数值精度意义下宣布完整列 LP 收敛。超时 incumbent 的检验数只是
+$\rho_l$ 的下界；没有找到正检验数 incumbent 不证明没有改进列。
+
+\subsection{完整精确定价产生的有效上界}
+令 $D_t$ 为本轮 RMP 经核验的对偶目标。
+对每线取 $\sigma'_l=\sigma_l+\max(0,\rho_l)$，即修复全部遗漏列的对偶不等式，故
+\begin{equation}
+Z_{\mathrm{Line-DW-LP}}\leq U_t^{CG}
+=D_t+\sum_l\max(0,\rho_l).\label{eq:repaired}
+\end{equation}
+精确算术下强对偶给 $D_t=Z_{RMP,t}$；浮点实现保存对偶值、原始值及残差，
+使用核验后的对偶目标形成界。
+完整精确定价须覆盖所有线，且 RMP 最优、对偶可靠、局部列域一致。
+有限容差终止的 LP 绝对误差可累积到 $L\varepsilon_{rc}$，不能自动按单块容差解释。
+RMP 可行目标是完整列 LP 的下界，通常不是原整数问题的下界。
+
+\section{局部初始化与两阶段可行性恢复}
+每条线先通过局部 MILP 找到至少一条合法方案；可短时求经济目标，
+必要时用常数目标找可行列。只有可靠证明某个 $X_l$ 为空才能直接判全局不可行。
+各线均有列后，资源组合可能仍冲突。保持凸性等式硬约束，建立 Phase I：
+\begin{align}
+\max\quad &-a_H-a_R,\\
+\text{s.t.}\quad &\sum_{p\in\overline{\mathcal P}_l}\lambda_{lp}=1 &&\forall l,\\
+&\sum_{l,p}H_{lp}\lambda_{lp}-a_H\leq H^{\max},\\
+&\sum_{l,p}R_{lp}\lambda_{lp}-a_R\leq R^{\max},\\
+&\lambda_{lp},a_H,a_R\geq0.
+\end{align}
+真实列的 Phase I 利润系数均为零。因为每线至少有一列，人工变量可吸收资源超量，
+受限 Phase I 必然可行；无需再放松已经在列内满足的优先或回收条件。
+其对偶为
+\begin{equation}
+\begin{aligned}
+\min\quad &\sum_l\sigma_l+H^{\max}\pi_H+R^{\max}\pi_R,\\
+\text{s.t.}\quad &\sigma_l+\pi_H H_{lp}+\pi_R R_{lp}\geq0,\\
+&0\leq\pi_H,\pi_R\leq1,\quad\sigma_l\in\mathbb R.
+\end{aligned}
+\end{equation}
+对应定价为
+\begin{equation}
+\rho_l^I=\max_{q_l\in X_l}\{-\pi_H\sum_s h_{ls}-\pi_R\sum_s r_{ls}-\sigma_l\}.
+\end{equation}
+经济利润项不参与 Phase I 定价。
+
+\begin{proposition}[Phase I 的含义]
+完整 Phase I 的最优人工总量为零，当且仅当完整整线 LP 可行。
+\end{proposition}
+\begin{proof}
+完整 LP 可行时使用同一列权重并令人工变量为零；反向，零人工量的
+Phase I 解恰好满足所有真实主问题约束。证明针对 LP，不保证整数可行。
+\end{proof}
+受限 Phase I 人工量归零后，重新求解无人工的 Phase II RMP 确认真实可行。
+若完整精确定价给出的修复 Phase I 上界严格小于负可行性容差，才证明完整 LP 不可行。
+人工量为正但定价超时，或仅初始列不足，均不能据此剪枝或宣布不可行。
+
+\section{整数方案、资源档与整数证明边界}
+\subsection{受限整数主问题和独立核验}
+在当前列池把 $\lambda$ 改为二元并求解，可得到整数组合。
+各线方案必须共同通过原模型的数据级和 Compact 约束核验，才能更新整数下界 $LB$。
+局部合法列的整数组合不会在线内漏必拆、重复执行任务或违反前驱关系；
+其主要组合冲突是跨线 H/R 容量。受限 IP 不可行只说明当前列池不能整数组合。
+受限 IP 最优也只证明该列池上的最优，不能单独证明原问题最优。
+
+\subsection{按需资源档 MILP 与整数动态规划}
+定义精确资源档值
+\begin{equation}
+V_l(h,r)=\max\{c(q_l):q_l\in X_l,\ \sum_s h_{ls}=h,\ \sum_s r_{ls}=r\}.
+\end{equation}
+取 $0\leq h\leq\min(K_l,H^{\max})$，$0\leq r\leq\min(K_l,R^{\max})$。
+档内不可行值为 $-\infty$；未求解档不能当作不可行。
+同一档仅需保留利润最大的完整方案，因为它与其他线的耦合系数完全相同。
+若全部档精确可得，原整数问题等价于
+\begin{equation}
+\max\left\{\sum_l V_l(h_l,r_l):\sum_lh_l\leq H^{\max},\
+\sum_lr_l\leq R^{\max},\ (h_l,r_l)\text{ 为可行整数档}\right\}.
+\end{equation}
+以容量 $a,b$ 为状态，令 $F_0(a,b)=0$，则
+\begin{equation}
+F_l(a,b)=\max_{h\leq a,\ r\leq b}
+\{F_{l-1}(a-h,b-r)+V_l(h,r)\}.
+\end{equation}
+当前实现按需查询，分别用已验证方案表和有效档上界表做 DP，产生整数 LB 和 UB。
+未知档上界为 $+\infty$，只在可靠证明不可行后排除；不能强制资源恰好用满。
+若完整精确定价已有 $\rho_l$，则对档内任意方案有
+\begin{equation}
+V_l(h,r)\leq\sigma_l+\max(0,\rho_l)+\pi_Hh+\pi_Rr,
+\end{equation}
+可与初始化经济上界取最小，为未查询档提供安全界。
+资源档求解是独立的整数恢复/证明组件，不能全部计为 CG 迭代或宣称普通根 CG 已消除整数间隙。
+
+\subsection{单线经济界和独立最优相容早停}
+设单线经济最优值 $V_l^*=\max_{q_l\in X_l}c(q_l)$，有效上界为 $b_l\geq V_l^*$。
+则任何全局可行方案都有
+\begin{equation}
+Z_{\IP}\leq Z_{\mathrm{Line-DW-LP}}\leq\sum_l b_l.\label{eq:econ}
+\end{equation}
+若每条线各自最优均被证明，且返回方案组合资源兼容，则其利润等于
+$\sum_lV_l^*$，立即证明全局整数最优，不需要额外资源价格迭代。
+不兼容只说明该组合不合法，不证明原问题不可行。
+
+当前阶段9还复用零资源价格的 Phase II 原生界：
+仅当记录中 $\pi_H=\pi_R=0$，且定价域未加资源档或配额限制时，
+定价目标为 $c(q_l)-\sigma_l$。可靠最大化 Best Bound $\widehat\rho_l$ 给出
+\begin{equation}
+c(q_l)\leq b_l=\widehat\rho_l+\sigma_l\quad\forall q_l\in X_l.
+\end{equation}
+不要求该次 PP 已最优，但必须是有效原生上界且目标常数口径一致。
+每线可对不同来源的有效界取最小；所有线覆盖后才能求和。
+实现严格检查资源价格为零，非零价格、Phase I、配额域记录不套用此公式。
+这不是一般截断定价驱动的新一轮 CG；incumbent 也不能替代 Best Bound。
+
+\subsection{状态、Gap 和数值证明}
+保存全部有效来源并取最小得到 $UB$；只有经过原约束验证的整数方案产生 $LB$。
+定义
+\begin{equation}
+G_{abs}=UB-LB,\qquad G_{rel}=\frac{\max(0,UB-LB)}{\max(1,|LB|)}.
+\end{equation}
+缺少整数见证或有限 UB 时 Gap 记为未知。
+若界矛盾超过一致性容差则报数值异常，不能通过截断掩盖。
+仅在 $UB-LB\leq\max(\varepsilon_{abs},\varepsilon_{rel}\max(1,|LB|))$
+时可由界闭合证明原整数最优。LP 收敛但不闭合须保留整数未证明状态。
+默认 $\varepsilon_{rc}=10^{-7}$、人工容差 $10^{-7}$、
+原方案核验容差 $10^{-6}$、界一致性及整数绝对最优容差 $10^{-5}$、
+整数相对容差 $10^{-8}$；具体以保存的 NumericPolicy 为准。
+证明作用域是求解器浮点容差和可信原生界，不是严格有理算术证明。
+
+\section{当前实现流程与代码对应}
+\begin{enumerate}
+\item 校验冻结输入，逐线构造合法初始列，保存初始化的 incumbent、Best Bound 与状态。
+\item 若独立最优相容则尝试早停；否则运行资源弹性 Phase I，再转入真实 Phase II。
+\item 每轮求解最优 RMP，读取并核验对偶；对所有线使用同一轮对偶定价，核验列及检验数后加入正检验数新列。
+\item 当前预算修正版给剩余各线分配剩余时间；第一块未证时仍尝试其余块。
+若任一块未证最优，轮末不签发完整精确定价证书，并终止当前 CG 循环。
+合法新列仍可供整数恢复，独立有效经济界仍可用于算界。
+\item 对已有列池恢复整数方案；需要时查询资源档，按整数 DP 形成可行组合和有效界。
+完整精确定价、原方案核验和全局闭合分别记录，不能互相替代。
+\end{enumerate}
+\begin{longtable}{p{0.49\textwidth}p{0.44\textwidth}}
+\toprule 代码位置 & 对应内容\\\midrule
+\code{code/milp/model.py} & 原始紧凑模型与线内约束来源。\\
+\code{sub/line_cg.py} & 基础单线域、列核验、主问题和对偶读回。\\
+\code{sub/stage3/persistent_line.py} & 持久化单线 PP；实际调用关系以导入为准。\\
+\code{sub/stage9/cg_balanced.py} & 两阶段 CG、轮内定价预算及完整性标志。\\
+\code{sub/stage9/demand_balanced.py} & 根 CG 与按需资源档调度。\\
+\code{sub/stage6/profile_pp.py} & 资源数量等式下的单线经济 MILP。\\
+\code{sub/stage6/resource_dp.py} & 资源组合 DP。\\
+\code{sub/stage9/economic_bound.py} & 零价经济界来源与全局取最小。\\
+\code{sub/stage9/balanced_bound.py} & 当前预算修正版包装入口。\\
+\code{sub/stage9/verify_economic.py} & 完整旧证书与经济界独立重放。\\\bottomrule
+\end{longtable}
+\code{sub/stage4/}--\code{sub/stage5/} 另有原 $x$ 二元分支的整线 B\&P 原型。
+本文阶段9性能版本采用根 CG 与资源档组合，不能把其所有结果归因为 B\&P 搜索树提速。
+
+\section{迭代次数、耗时和实验指标}
+\subsection{明确迭代计数口径}
+CG 的一轮是一次 RMP 优化及同一组对偶下的定价尝试。
+应分别报告 $I_I,I_{II}$（两阶段定价轮数）、完整精确定价轮数、
+截断轮数、各阶段 RMP 次数和 PP 调用数。代码 history 还可能含
+仅完成阶段切换或提前闭合而没有 PP 的记录，不能直接把其长度全部称为定价轮数。
+初始化 MILP、整数恢复、资源档查询、B\&P 节点、CPLEX 内部 LP 迭代和 MIP 节点
+必须另行计数。在每轮每线至多定价一次的版本中，完整轮通常需要 $L$ 次 PP，
+因此不同线数下只比较轮数也不充分。
+
+对串行实现，可按互不重叠事件分解
+\begin{equation}
+T_{E2E}=T_{start}+T_{init}+T_{RMP}+T_{PP}
++T_{integer}+T_{profiles}+T_{evidence}+T_{other}.
+\end{equation}
+其中原方案验证计入相应调用或单独分类一次；嵌套计时不得重复相加。
+报告每轮定价总耗时、最大单线耗时、列增量、累计 PP 调用数、
+首个已验证整数方案时间、LB/UB 轨迹、最终 Gap 和证明状态。
+\textbf{少迭代不自动等于高效。}当前部分实例仅少数轮，单次原生定价已占大部分时间，
+进一步减少 RMP 轮数可能收益有限。Compact 的内部节点数也不能与 CG 轮数直接等同比较。
+
+例如阶段9的600秒证据中，60任务经济界版本只有一轮完整 Phase II 定价，
+本轮两条线均证明最优；其 history 另外含无 PP 的阶段切换和闭合记录。
+80任务预算修正版仅有一轮未完成精确证明的 Phase II 定价，虽尝试两条线，
+二者均超时。前者约195秒闭合，后者约596秒仍未闭合。
+这一对照直接说明单看一轮或三条 history 记录不能评价求解效率。
+
+\subsection{线数与单线任务数的作用}
+总任务数固定时，增加 $L$ 往往降低各线 $n_l$，有机会降低局部整数定价难度；
+与此同时每轮 PP 数、凸性行和列池数增加，资源竞争也可能加强。
+固定每线任务数而增加线数时，局部 PP 规模近似不变，串行定价总工作量至少随块数增加，
+不能期待无条件加速。固定线数而增加单线任务数主要加重 PP，自身可能成为瓶颈。
+
+只有两条共享资源行时，主问题极点解具有进一步结构：
+若有 $q\leq2$ 条独立的活动共享资源行，则至多 $L+q$ 个正列变量，
+因每线至少一个正列，至多 $q$ 条线采用多列混合。
+此结论由基础可行解的秩界得到，仅针对极点/基础解；
+任意最优解的凸组合可能有更多混合线。
+该结构有利于定向整数恢复，但不保证无整数间隙，也不限制难例的 B\&P 树大小。
+
+建议区分两组尚待执行的结构实验：
+\begin{enumerate}
+\item 固定总任务数，例如 $N=80$，比较 $L=2,4,8$（每线约 $40,20,10$ 任务），
+用于检验更小定价块与更多协调块之间的权衡。
+\item 固定每线约20任务，比较 $L=2,4,6$（总任务数约 $40,80,120$），
+用于检验以增加线数为主的规模扩展。120任务只列为后续设计，本文未运行。
+\end{enumerate}
+两组不同分线会改变优先图、必拆位置和回收行，属于不同数学输入；
+不得把任务任意拆线并删除跨线优先边，冒称同一实例的算法改进。
+在每个输入内，所有算法读取完全相同的冻结数据。
+站点数量、图密度、任务模式、必拆率、回收要求和资源紧张程度须记录并控制。
+不能只按总站比例命名资源紧张程度，应结合独立线经济最优组合的资源冲突、
+实际用量、价格、Phase I 和整数间隙诊断。资源行取等号也不必有唯一正对偶价格。
+
+\section{已有优势与论文结论边界}
+以下为已完成实验摘要。详细证书、输入与源码哈希分别见：
+\par\code{sub/stage8/SUMMARY.md}；\par\code{sub/stage9/SUMMARY.md}。
+本表方法存在版本差异，不能当作同一最终版本的统一留出评测。
+\begin{center}\small
+\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}
+\toprule 输入与预算 & Compact & 分解 & 可支持结论\\\midrule
+40总任务，三个输入，120秒 & 相同利润，均未闭合 & 约25--57秒闭合 & 本组证明速度优势\\
+60总任务，两线，600秒 & LB508.52，UB519.92483 & 约194.96秒，LB=UB=508.52 & 单个新规模输入的证明优势\\
+80总任务，两线，600秒 & LB698.27，Gap2.769\% & 预算修正版LB698.27，Gap0.505\% & 同利润，更紧有效界；均未证明最优\\
+20总任务，四线强耦合 & 约2.36秒闭合 & 根优先约4.15秒闭合 & 本例Compact更快\\\bottomrule
+\end{tabularx}
+\end{center}
+这些优势输入的资源多数宽松，已记录相关 Phase II 资源价格为零。
+60任务最优方案用 H6/R6，上限18/18；80任务修正版用 H6/R8，上限26/26。
+因此当前证据主要支持整线结构分解和界强化收益，不足以证明活跃资源协调的普遍性能优势。
+80任务预算修正是针对开发输入的消融，非独立留出检验。
+CPLEX在定价内仍作为MILP引擎；对照名称应为分解框架与紧凑CPLEX求解。
+
+原生 PP 是当前主要耗时：60例 CG 约192秒，其中原生 PP 约190秒；
+80例也主要耗在单线 PP。RMP 很小，不能仅依据轮数少或列少解释速度。
+根 LP 强也不自动意味着总求解更快，真实资源耦合时仍可能存在整数间隙。
+后续优先冻结版本，在未用于调参的种子和真正资源冲突场景验证，
+再研究单线求解加强。若加入有效同质站对称处理，也应给 Compact 同等加强对照。
+
+性能记录使用实际预算和真实端到端时间。600秒限时不得写成实际运行3600秒；
+超时完成时间是截断观察，不可直接用于精确完成时间加速比。
+Windows软预算、原生状态可信边界以及未运行实例均须明确披露。
+当前可以据此组织模型、方法、正确性与案例结果；
+普遍性能、新颖性和学习辅助价值仍需更广实验与独立文献对照支持。
+\end{document}
