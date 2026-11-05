@@ -1,0 +1,14 @@
+|实例|方法|LB|UB|Gap|E2E秒|状态|及时落盘|
+|---|---|---:|---:|---:|---:|---|---|
+|existing40_original|compact|305.8300|314.0085|8.1785|121.9495|time_limit|False|
+|existing40_original|cg|305.8300|305.8300|0.0000|29.1682|optimal_within_tolerance|True|
+|existing40_original|demand|305.8300|306.5189|0.6889|121.5578|time_limit|False|
+|tasks040_lines02_seed12|cg|254.4100|254.4100|-0.0000|24.1947|optimal_within_tolerance|True|
+|tasks040_lines02_seed12|demand|254.4100|258.6600|4.2500|121.5202|time_limit|False|
+|tasks040_lines02_seed12|compact|254.4100|265.7506|11.3406|121.0178|time_limit|False|
+|tasks040_lines02_seed13|demand|384.3400|389.9400|5.6000|120.7507|time_limit|False|
+|tasks040_lines02_seed13|compact|385.4400|399.0624|13.6224|121.7581|time_limit|False|
+|tasks040_lines02_seed13|cg|385.4400|385.4400|0.0000|57.5078|optimal_within_tolerance|True|
+|tasks020_lines04_tight_seed11|compact|29.6000|29.6000|-0.0000|8.0317|optimal|True|
+|tasks020_lines04_tight_seed11|cg|29.6000|39.3500|9.7500|8.3722|lp_optimal_integer_unproven|True|
+|tasks020_lines04_tight_seed11|demand|29.6000|29.6000|0.0000|7.0319|optimal_within_tolerance|True|
