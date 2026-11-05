@@ -1,0 +1,11 @@
+# 节点原生PP证书补充
+
+证书版本line-bp-2，保留stage4完整树和节点结构。新增pricing_strategy标记rebuild/reuse/warm；原始x分支、Phase I、整数验证、双向配置、对偶向上修复、完整定价修复UB及活动节点保留均不改变。
+
+每个原生PP保存完整节点restrictions；persistent/reused记录模型生命周期；mip_start_submitted仅表示提交，不表示CPLEX接受。mip_start_column保存完整任务站点模式方案，mip_start_source为inherited_pool或previous_solution。验证器从原始数据独立检查该列的利润、资源、所有线内约束及固定域。实际完整向量由原Compact变量映射构造，并在提交前检查原模型可行性。
+
+profile六项顺序不重叠，和等于该次total_seconds：create（含首次模型构造、翻译和继承start验证/向量转换）、objective_start_update、pre_solve、native、read、validate。同节点会话构造时的继承池深复制、节点结束释放、主问题和全局整数见证检查计入算法其他时间。不可把solver_time再与profile native相加，也不可把旧solve_seconds当纯native。
+
+完整定价只接受原生MIP状态101且原方案通过验证；103为局部不可行，107/108为时限。未知/异常不会签发新精确UB。只在同一固定域复用既有原生解；可用显式继承列作子节点初始start，跨节点不复制CPLEX内部状态。
+
+独立Oracle不调用生产PP生成期望值。小规模逐节点枚举完整原列域后按限制过滤，并比较LP/IP、所有精确定价RC、树拓扑、界及剪枝。中大规模若关闭枚举，仍依赖原生最优性/Best Bound数学契约；所有证明为指定浮点容差，不是精确有理证书。
