@@ -1,0 +1,40 @@
+{
+  "schema_version": "experiment-plan-1",
+  "status": "NOT RUN",
+  "created_date": "2026-11-06",
+  "phase": "development_confirmation_600",
+  "prerequisite": "E0 validation and source/config/input freeze PASS",
+  "algorithm_baseline": "37e1a525",
+  "budget_seconds_per_run": 600,
+  "persistence_reserve_seconds": 5,
+  "watchdog_grace_seconds": 5,
+  "solver": "cplex_py",
+  "solver_threads": 1,
+  "solver_seed": 11,
+  "mip_gap": 0,
+  "serial_execution": true,
+  "method_definitions": {
+    "compact_plain": "Original Compact MILP with CPLEX; no observation callback",
+    "balanced_bound": "sub/stage9/balanced_bound.py, frozen full configuration before running",
+    "independent": "Existing independent economic line MILPs; no CG or repair"
+  },
+  "cases": [
+    {
+      "input": "sub\\stage11\\evidence\\inputs\\tasks080_lines04_conflict_candidate_seed31.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub\\stage11\\evidence\\inputs\\tasks080_lines08_conflict_candidate_seed31.json",
+      "methods": [
+        "balanced_bound",
+        "compact_plain"
+      ]
+    }
+  ],
+  "expected_runs": 4,
+  "nominal_budget_sum_seconds": 2400,
+  "notes": "Post-pilot development confirmation of BOTH predeclared multi-line conflict configurations (L4,L8). Same algorithms; L2 negative pilot retained. Not a held-out generalization test."
+}

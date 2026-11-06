@@ -1,0 +1,24 @@
+{
+  "worker": "sub/stage11/worker.py",
+  "independent_baseline": "sub/stage1/independent_solver.py",
+  "reserve": 5,
+  "balanced_bound": {
+    "cg_fraction": 0.9,
+    "cg_cap_seconds": 1000000,
+    "per_profile_seconds": 2,
+    "pricing": "warm",
+    "init_seconds": 0.5,
+    "quota": false,
+    "max_iterations": 100,
+    "recovery_seconds": 0.5,
+    "wrapper_refinement_reserve": 0.25
+  },
+  "backend": {
+    "name": "cplex_py",
+    "threads": 1,
+    "seed": 11,
+    "gap": 0
+  },
+  "proof_scope": "solver_floating_point_tolerances",
+  "budget_scope": "parent_process_start_to_worker_exit; includes evidence persistence"
+}
