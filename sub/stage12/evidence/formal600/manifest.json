@@ -1,0 +1,68 @@
+{
+  "schema_version": "experiment-plan-1",
+  "status": "NOT RUN",
+  "created_date": "2026-11-06",
+  "phase": "stage12_scale_confirmation",
+  "prerequisite": "stage12/PROTOCOL.md; unchanged audited algorithms and valid frozen inputs",
+  "algorithm_baseline": "c23b75fc",
+  "budget_seconds_per_run": 600,
+  "persistence_reserve_seconds": 5,
+  "watchdog_grace_seconds": 5,
+  "solver": "cplex_py",
+  "solver_threads": 1,
+  "solver_seed": 11,
+  "mip_gap": 0,
+  "serial_execution": true,
+  "method_definitions": {
+    "compact_plain": "Original Compact MILP with CPLEX; no observation callback",
+    "balanced_bound": "sub/stage9/balanced_bound.py, frozen full configuration before running",
+    "independent": "Existing independent economic line MILPs; no CG or repair"
+  },
+  "cases": [
+    {
+      "input": "sub\\stage12\\evidence\\inputs\\tasks080_lines04_conflict_candidate_seed32.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub\\stage12\\evidence\\inputs\\tasks120_lines06_conflict_candidate_seed32.json",
+      "methods": [
+        "balanced_bound",
+        "compact_plain"
+      ]
+    },
+    {
+      "input": "sub\\stage12\\evidence\\inputs\\tasks080_lines04_conflict_candidate_seed33.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub\\stage12\\evidence\\inputs\\tasks120_lines06_conflict_candidate_seed33.json",
+      "methods": [
+        "balanced_bound",
+        "compact_plain"
+      ]
+    },
+    {
+      "input": "sub\\stage12\\evidence\\inputs\\tasks080_lines04_conflict_candidate_seed34.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub\\stage12\\evidence\\inputs\\tasks120_lines06_conflict_candidate_seed34.json",
+      "methods": [
+        "balanced_bound",
+        "compact_plain"
+      ]
+    }
+  ],
+  "expected_runs": 12,
+  "nominal_budget_sum_seconds": 7200,
+  "notes": "This is a plan, not an execution record. Runner must freeze input bytes and full algorithm settings before execution. Never replace planned cases based on performance."
+}

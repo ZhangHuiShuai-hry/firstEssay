@@ -1,0 +1,14 @@
+|输入|方法|利润LB|有效UB|认证Gap|E2E秒|已证最优|
+|---|---|---:|---:|---:|---:|---|
+|tasks080_lines04_conflict_candidate_seed32|Compact|583.64|618.26|5.933%|595.68|False|
+|tasks080_lines04_conflict_candidate_seed32|Line-DW|583.64|583.64|0.000%|19.36|True|
+|tasks120_lines06_conflict_candidate_seed32|Line-DW|963.44|963.44|0.000%|36.51|True|
+|tasks120_lines06_conflict_candidate_seed32|Compact|954.82|1007.66|5.534%|595.75|False|
+|tasks080_lines04_conflict_candidate_seed33|Compact|675.21|719.63|6.579%|595.73|False|
+|tasks080_lines04_conflict_candidate_seed33|Line-DW|675.21|675.21|0.000%|24.60|True|
+|tasks120_lines06_conflict_candidate_seed33|Line-DW|1012.19|1012.19|0.000%|105.57|True|
+|tasks120_lines06_conflict_candidate_seed33|Compact|1009.46|1066.51|5.651%|595.78|False|
+|tasks080_lines04_conflict_candidate_seed34|Compact|667.64|720.51|7.919%|595.84|False|
+|tasks080_lines04_conflict_candidate_seed34|Line-DW|667.64|667.64|0.000%|68.68|True|
+|tasks120_lines06_conflict_candidate_seed34|Line-DW|1041.21|1041.21|0.000%|182.69|True|
+|tasks120_lines06_conflict_candidate_seed34|Compact|1041.21|1097.26|5.384%|595.80|False|
