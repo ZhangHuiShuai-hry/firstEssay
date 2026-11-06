@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+\begin{axis}[width=\columnwidth,height=5cm,font=\normalsize,
+ xmin=.6,xmax=6.4,ymin=0,ymax=670,
+ xtick={1,2,3,4,5,6},xticklabels={80/32,80/33,80/34,120/32,120/33,120/34},
+ xticklabel style={rotate=35,anchor=east,font=\normalsize},
+ ylabel={Measured time (s)},xlabel={Total tasks / seed},
+ legend style={font=\normalsize,at={(.5,1.03)},anchor=south,draw=none},
+ grid=major,grid style={black!12}]
+\addplot[only marks,mark=triangle,mark size=2.8pt,black] table[x=index,y=compact,col sep=comma]{data/runtime.csv};
+\addlegendentry{Compact (unproven)}
+\addplot[only marks,mark=*,mark size=2.3pt,blue!65!black] table[x=index,y=line,col sep=comma]{data/runtime.csv};
+\addlegendentry{Whole-line (proven)}
+\end{axis}
+\end{tikzpicture}

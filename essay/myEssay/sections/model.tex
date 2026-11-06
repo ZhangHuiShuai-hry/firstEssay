@@ -1,0 +1,43 @@
+\section{Problem Description and Mathematical Model}\label{sec:model}
+\subsection{System Definition and Assumptions}
+Each line has its own task set and an AND precedence graph. An executed successor requires every direct predecessor. Optional tasks can remain unexecuted. Required tasks must be executed. Each selected task receives one allowed mode and one station. Stations have ordered indices. A predecessor can occupy the same station as its successor. A topological order provides a feasible within-station sequence.
+
+Modes H, R, and J denote human, robot, and joint execution. Mode J requires one human and one robot. Its duration enters station time once. Tasks within a station execute sequentially. Resource pools limit the total number of stations with human and robot deployment. This planning model does not describe resource movement between stations during operation.
+
+Fatigue starts at zero in a representative cycle. Each human-involving task contributes a nonnegative additive load. The model contains no within-cycle recovery. It does not describe fatigue accumulation across successive cycles or an entire work shift. Robot-only modes have zero fatigue load. Candidate stations can have different costs. The formulation does not require consecutive station activation.
+
+\input{tables/notation}
+\subsection{Compact Formulation}
+Table~\ref{tab:notation} defines the main notation. Binary $y_{li}$ selects task $i$. Binary $x_{lism}$ assigns task $i$ to station $s$ in mode $m$. Binary $u_{ls}$, $h_{ls}$, and $r_{ls}$ indicate station activation, human deployment, and robot deployment. Let $a_m^H$ and $a_m^R$ be resource indicators. Their pairs are $(1,0)$, $(0,1)$, and $(1,1)$ for H, R, and J.
+
+The objective maximizes net profit:
+\begin{align}
+\max\ z={}&\sum_{l,i}v_{li}y_{li}-\sum_{l,i,s,m}c_{li}^{m}x_{lism}\nonumber\\
+&-\sum_{l,s}\left(c_{ls}^{0}u_{ls}+c_{ls}^{H}h_{ls}+c_{ls}^{R}r_{ls}\right).\label{eq:obj}
+\end{align}
+Every sum over $m$ uses the allowed set $\mathcal M_{li}$. The assignment and required-task constraints are
+\begin{align}
+\sum_{s\in\mathcal S_l}\sum_{m\in\mathcal M_{li}}x_{lism}&=y_{li}&&\forall l,i,\label{eq:assign}\\
+y_{li}&=1&&\forall l,\ i\in\mathcal I_l^{\rm req}.\label{eq:required}
+\end{align}
+AND precedence uses cumulative prefixes for all $l$, $(i,j)\in\mathcal E_l$, and $k\in\mathcal S_l$:
+\begin{equation}
+\sum_{s=1}^{k}\sum_{m\in\mathcal M_{lj}}x_{ljsm}
+\leq\sum_{s=1}^{k}\sum_{m\in\mathcal M_{li}}x_{lism}.\label{eq:prec}
+\end{equation}
+The final prefix enforces predecessor selection. Earlier prefixes enforce station order. Each station satisfies
+\begin{align}
+\sum_{i,m}t_{li}^{m}x_{lism}&\leq t_l^c u_{ls},\label{eq:cycle}\\
+u_{ls}\leq\sum_{i,m}x_{lism}&\leq n_lu_{ls},\label{eq:active}\\
+h_{ls}\leq\sum_{i,m}a_m^Hx_{lism}&\leq n_lh_{ls},\label{eq:hlogic}\\
+r_{ls}\leq\sum_{i,m}a_m^Rx_{lism}&\leq n_lr_{ls},\label{eq:rlogic}\\
+\sum_{i,m}d_{li}^{m}x_{lism}&\leq b_lh_{ls}.\label{eq:fatigue}
+\end{align}
+These constraints apply to all $l,s$. The fatigue load is $d_{li}^{m}=\beta_{li}^{m}t_{li}^{m}$. The budget is $b_l=-\ln(1-\bar f_l)$. Thus the fatigue level $1-\exp(-\sum_{i,m}d_{li}^{m}x_{lism})$ does not exceed $\bar f_l$. The deployment constraints make $h_{ls}=0$ exactly when no selected mode needs a human. Equivalent logic holds for robots and station activation. An empty station has zero deployment and zero activation cost.
+
+Shared resources and line recovery satisfy
+\begin{align}
+\sum_{l,s}h_{ls}&\leq h^{\max},&\sum_{l,s}r_{ls}&\leq r^{\max},\label{eq:shared}\\
+\sum_{i\in\mathcal I_l}w_{li}y_{li}&\geq q_l&&\forall l.\label{eq:recovery}
+\end{align}
+All decision variables are binary. Equations~\eqref{eq:assign}--\eqref{eq:recovery} retain the task, precedence, mode, cycle-time, fatigue, and recovery definitions of the implemented compact model. There are no precedence arcs between different lines.

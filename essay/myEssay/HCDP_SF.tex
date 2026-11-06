@@ -1,0 +1,109 @@
+\documentclass[letterpaper,journal]{IEEEtran}
+\input{preamble}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\Roman{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\begin{document}
+\title{Supplementary File for:\\ \drafttitle}
+\author{Author Names and Affiliations to Be Confirmed}
+\markboth{Supplementary File, Research Manuscript Draft}{Whole-Line Column Generation}
+\maketitle
+This file provides extended proofs, profile definitions, numerical settings, complete structure comparisons, and evidence provenance. All numerical results originate from archived runs. No new performance experiment enters this draft.
+
+\section{Reformulation and Empty Stations}
+For each line $l$, let $\mathcal X_l$ be the finite binary set defined in the main manuscript. It contains selection, assignment, AND precedence, time, fatigue, recovery, and two-way configuration logic. It excludes global resource capacities.
+
+Given a compact integer solution, extract every line's full assignment. Each extraction belongs to $\mathcal X_l$. Its profit includes exactly the original revenue and costs. Selecting one such plan per line preserves shared resource totals. Given an integer master solution, copy each selected plan to its line. Local constraints hold by membership. Shared constraints hold by the master rows. This proves both directions of integer equivalence.
+
+Empty stations have no selected mode. The activation and deployment inequalities then force $u=h=r=0$. A nonempty station forces $u=1$. A human-involving mode forces $h=1$, and a robot-involving mode forces $r=1$. Conversely, a deployment value of one requires a corresponding mode. No unused deployment variable remains free. Entirely empty line plans are allowed only when required-task and recovery conditions permit them.
+
+\section{LP Inclusion and Sparse Mixing}
+Split each complete line plan into its station assignments. For each station pattern, sum the weights of all line plans containing it. Each station's weights sum to one. Expected task incidence, prefix incidence, recovery, resources, and profit remain identical. The induced station-column solution satisfies the complete station master. Expanding these station patterns into compact variables preserves all compact linear constraints. Hence
+\begin{equation}
+z^{\IP}=z_{\rm line}^{\IP}\leq z_{\rm line}^{\LP}
+\leq z_{\rm station}^{\LP}\leq z_{\rm compact}^{\LP}.
+\end{equation}
+Equality between LP bounds is not assumed. Arbitrary restricted pools need not follow this ordering.
+
+An extreme point of the line master has at most $|\mathcal L|+q$ positive columns, where $q\leq2$ is the additional rank of active resource rows. Each line needs at least one positive column. Thus at most $q$ lines mix multiple columns at such a point. An arbitrary convex combination of optima can mix more lines. Sparse mixing does not imply zero integer gap.
+
+\section{Phase I and Dual Repair}
+Phase I needs resource elastic variables only because every column already satisfies all local constraints. With one plan per line, convexity can be satisfied. Large enough elastic variables absorb resource violations. The restricted elastic master is therefore feasible.
+
+If the complete line LP is feasible, use its weights and zero artificials in Phase I. Conversely, a zero-artificial optimum satisfies the real resource constraints. This equivalence concerns LP feasibility only.
+
+For complete exact pricing, line $l$ has maximum reduced cost $\rho_l$. Raising its convexity dual by $\max(0,\rho_l)$ removes every complete-dual violation. Weak duality gives the repaired bound in the main text. The same proof applies to Phase I with zero real-column profit. A strictly negative complete Phase I repaired bound proves LP infeasibility.
+
+A time-limited pricing incumbent is a lower bound on its maximization optimum. It does not certify absence of positive reduced cost. The framework attempts the remaining lines under the same duals and stops the CG loop if any maximum remains unproven. Earlier valid bounds and newly found legal columns remain available. An incomplete round is not labeled exact.
+
+\section{Integer Resource Profiles}
+A profile fixes exact human and robot counts $(a,b)$ on one line. Let $v_l(a,b)$ denote its best profit. Only $a\leq\min(k_l,h^{\max})$ and $b\leq\min(k_l,r^{\max})$ are needed for integer coordination. A globally feasible integer plan cannot exceed the entire shared capacity on one line. These limits do not restrict full-domain pricing.
+
+The lower table uses feasible profits and $-\infty$ for profiles without a known witness. The upper table uses valid upper bounds, $+\infty$ for unknown bounds, and $-\infty$ only after reliable infeasibility proof. An upper-DP maximizing path can therefore require a new query rather than profile deletion.
+
+Complete pricing provides the profile inequality
+\begin{equation}
+v_l(a,b)\leq\sigma_l+\max(0,\rho_l)+\pi_Ha+\pi_Rb.
+\end{equation}
+Economic initialization supplies another bound source. The stored UB takes the minimum of valid sources. Each profile query solves the original local MILP with exact resource-count equations. A valid native maximization Best Bound can tighten that profile UB before optimality is proved. This applies to the explicit profile domain. It does not establish a general contract for truncated nonzero-price CG rounds.
+
+The lower DP selects a jointly feasible integer combination whenever it finds a path. The upper DP dominates every feasible original integer combination. Its bound can close below the complete line LP optimum. Consequently, integer closure through profiles does not imply LP convergence.
+
+The archived positive-gap case has complete line-LP value 6.5 and integer optimum 2. Four profile queries close its integer gap. The LP-feasible/IP-infeasible case has line-LP value 4 and no integer plan. Nine queries prove its integer infeasibility. Both cases have archived CPLEX and CBC validation. Their different proof states explain the need for separate LP and integer labels.
+
+\section{Synthetic Inputs and Capacity Construction}
+The generator version is witness-paired-v2.1. It samples task parameters before partitioning the task bank. Each task has a preferred mode from H, R, and J. Each other mode appears with probability 0.55 in the mixed profile. Human duration is an integer from 2 to 4. Robot duration is a rounded factor from 0.8 to 1.25 of human duration, with a minimum of one. Joint duration is a rounded factor from 0.5 to 0.8, also with a minimum of one.
+
+Direct costs are $1.8t^H$, $1.2t^R+1.5$, and $1.5t^J+2$. Value equals preferred-mode cost plus a sampled margin. The margin is uniform from 6 to 18 with probability 0.8. Otherwise it is negative, with magnitude uniform from 1 to 5. Recovery weight is an integer from 1 to 4. These are synthetic units, not measured currency or processing data.
+
+Preferred-human fatigue load is uniform from 0.10 to 0.15. Other human-mode load is uniform from 0.28 to 0.48. Joint-mode load is uniform from 0.08 to 0.13. Robot load is zero. The ratio of load to duration defines $\beta$. The baseline fatigue threshold is 0.6. Main fixed-total inputs have cycle time 20. Station, human, and robot costs are 6, 3, and 4.
+
+The layered graph includes a forward pair within distance six with probability 0.12. It contains only within-line arcs. Required tasks are the first rounded 20\% of each line's tasks, with at least one. Recovery requires the ceiling of 35\% of total weight. Constructive assignments check input feasibility where applicable. Solvers do not receive constructive or calibration witnesses as initial solutions.
+
+Main capacities equal independent economic calibration usage minus one per resource. The ratio group uses the ceiling of 80\% of calibrated usage. These are construction rules, not physical utilization estimates. Frozen JSON files in \texttt{data/} contain every exact parameter. The export script checks identical input bytes across paired methods.
+
+\section{Numerical and Solver Settings}
+\begin{table}[!t]\centering\small
+\caption{Numerical Roles and Default Values}\label{tab:tol}
+\begin{tabular}{lr}\toprule
+Role & Value\\\midrule
+LP primal and dual feasibility & $10^{-8}$\\
+Pricing integrality & $10^{-7}$\\
+Branch integrality (shared policy field) & $10^{-7}$\\
+Column local feasibility & $10^{-8}$\\
+Reduced-cost threshold & $10^{-7}$\\
+Phase I artificial sum & $10^{-7}$\\
+Original integer-plan validation & $10^{-6}$\\
+Bound consistency & $10^{-5}$\\
+Global absolute closure & $10^{-5}$\\
+Global relative closure & $10^{-8}$\\\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:tol} separates numerical roles. The branch field belongs to a shared policy and does not imply branching in the measured framework. Proofs remain subject to floating-point solver contracts.
+
+The frozen settings are persistent warm pricing, initialization 0.5 seconds, recovery 0.5 seconds, maximum CG records 100, CG fraction 0.9, and an inactive practical cap of $10^6$ seconds. Profile queries start at two seconds. Attempt index $j$ permits $2\times2^{\min(j,8)}$ seconds, subject to remaining time. Quota repair is disabled. The internal wrapper reserves 0.25 seconds. The external protocol reserves five seconds for final persistence.
+
+The archived environment records Windows 10.0.19045, Python 3.10.11, PuLP 3.3.2, and CPLEX 22.1.1.0. Both methods use one thread, seed 11, and zero requested absolute and relative integer gaps. The processor model remains an author-supplied reproducibility item.
+
+\section{Complete Structure Comparisons}
+\input{tables/structure}
+Table~\ref{tab:structure} retains all compact/decomposition pairs from the structure pilot and confirmation. The 120-second pilot and 600-second confirmation stay separate. Different line counts change graph and recovery rows even when the task bank matches. They are not the same mathematical input.
+
+\section{Proof Paths and Timing Scope}
+The six main 600-second inputs use zero resource-profile queries. Integer witnesses and valid CG bounds close. The three resource-ratio cases need 0, 0, and 31 queries for seeds 32, 33, and 34. Seed~34 has an incomplete CG pricing round before profile coordination proves integer optimality. It has no claim of complete line-LP convergence.
+
+Main Phase II pricing rounds are 3, 4, and 4 at 80 tasks and 3, 5, and 4 at 120 tasks. RMP-only transition and early-closure records do not count as pricing rounds. Initialization, restricted integer recovery, and profile queries are separate operations. Native solve times are subsets of total time. They must not be added twice.
+
+The 80-task two-line boundary remains unproven after 18 profile queries. Its decomposition LB/UB are 569.53/738.73. Compact CPLEX returns 693.08/733.55. This contrary case limits extrapolation to arbitrary large pricing blocks.
+
+\section{Artifact Map and Verification}
+Tables derive from stage12 main records, stage13 robustness records, stage11 structure records, and stage7 small-case certificates. The script \path{scripts/export_evidence.py} checks input equality, copies frozen inputs, checks available summary bounds against compressed certificates, and exports tables and CSV files. The file \path{data/source_manifest.json} stores 84 original source hashes.
+
+{\raggedright
+The algorithm entry is \path{sub/stage9/balanced_bound.py}. Its components include balanced CG, demand-driven profile coordination, persistent line pricing, exact-count profile MILPs, and integer DP. Compact optimization uses \path{sub/compact_solver.py}. The measured wrapper is \path{sub/stage11/run_plan_v2.py}. Archived source manifests define executed bytes. Later RL experiments are outside the reported algorithm.\par}
+
+Saved evidence contains assignments, objective values, statuses, primal and dual solutions, artificials, pricing coverage, profile bounds, and integer witnesses. Small replay can enumerate complete columns independently. Larger replay checks arithmetic, domains, feasibility, and proof structure while trusting native proof states and valid bound contracts. This is not rational-arithmetic certification.
+
+\section{Remaining Submission Items}
+Author identities, affiliations, contributions, funding, competing interests, photographs, and biographies require confirmation. Hardware identification is incomplete. This draft contains no measured industrial case, newly implemented population-based comparator, complete factorial sensitivity analysis, or trained learning policy. These items are not represented as completed. A final literature assessment and broader independent evaluation remain necessary before a state-of-the-art claim.
+\end{document}

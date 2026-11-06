@@ -1,0 +1,10 @@
+\begin{tikzpicture}[font=\normalsize,>=Latex,node distance=5mm,
+ plan/.style={draw,rounded corners,align=center,text width=2.4cm,minimum height=9mm},
+ master/.style={draw,thick,fill=black!5,align=center,text width=2.7cm,minimum height=14mm}]
+\node[master] (m) {Master problem\\Line convexity\\Shared human/robot limits};
+\node[plan,below=12mm of m] (b) {Line $l$ pricing\\Tasks, modes, stations\\Precedence, fatigue, recovery};
+\node[plan,left=3mm of b] (a) {Other line plans\\$c_{lp},h_{lp},r_{lp}$};
+\draw[->] (m.south east) to[bend left=18] node[right] {$\pi_H,\pi_R,\sigma_l$} (b.north east);
+\draw[->] (b.north west) to[bend left=18] node[left] {Legal columns} (m.south west);
+\draw[->] (a.north) -- (m.west);
+\end{tikzpicture}
