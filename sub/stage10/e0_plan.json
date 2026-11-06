@@ -1,0 +1,40 @@
+{
+  "schema_version": "experiment-plan-1",
+  "status": "NOT RUN",
+  "created_date": "2026-11-06",
+  "phase": "E0",
+  "prerequisite": "E0 validation and source/config/input freeze PASS",
+  "algorithm_baseline": "b534b8ad",
+  "budget_seconds_per_run": 20,
+  "persistence_reserve_seconds": 5,
+  "watchdog_grace_seconds": 5,
+  "solver": "cplex_py",
+  "solver_threads": 1,
+  "solver_seed": 11,
+  "mip_gap": 0,
+  "serial_execution": true,
+  "method_definitions": {
+    "compact_plain": "Original Compact MILP with CPLEX; no observation callback",
+    "balanced_bound": "sub/stage9/balanced_bound.py, frozen full configuration before running"
+  },
+  "cases": [
+    {
+      "input": "sub/stage7/evidence/validation/gap_cplex_py/instance.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub/stage7/evidence/validation/lp_yes_ip_no_cplex_py/instance.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    }
+  ],
+  "expected_runs": 4,
+  "nominal_budget_sum_seconds": 80,
+  "notes": "This is a plan, not an execution record. Runner must freeze input bytes and full algorithm settings before execution. Never replace planned cases based on performance.",
+  "enumerate_profiles": true
+}

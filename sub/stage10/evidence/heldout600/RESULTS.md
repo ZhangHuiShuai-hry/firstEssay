@@ -1,0 +1,10 @@
+|实例|方法|LB|UB|绝对Gap|相对Gap|E2E秒|状态|及时|
+|---|---|---:|---:|---:|---:|---:|---|---|
+|tasks060_lines02_r90_seed22|compact_plain|474.86000|488.62590|13.76590|0.02899|595.57686|time_limit|True|
+|tasks060_lines02_r90_seed22|balanced_bound|475.16000|475.16000|-0.00000|0.00000|245.05363|optimal_within_tolerance|True|
+|tasks060_lines02_r90_seed23|balanced_bound|387.92000|387.92000|-0.00000|0.00000|204.08110|optimal_within_tolerance|True|
+|tasks060_lines02_r90_seed23|compact_plain|387.92000|402.31603|14.39603|0.03711|595.72417|time_limit|True|
+|tasks080_lines02_r90_seed22|compact_plain|675.20000|695.78966|20.58966|0.03049|596.22691|time_limit|True|
+|tasks080_lines02_r90_seed22|balanced_bound|675.20000|683.82974|8.62974|0.01278|595.03036|time_limit|True|
+|tasks080_lines02_r90_seed23|balanced_bound|537.84000|550.55200|12.71200|0.02364|595.08688|time_limit|True|
+|tasks080_lines02_r90_seed23|compact_plain|537.94000|558.87119|20.93119|0.03891|595.83531|time_limit|True|
