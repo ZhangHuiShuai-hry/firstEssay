@@ -1,0 +1,10 @@
+|输入|方法|LB|UB|E2E秒|已证|
+|---|---|---:|---:|---:|---|
+|tasks120_lines06_ratio80_seed32|compact_plain|911.91|1010.76|175.59|False|
+|tasks120_lines06_ratio80_seed32|balanced_bound|927.46|927.46|30.73|True|
+|tasks120_lines06_ratio80_seed33|balanced_bound|971.93|971.93|61.51|True|
+|tasks120_lines06_ratio80_seed33|compact_plain|955.90|1069.88|175.56|False|
+|tasks120_lines06_ratio80_seed34|compact_plain|980.67|1101.05|175.55|False|
+|tasks120_lines06_ratio80_seed34|balanced_bound|1009.98|1009.98|144.55|True|
+|tasks080_lines02_conflict_candidate_seed31|balanced_bound|569.53|738.73|174.97|False|
+|tasks080_lines02_conflict_candidate_seed31|compact_plain|693.08|733.55|175.64|False|

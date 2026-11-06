@@ -1,0 +1,54 @@
+{
+  "schema_version": "experiment-plan-1",
+  "status": "NOT RUN",
+  "created_date": "2026-11-06",
+  "phase": "stage13_closure",
+  "prerequisite": "stage13/PROTOCOL.md",
+  "algorithm_baseline": "20ff0dc6",
+  "budget_seconds_per_run": 180,
+  "persistence_reserve_seconds": 5,
+  "watchdog_grace_seconds": 5,
+  "solver": "cplex_py",
+  "solver_threads": 1,
+  "solver_seed": 11,
+  "mip_gap": 0,
+  "serial_execution": true,
+  "method_definitions": {
+    "compact_plain": "Original Compact MILP with CPLEX; no observation callback",
+    "balanced_bound": "sub/stage9/balanced_bound.py, frozen full configuration before running",
+    "independent": "Existing independent economic line MILPs; no CG or repair"
+  },
+  "cases": [
+    {
+      "input": "sub\\stage13\\evidence\\inputs\\tasks120_lines06_ratio80_seed32.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub\\stage13\\evidence\\inputs\\tasks120_lines06_ratio80_seed33.json",
+      "methods": [
+        "balanced_bound",
+        "compact_plain"
+      ]
+    },
+    {
+      "input": "sub\\stage13\\evidence\\inputs\\tasks120_lines06_ratio80_seed34.json",
+      "methods": [
+        "compact_plain",
+        "balanced_bound"
+      ]
+    },
+    {
+      "input": "sub\\stage13\\evidence\\inputs\\tasks080_lines02_conflict_candidate_seed31.json",
+      "methods": [
+        "balanced_bound",
+        "compact_plain"
+      ]
+    }
+  ],
+  "expected_runs": 8,
+  "nominal_budget_sum_seconds": 1440,
+  "notes": "This is a plan, not an execution record. Runner must freeze input bytes and full algorithm settings before execution. Never replace planned cases based on performance."
+}

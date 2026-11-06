@@ -1,0 +1,14 @@
+|seed|设置|证明次数/2|已到最优但未证|平均target秒|平均setup+target秒|
+|---|---|---:|---:|---:|---:|
+|32|rebuild|0|2|5.143|5.143|
+|32|persistent_no_explicit_start|0|2|5.031|8.085|
+|32|persistent_explicit_start|0|2|5.032|8.080|
+|33|rebuild|0|2|5.054|5.054|
+|33|persistent_no_explicit_start|0|2|5.033|8.072|
+|33|persistent_explicit_start|0|2|5.028|8.078|
+|34|rebuild|0|2|5.061|5.061|
+|34|persistent_no_explicit_start|0|2|5.035|8.090|
+|34|persistent_explicit_start|0|2|5.029|8.073|
+|31|rebuild|0|0|5.191|5.191|
+|31|persistent_no_explicit_start|0|0|5.103|8.286|
+|31|persistent_explicit_start|0|0|5.094|8.274|
