@@ -1,0 +1,66 @@
+Whole-Line Column Generation with Resource-Profile Integer Coordination
+
+1. Problem and decomposition structure
+
+The method solves a profit-maximizing multi-line selective disassembly problem with human, robot, and joint execution modes. Each line contains ordered workstations. A physical circular layout has a fixed entry and a single product pass; it does not introduce cyclic task routing. The compact model retains task uniqueness, required tasks, AND precedence, cycle-time limits, station activation, human and robot configuration logic, cumulative station fatigue, and minimum recovery requirements. Only the aggregate human and robot deployment capacities couple different lines.
+
+2. Whole-line columns
+
+A column represents one complete feasible integer plan for an entire line, including every selected task, workstation assignment, execution mode, and station configuration. All within-line constraints are satisfied before the column enters the master. An empty station is allowed; an entirely empty line plan is available only when required-task and recovery conditions permit it. A column records its net profit c_lp, human deployment count h_lp, and robot deployment count r_lp. Profit includes recovery value minus execution, station activation, and deployment costs. Columns are deduplicated by their complete assignments, not only by selected tasks or resource counts.
+
+3. Master problem and exact line pricing
+
+Let P_l denote all feasible plans for line l. The complete integer master is:
+
+maximize sum_l sum_{p in P_l} c_lp * lambda_lp
+subject to sum_{p in P_l} lambda_lp = 1 for every l;
+           sum_l sum_p h_lp * lambda_lp <= Hmax;
+           sum_l sum_p r_lp * lambda_lp <= Rmax;
+           lambda_lp in {0,1}.
+
+The complete integer master and the compact MILP have the same feasible objective values: extract one column per line from a compact solution, or reconstruct the original assignments from the selected columns. Column generation solves the LP master over a restricted column pool, with nonnegative continuous lambda variables. For maximization, the relaxation hierarchy is:
+
+Compact IP = Full-line IP <= Full-line LP <= Full-station LP <= Compact LP.
+
+At an optimal restricted LP solution, sigma_l is the free dual of the line convexity equality, and pi_H, pi_R >= 0 are the shared-capacity duals. The reduced cost is:
+
+rc_lp = c_lp - pi_H*h_lp - pi_R*r_lp - sigma_l.
+
+Each pricing MILP maximizes this expression over the original feasible integer plans of one line. All lines in a round use the same dual vector. A legal new column is added if its independently recomputed reduced cost exceeds the reduced-cost tolerance. The implementation retains a separate native CPLEX model for each line, updates its objective, and uses the previous complete integer solution as a warm start.
+
+4. Initialization and elastic Phase I
+
+Short local economic MILPs first seek feasible line plans. A constant-objective feasibility solve provides a fallback. Proven emptiness of a local line domain implies system infeasibility; failure to find a plan within a time limit does not.
+
+With one feasible column per line, Phase I keeps convexity equalities hard and adds nonnegative artificials a_H and a_R to the two shared-capacity inequalities. Its objective maximizes -a_H-a_R; real columns have zero profit coefficients. Phase I pricing therefore maximizes -pi_H*h_lp-pi_R*r_lp-sigma_l. The complete Phase I optimum is zero exactly when the full-line LP is feasible. After artificials vanish within tolerance, the hard profit-maximizing master is resolved before Phase II. A strictly negative, valid complete Phase I upper bound proves LP infeasibility.
+
+5. Phase II bounds and integer recovery
+
+Phase II restores the economic objective. Let rho_l be the proven maximum reduced cost for line l, and let D be the restricted-master dual objective. Complete exact pricing gives the repaired upper bound:
+
+UB_CG = D + sum_l max(0,rho_l).
+
+This follows by increasing each convexity dual by max(0,rho_l). All complete-master dual inequalities then hold. If every rho_l is below the pricing tolerance, the residual LP gap can accumulate across lines. A single tolerance is not automatically a bound on the total LP gap.
+
+An incomplete or time-limited pricing round does not supply this exact-pricing certificate. The procedure attempts the remaining lines, retains existing valid bounds, and stops that CG loop if any pricing maximum remains unproven. It does not replace a pricing upper bound with its incumbent. Separate full-domain, zero-resource-price economic MILPs can provide reliable local economic upper bounds under the solver's bound contract.
+
+Restricted integer master solutions are candidates only. Their reconstructed assignments must pass the original compact constraints and data-level feasibility checks before their profit updates the integer lower bound. Optimality over the current column pool alone is not original integer optimality.
+
+6. Demand-driven resource profiles
+
+For integer resource counts a,b, define v_l(a,b) as the maximum line profit among plans using exactly a humans and b robots. Counts range from zero to min(k_l,Hmax) and min(k_l,Rmax), respectively. Validated incumbents provide lower profile values; reliable bounds provide upper values. Unknown upper values remain positive infinity. A profile is excluded only after proven infeasibility. Complete pricing also bounds a profile by sigma_l+max(0,rho_l)+pi_H*a+pi_R*b.
+
+Two dynamic programs combine the profile tables under the shared capacities. For either table v, the recurrence is:
+
+F_l(A,B) = max_{0<=a<=A, 0<=b<=B} [F_{l-1}(A-a,B-b) + v_l(a,b)],
+F_0(A,B) = 0,
+
+with enumeration restricted to each line's profile domain. The lower DP selects actual plans and provides a verified integer solution; the upper DP bounds all feasible integer combinations. The algorithm queries an unresolved profile on an upper-DP maximizing path, choosing the least-attempted profile with deterministic tie-breaking. An exact-count economic MILP updates its incumbent, valid bound, or proven infeasibility. Repeated query budgets increase geometrically. The DP bounds are recomputed until closure or the global budget ends. An integer profile bound can lie below the full-line LP bound; its closure does not prove LP convergence.
+
+7. Termination and recorded results
+
+The output contains a verified integer plan when available, its profit, valid bounds, the actual gap, pricing and profile statuses, and the termination reason. With lower bound LB and upper bound UB, the relative gap is max(0,UB-LB)/max(1,abs(LB)). Original integer optimality requires valid bound closure within the declared absolute or relative tolerance. Missing bounds imply an unknown gap. Contradictory bounds trigger a numerical error rather than forced closure.
+
+Default experimental settings include single-thread CPLEX with seed 11, 0.5-second local economic initialization and feasibility fallback, up to 0.5 seconds per restricted integer recovery, at most 100 CG records, a CG allocation of 90% of the available internal budget, and profile queries starting at two seconds with geometrically increasing allowances. The total budget and evidence-persistence reserve remain explicit. Reduced-cost and Phase I artificial tolerances are 1e-7; integer-plan verification uses 1e-6; bound consistency and absolute closure use 1e-5; relative closure uses 1e-8. All certificates are subject to floating-point solver contracts.
+
+This is an implemented root column-generation and resource-profile framework. It does not use reinforcement learning, does not perform the separate branch-and-price tree search, and does not change the original compact model. Its numerical benchmarks use explicit synthetic task-level inputs, not waste-classification images. Formal experiment entry: sub/stage11/run_plan_v2.py; decomposition entry: sub/stage9/balanced_bound.py; compact comparator: sub/compact_solver.py.
