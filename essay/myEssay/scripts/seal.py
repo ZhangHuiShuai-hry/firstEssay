@@ -1,7 +1,8 @@
 import argparse,hashlib,json
 from pathlib import Path
-HERE=Path(__file__).resolve().parents[1];ROOT=HERE.parents[1];target=HERE/'SHA256.json'
-p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');a=p.parse_args()
+HERE=Path(__file__).resolve().parents[1];ROOT=HERE.parents[1]
+p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');p.add_argument('--manifest',default='SHA256.v2.json');a=p.parse_args()
+target=HERE/a.manifest
 if a.check:
     records=json.loads(target.read_bytes())
     for name,h in records.items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==h,name

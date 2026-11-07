@@ -1,0 +1,35 @@
+flowchart TD
+    A[Read frozen input, capacities, budget and tolerances] --> B[Find one feasible whole-line plan per line; retain reliable local economic bounds]
+    B --> C{Local feasibility status?}
+    C -->|Proven empty domain| INF[Return proven infeasible]
+    C -->|No plan and no proof| STOP[Return actual unresolved state, verified LB and valid UB]
+    C -->|Every line has a plan| I[Elastic Phase I: real column profits = 0; hard convexity; elastic H/R capacities]
+    I --> J{Artificial sum zero?}
+    J -->|No| K[Price every line under the same Phase I duals]
+    K --> L{All pricing maxima proven?}
+    L -->|No| STOP
+    L -->|Yes| M{Repaired Phase I UB strictly negative?}
+    M -->|Yes| INF
+    M -->|No, improving columns| I
+    M -->|Numerically unresolved| STOP
+    J -->|Yes| N[Resolve hard Phase II RMP; verify primal and dual]
+    N -->|Unreliable status| STOP
+    N --> O[Recover restricted integer plan; validate original constraints; update LB]
+    O --> P{Verified LB closes a valid UB?}
+    P -->|Yes| OPT[Return integer optimum within stated tolerances]
+    P -->|No| Q[Exact pricing on every line using the same Phase II duals]
+    Q --> R{All pricing maxima proven?}
+    R -->|Yes| S[Repair full-column LP UB; add legal positive-reduced-cost columns]
+    S --> T{Any new improving column?}
+    T -->|Yes, time remains| N
+    T -->|No| U[Build lower and upper resource-profile DP tables]
+    R -->|No: preserve prior valid bounds| U
+    U --> V{Integer bounds close?}
+    V -->|Yes| OPT
+    V -->|All integer combinations proven impossible| INF
+    V -->|No| W{Budget remains?}
+    W -->|No| STOP
+    W -->|Yes| X[Query least-attempted unresolved profile on an upper-DP path]
+    X --> Y[Fix exact resource counts; solve local profit MILP; record incumbent, valid UB or proven infeasibility]
+    Y --> Z[Validate candidate plan; update both DP tables and actual integer bounds]
+    Z --> U

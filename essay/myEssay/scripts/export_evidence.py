@@ -8,6 +8,7 @@ def read(path):
 def table(path,caption,label,head,rows,spec,wide=False,foot=''):
     env='table*' if wide else 'table'
     s=f'\\begin{{{env}}}[!t]\n\\caption{{{caption}}}\\label{{{label}}}\\centering\\small\n'
+    if not wide:s+='\\setlength{\\tabcolsep}{3pt}\n'
     s+=f'\\begin{{tabular}}{{{spec}}}\\toprule\n'+head+r'\\\midrule'+'\n'
     s+='\n'.join(' & '.join(map(str,r))+r'\\' for r in rows)+'\n\\bottomrule\\end{tabular}\n'
     if foot:s+='\\par\\smallskip\\begin{minipage}{'+('\\textwidth' if wide else '\\columnwidth')+'}\\footnotesize '+foot+'\\end{minipage}\n'
@@ -53,7 +54,7 @@ def main():
     drows=[]
     for d in sorted(diag,key=lambda r:r['case']):
         drows.append([f"{d['total_tasks']}/{d['lines']}/{d['case'][-2:]}",d['phase1_pricing_rounds'],d['phase2_pricing_rounds'],d['pp_calls'],d['final_columns'],f"{d['timing']['PP_native_seconds']:.2f}",f"{d['timing']['RMP_native_seconds']:.4f}"])
-    table('tables/iterations.tex','Pricing Rounds and Native Solver Costs in the Main Experiment','tab:iterations',r'$N/L$/seed & $i_I$ & $i_{II}$ & PP & Cols. & PP (s) & RMP (s)',drows,'lrrrrrr',True,'A pricing round includes an RMP solution and at least one pricing attempt under its duals. PP includes economic initialization. RMP-only transition and bound-closure records do not count as pricing rounds. Resource-profile query counts are zero in these six runs.')
+    table('tables/iterations.tex','Pricing Rounds and Native Solver Costs in the Main Experiment','tab:iterations',r'$N/L$/seed & $i_I$ & $i_{II}$ & PP & Cols. & PP (s) & RMP (s)',drows,'lrrrrrr',False,'A pricing round includes an RMP solution and at least one pricing attempt under its duals. PP includes economic initialization. RMP-only transition and bound-closure records do not count as pricing rounds. Resource-profile query counts are zero in these six runs.')
     with (HERE/'data/runtime.csv').open('w',newline='') as f:
         w=csv.writer(f);w.writerow(['index','compact','line'])
         for i,name in enumerate(sorted({r['case'] for r in F}),1):

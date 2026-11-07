@@ -37,10 +37,10 @@ Table~\ref{tab:small} confirms the need to distinguish LP and integer conclusion
 \input{tables/formal}
 Table~\ref{tab:formal} shows an integer-certification advantage on all six main inputs. The framework establishes optimality in 19.36--182.69 seconds. Compact CPLEX remains unproven within the 600-second protocol. On the three 80-task inputs, both methods reach the same final integer profit. Their difference concerns proof completion. On two 120-task inputs, the framework also returns a higher final integer profit. On seed~34, Compact CPLEX reaches the same profit but retains a positive bound gap.
 
-\begin{figure}[!t]\centering
-\input{img/runtime}
-\caption{Measured times for the main inputs, ordered by total tasks and seed. Open triangles indicate time-limited, unproven compact results. Filled circles indicate completed integer proofs. Compact markers are censored observations, not times to optimality.}\label{fig:runtime}
-\end{figure}
+\begin{figure*}[!t]\centering
+\includegraphics[width=\textwidth]{img/performance_lines.pdf}
+\caption{All six paired main inputs, ordered by total tasks and seed: (a) recorded end-to-end time; (b) final certified relative gap. Open triangles indicate time-limited, unproven compact results; filled circles indicate completed decomposition integer proofs. Compact times are censored observations, not times to optimality. Lines connect distinct inputs only as visual guides; they are not convergence trajectories.}\label{fig:runtime}
+\end{figure*}
 Fig.~\ref{fig:runtime} presents the same comparisons without converting cutoffs into exact speedup ratios. These results support efficient certification on the tested multi-line configurations. They do not establish that the framework first discovers an optimal-profit plan earlier. Comparable first-optimum timestamps are not available for Compact CPLEX.
 
 \subsection{Resource Coordination and a Large-Block Boundary}

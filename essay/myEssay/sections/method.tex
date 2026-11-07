@@ -1,6 +1,6 @@
-\section{Whole-Line Decomposition and Solution Framework}\label{sec:method}
+\section{Proposed Algorithm}\label{sec:method}
 \subsection{Whole-Line Plans}
-Let $\mathcal X_l$ contain all binary solutions of line $l$ that satisfy \eqref{eq:assign}--\eqref{eq:fatigue} and \eqref{eq:recovery}. The shared limits in \eqref{eq:shared} remain outside this set. A pricing model can use the redundant bounds $\sum_s h_{ls}\leq k_l$ and $\sum_s r_{ls}\leq k_l$. These bounds do not allocate global resources to a line.
+Let $\mathcal X_l$ contain all binary solutions of line $l$ that satisfy \eqref{eq:assign}--\eqref{eq:fatigue} and \eqref{eq:recovery}. The shared limits in \eqref{eq:sharedh} and \eqref{eq:sharedr} remain outside this set. A pricing model can use the redundant bounds $\sum_s h_{ls}\leq k_l$ and $\sum_s r_{ls}\leq k_l$. These bounds do not allocate global resources to a line.
 
 A column $p\in\mathcal P_l$ represents one complete plan in $\mathcal X_l$. It records the selected tasks, their stations and modes, and the associated station configurations. Define
 \begin{align}
@@ -10,11 +10,11 @@ c_{lp}&=\sum_i v_{li}y_{li}^p-\sum_{i,s,m}c_{li}^{m}x_{lism}^p\nonumber\\
 \end{align}
 An empty station is allowed within a plan. A completely empty line plan exists only if the required-task and recovery conditions allow it. Columns with the same selected task set can still differ in station assignment or mode. Deduplication therefore uses the complete assignment pattern.
 
-\begin{figure}[!t]\centering
-\input{img/decomposition}
-\caption{Whole-line coordination. Each pricing domain contains all local task and station constraints. Only human and robot capacities connect the lines.}\label{fig:blocks}
-\end{figure}
-Fig.~\ref{fig:blocks} shows the block structure. A station-level column can be locally feasible but difficult to combine across stations. A whole-line column already satisfies task uniqueness, required-task selection, all precedence prefixes, and line recovery. Integer combination then requires coordination of the two resource totals.
+\begin{figure*}[!t]\centering
+\includegraphics[width=\textwidth]{img/algorithm_flowchart.pdf}
+\caption{Proposed framework. CG coordinates complete line plans; verified integer recovery and resource-profile bounds provide separate integer proof paths. Only complete exact pricing repairs the CG dual bound. A budget stop returns the actual proof state and remaining gap.}\label{fig:flow}
+\end{figure*}
+Fig.~\ref{fig:flow} shows the solution workflow. A station-level column can be locally feasible but difficult to combine across stations. A whole-line column already satisfies task uniqueness, required-task selection, all precedence prefixes, and line recovery. Integer combination then requires coordination of the two resource totals. The two-phase CG loop supplies LP coordination, while restricted integer recovery and profile queries address the remaining integer gap.
 
 \subsection{Master Problem and Formulation Strength}
 Binary $\lambda_{lp}$ selects one plan for line $l$. The complete master problem is
