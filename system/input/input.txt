@@ -1,0 +1,24 @@
+第一步：布局配置
+
+【补充要求（布局示意图，可选）】
+Illustrate multiple circular disassembly lines sharing limited human and robot resources. Show a fixed entry, ordered workstations, and a product exit on each line. Products pass through the stations only once; the return arc carries empty carriers. Distinguish human, robot, and joint execution modes. Shared resource pools represent station deployment limits rather than movements between stations.
+
+【论文 · Problem Description】
+This work considers a multi-line human-robot collaborative selective disassembly system. Each physical circular line has a fixed entry and an ordered sequence of candidate workstations. Products visit the stations once and then exit. A selected task is assigned to exactly one workstation and one allowed execution mode: human, robot, or joint operation. Joint operation requires both resources, and its processing duration is counted once. Required tasks must be completed, while optional tasks are selected according to their recovery value and resource requirements. AND precedence, cycle-time limits, cumulative station fatigue, and minimum recovery requirements restrict each line plan. Human and robot deployment capacities couple the lines. Fatigue accumulates within one representative cycle without task-to-task recovery. The objective maximizes recovery value minus execution, workstation activation, and resource deployment costs.
+
+【研究问题】
+How can complete feasible plans for individual disassembly lines be coordinated to maximize system profit under shared human and robot capacities? Can whole-line column generation provide stronger bounds and more efficient integer certification than direct compact MILP optimization on suitable multi-line instances? How can restricted integer recovery and resource-profile coordination resolve incompatible column combinations while preserving valid bounds and the original task constraints?
+
+【主要贡献】
+This work develops a whole-line reformulation that places task selection, mode assignment, precedence, cycle time, fatigue, and recovery feasibility inside each column, leaving only shared human and robot capacities in the master problem. A two-phase column generation framework integrates exact line pricing, validated integer recovery, and demand-driven resource-profile coordination to distinguish LP convergence from original integer optimality. Paired synthetic experiments compare feasible profits, valid bounds, proof states, pricing rounds, and execution times against compact CPLEX optimization, while retaining difficult large-block cases to identify the framework's practical limitations.
+
+第二步：选数据
+
+【数据链接】
+https://www.kaggle.com/datasets/techsash/waste-classification-data
+
+【数据类型】
+Image classification dataset: organic and recyclable waste. Contextual data-source example only; it does not provide disassembly task times, precedence graphs, execution-mode costs, or fatigue parameters.
+
+【论文 · Related Work】
+Disassembly research connects operation sequencing, selective recovery, and workstation allocation. Guo et al. (2021) review disassembly sequence planning, while Guler et al. (2024) organize developments in partial disassembly line balancing. Human-robot collaboration introduces mode-dependent processing times, costs, and resource requirements. Guo et al. (2023) consider a fatigue index in U-shaped disassembly balancing, and Guo et al. (2025) examine resource sharing in multiproduct collaborative hybrid lines. Dantzig and Wolfe (1960) establish the decomposition principle, and Lubbecke and Desrosiers (2005) discuss pricing and bounds in column generation. Building on these directions, this work studies complete line-plan coordination with explicit integer recovery and resource-profile bounds. Public waste-classification images provide recycling context but do not constitute task-level optimization benchmarks; the numerical evaluation uses separately specified synthetic disassembly instances. The methodological focus is the relationship between local plan feasibility, shared-resource coordination, and auditable integer certification.
